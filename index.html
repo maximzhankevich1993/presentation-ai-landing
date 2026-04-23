@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Презентатор ИИ — создай презентацию за 1 минуту</title>
+    <meta name="description" content="Создавай профессиональные презентации с помощью Искусственного Интеллекта. Бесплатно 5 презентаций.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="doodle-background">
+        <div class="doodle doodle-1">✦</div>
+        <div class="doodle doodle-2">⬟</div>
+        <div class="doodle doodle-3">◈</div>
+        <div class="doodle doodle-4">✧</div>
+    </div>
+
+    <main class="hero">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">🎨</div>
+                <span class="logo-text">Презентатор ИИ</span>
+            </div>
+
+            <h1 class="hero-title">
+                <span class="title-line">Создай презентацию</span>
+                <span class="title-line highlight">за 1 минуту</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+                Искусственный интеллект напишет текст, подберёт картинки<br>
+                и оформит слайды. Тебе останется только настроить под себя.
+            </p>
+
+            <div class="input-wrapper">
+                <div class="input-container">
+                    <input type="text" id="topicInput" class="topic-input" 
+                           placeholder="Например: История искусственного интеллекта...">
+                    <button id="generateBtn" class="generate-btn">
+                        <span>✨</span>
+                        <span>Создать</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="examples">
+                <span class="examples-label">Попробуй:</span>
+                <div class="example-chips">
+                    <button class="chip" data-topic="Искусственный интеллект">🤖 ИИ</button>
+                    <button class="chip" data-topic="Бизнес-план для стартапа">📈 Бизнес</button>
+                    <button class="chip" data-topic="Глобальное потепление">🌍 Экология</button>
+                    <button class="chip" data-topic="Будущее космонавтики">🚀 Космос</button>
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>5 презентаций</h3>
+                    <p>бесплатно, без регистрации</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>До 10 слайдов</h3>
+                    <p>в каждой презентации</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🖼</div>
+                    <h3>Авто-картинки</h3>
+                    <p>ИИ подберёт иллюстрации</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="loadingModal" class="modal">
+        <div class="modal-content">
+            <div class="loading-animation">
+                <div class="professor">🧑‍🏫💡</div>
+                <p id="loadingText" class="loading-text">🤔 Анализирую тему...</p>
+                <div class="progress-bar-container">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
