@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Презентатор ИИ — создай презентацию за 1 минуту</title>
     <meta name="description" content="Создавай профессиональные презентации с помощью Искусственного Интеллекта. Бесплатно 5 презентаций.">
     
@@ -11,9 +10,74 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="dark-theme.css">
-    <link rel="stylesheet" href="mobile.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #6366f1;
+            --bg: #0f0f1a;
+            --text: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --gradient-1: linear-gradient(135deg, #6366f1, #8b5cf6);
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.3);
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .bg-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        .bg-orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.3; animation: float 20s infinite; }
+        .bg-orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, #6366f1, transparent); top: -200px; left: -200px; }
+        .bg-orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, #06b6d4, transparent); bottom: -200px; right: -200px; animation-delay: -7s; }
+        .bg-orb-3 { width: 400px; height: 400px; background: radial-gradient(circle, #f59e0b, transparent); top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: -14s; }
+        @keyframes float { 0%,100% { transform: translate(0,0) scale(1) } 25% { transform: translate(100px,-50px) scale(1.1) } 50% { transform: translate(-50px,100px) scale(0.9) } 75% { transform: translate(-100px,-100px) scale(1.05) } }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; }
+        
+        .navbar { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 100; width: 90%; max-width: 800px; }
+        .nav-glass { background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 40px; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; box-shadow: var(--shadow-lg); }
+        .nav-logo { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; }
+        .nav-logo-icon { width: 36px; height: 36px; background: var(--gradient-1); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .nav-cta { padding: 10px 24px; background: var(--gradient-1); border: none; border-radius: 30px; color: white; font-weight: 600; cursor: pointer; transition: all 0.3s; text-decoration: none; font-size: 14px; }
+
+        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; }
+        .hero-content { text-align: center; max-width: 800px; margin: 0 auto; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 40px; padding: 8px 20px; margin-bottom: 32px; font-size: 14px; color: var(--text-secondary); }
+        .hero-title { font-size: clamp(40px, 8vw, 72px); font-weight: 800; line-height: 1.1; margin-bottom: 24px; background: linear-gradient(135deg, #fff 0%, #a5b4fc 50%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        
+        .input-wrapper { max-width: 700px; margin: 0 auto; position: relative; }
+        .input-container { display: flex; gap: 12px; background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--glass-border); padding: 8px; border-radius: 60px; box-shadow: var(--shadow-lg); }
+        .topic-input { flex: 1; padding: 18px 24px; border: none; outline: none; font-size: 16px; background: transparent; color: var(--text); font-family: 'Montserrat', sans-serif; }
+        .topic-input::placeholder { color: #64748b; }
+        .generate-btn { display: flex; align-items: center; gap: 8px; padding: 0 32px; background: var(--gradient-1); border: none; border-radius: 50px; color: white; font-size: 16px; font-weight: 600; cursor: pointer; font-family: 'Montserrat', sans-serif; }
+        
+        .examples-section { margin-top: 32px; }
+        .examples-label { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; display: block; }
+        .example-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+        .chip { padding: 10px 20px; background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 40px; font-size: 14px; color: var(--text); cursor: pointer; font-family: 'Montserrat', sans-serif; }
+        
+        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 80px; }
+        .feature-card { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px 24px; text-align: center; }
+        .feature-icon { font-size: 48px; margin-bottom: 20px; }
+        
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; background: rgba(15,15,26,0.9); justify-content: center; align-items: center; }
+        .modal.show { display: flex; }
+        .modal-content { background: #1a1a2e; border: 1px solid var(--glass-border); border-radius: 40px; padding: 60px 40px; text-align: center; max-width: 420px; width: 90%; }
+        
+        @media (max-width: 768px) {
+            .input-container { flex-direction: column; background: transparent; border: none; box-shadow: none; align-items: center; }
+            .topic-input { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 40px; width: 100%; text-align: center; }
+            .generate-btn { width: 100%; justify-content: center; margin-top: 8px; }
+            .features { grid-template-columns: 1fr; }
+            .hero-title { font-size: 36px; }
+        }
+    </style>
 </head>
 <body>
     <div class="bg-animation">
@@ -22,20 +86,12 @@
         <div class="bg-orb bg-orb-3"></div>
     </div>
 
-    <div class="particles" id="particles"></div>
-    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
-
     <nav class="navbar">
         <div class="nav-glass">
             <a href="/" class="nav-logo">
                 <span class="nav-logo-icon">🎨</span>
                 Презентатор ИИ
             </a>
-            <div class="nav-links">
-                <a href="#features" class="nav-link">Возможности</a>
-                <a href="#pricing" class="nav-link">Тарифы</a>
-                <a href="/blog" class="nav-link">Блог</a>
-            </div>
             <a href="/app" class="nav-cta">Открыть редактор</a>
         </div>
     </nav>
@@ -48,21 +104,12 @@
                     <span>5 презентаций бесплатно</span>
                 </div>
 
-                <h1 class="hero-title">
-                    Создай презентацию<br>за 1 минуту
-                </h1>
-
-                <p class="hero-subtitle">
-                    Искусственный интеллект напишет текст, подберёт картинки<br>
-                    и оформит слайды. Тебе останется только настроить под себя.
-                </p>
+                <h1 class="hero-title">Создай презентацию за 1 минуту</h1>
 
                 <div class="input-wrapper">
-                    <div class="input-glow"></div>
                     <div class="input-container">
-                        <input type="text" id="topicInput" class="topic-input" 
-                               placeholder="О чём презентация? Например: Искусственный интеллект...">
-                        <button id="generateBtn" class="generate-btn">
+                        <input type="text" id="topicInput" class="topic-input" placeholder="О чём презентация? Например: Искусственный интеллект...">
+                        <button id="generateBtn" class="generate-btn" onclick="generatePresentation()">
                             <span>✨</span>
                             <span>Создать</span>
                         </button>
@@ -72,29 +119,29 @@
                 <div class="examples-section">
                     <span class="examples-label">Популярные темы:</span>
                     <div class="example-chips">
-                        <button class="chip" data-topic="Искусственный интеллект">🤖 ИИ</button>
-                        <button class="chip" data-topic="Бизнес-план для стартапа">📈 Бизнес</button>
-                        <button class="chip" data-topic="Глобальное потепление">🌍 Экология</button>
-                        <button class="chip" data-topic="Будущее космонавтики">🚀 Космос</button>
+                        <button class="chip" onclick="document.getElementById('topicInput').value='Искусственный интеллект'">🤖 ИИ</button>
+                        <button class="chip" onclick="document.getElementById('topicInput').value='Бизнес-план для стартапа'">📈 Бизнес</button>
+                        <button class="chip" onclick="document.getElementById('topicInput').value='Глобальное потепление'">🌍 Экология</button>
+                        <button class="chip" onclick="document.getElementById('topicInput').value='Будущее космонавтики'">🚀 Космос</button>
                     </div>
                 </div>
             </div>
 
-            <div class="features" id="features">
+            <div class="features">
                 <div class="feature-card">
                     <div class="feature-icon">🎨</div>
                     <h3>5 презентаций</h3>
-                    <p>бесплатно, без регистрации. Просто попробуйте.</p>
+                    <p>бесплатно, без регистрации</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
                     <h3>До 10 слайдов</h3>
-                    <p>в каждой презентации. Больше в Premium.</p>
+                    <p>в каждой презентации</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🖼</div>
                     <h3>Авто-картинки</h3>
-                    <p>ИИ сам подберёт иллюстрации к слайдам.</p>
+                    <p>ИИ подберёт иллюстрации</p>
                 </div>
             </div>
         </div>
@@ -102,14 +149,51 @@
 
     <div id="loadingModal" class="modal">
         <div class="modal-content">
-            <div class="loading-professor">🧑‍🏫💡</div>
-            <p id="loadingText" class="loading-text">🤔 Анализирую тему...</p>
-            <div class="progress-container">
-                <div id="progressBar" class="progress-bar"></div>
+            <div style="font-size:80px; margin-bottom:20px;">🧑‍🏫💡</div>
+            <p id="loadingText" style="font-family:'Caveat',cursive; font-size:24px; color:white; margin-bottom:24px;">🤔 Анализирую тему...</p>
+            <div style="width:100%; height:6px; background:rgba(255,255,255,0.1); border-radius:10px; overflow:hidden;">
+                <div id="progressBar" style="height:100%; background:var(--gradient-1); border-radius:10px; width:0%;"></div>
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function generatePresentation() {
+            var topic = document.getElementById('topicInput').value.trim();
+            if (!topic) return;
+            
+            var modal = document.getElementById('loadingModal');
+            var loadingText = document.getElementById('loadingText');
+            var progressBar = document.getElementById('progressBar');
+            
+            modal.classList.add('show');
+            var messages = ['🤔 Анализирую тему...','📚 Собираю информацию...','💡 Придумываю структуру...','✍️ Пишу текст...','🖼 Подбираю картинки...','✨ Готово!'];
+            var step = 0;
+            var progress = 0;
+            
+            loadingText.textContent = messages[0];
+            progressBar.style.width = '0%';
+            
+            var msgTimer = setInterval(function() {
+                step++;
+                if (step < messages.length) loadingText.textContent = messages[step];
+            }, 1500);
+            
+            var progTimer = setInterval(function() {
+                progress += 2;
+                if (progress <= 100) progressBar.style.width = progress + '%';
+            }, 100);
+            
+            setTimeout(function() {
+                clearInterval(msgTimer);
+                clearInterval(progTimer);
+                modal.classList.remove('show');
+            }, 5000);
+        }
+        
+        document.getElementById('topicInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') generatePresentation();
+        });
+    </script>
 </body>
 </html>
