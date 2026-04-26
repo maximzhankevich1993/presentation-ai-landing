@@ -20,9 +20,11 @@
             --glass: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.1);
             --gradient-1: linear-gradient(135deg, #6366f1, #8b5cf6);
+            --gradient-gold: linear-gradient(135deg, #f59e0b, #ef4444);
             --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.3);
         }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Montserrat', sans-serif;
             background: var(--bg);
@@ -44,37 +46,101 @@
         .nav-glass { background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 40px; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; box-shadow: var(--shadow-lg); }
         .nav-logo { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; }
         .nav-logo-icon { width: 36px; height: 36px; background: var(--gradient-1); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-link { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.3s; }
+        .nav-link:hover { color: var(--text); }
         .nav-cta { padding: 10px 24px; background: var(--gradient-1); border: none; border-radius: 30px; color: white; font-weight: 600; cursor: pointer; transition: all 0.3s; text-decoration: none; font-size: 14px; }
+        .nav-cta:hover { transform: scale(1.05); box-shadow: var(--shadow-glow); }
 
+        section { padding: 100px 0; }
+        .section-title { text-align: center; font-size: clamp(32px, 5vw, 48px); font-weight: 800; margin-bottom: 16px; }
+        .section-subtitle { text-align: center; color: var(--text-secondary); font-size: 18px; margin-bottom: 60px; }
+        
         .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; }
         .hero-content { text-align: center; max-width: 800px; margin: 0 auto; }
         .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 40px; padding: 8px 20px; margin-bottom: 32px; font-size: 14px; color: var(--text-secondary); }
         .hero-title { font-size: clamp(40px, 8vw, 72px); font-weight: 800; line-height: 1.1; margin-bottom: 24px; background: linear-gradient(135deg, #fff 0%, #a5b4fc 50%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-subtitle { font-size: 18px; color: var(--text-secondary); margin-bottom: 48px; line-height: 1.6; }
         
         .input-wrapper { max-width: 700px; margin: 0 auto; position: relative; }
         .input-container { display: flex; gap: 12px; background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--glass-border); padding: 8px; border-radius: 60px; box-shadow: var(--shadow-lg); }
         .topic-input { flex: 1; padding: 18px 24px; border: none; outline: none; font-size: 16px; background: transparent; color: var(--text); font-family: 'Montserrat', sans-serif; }
         .topic-input::placeholder { color: #64748b; }
-        .generate-btn { display: flex; align-items: center; gap: 8px; padding: 0 32px; background: var(--gradient-1); border: none; border-radius: 50px; color: white; font-size: 16px; font-weight: 600; cursor: pointer; font-family: 'Montserrat', sans-serif; }
+        .generate-btn { display: flex; align-items: center; gap: 8px; padding: 0 32px; background: var(--gradient-1); border: none; border-radius: 50px; color: white; font-size: 16px; font-weight: 600; cursor: pointer; font-family: 'Montserrat', sans-serif; transition: all 0.3s; white-space: nowrap; }
+        .generate-btn:hover { transform: scale(1.05); box-shadow: var(--shadow-glow); }
         
         .examples-section { margin-top: 32px; }
         .examples-label { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; display: block; }
         .example-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-        .chip { padding: 10px 20px; background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 40px; font-size: 14px; color: var(--text); cursor: pointer; font-family: 'Montserrat', sans-serif; }
+        .chip { padding: 10px 20px; background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 40px; font-size: 14px; color: var(--text); cursor: pointer; font-family: 'Montserrat', sans-serif; transition: all 0.3s; }
+        .chip:hover { border-color: var(--primary); background: rgba(99,102,241,0.1); transform: translateY(-2px); }
         
         .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 80px; }
-        .feature-card { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px 24px; text-align: center; }
+        .feature-card { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px 24px; text-align: center; transition: all 0.4s; }
+        .feature-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-glow); border-color: rgba(99,102,241,0.3); }
         .feature-icon { font-size: 48px; margin-bottom: 20px; }
-        
+        .feature-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+        .feature-card p { color: var(--text-secondary); font-size: 14px; line-height: 1.6; }
+
+        /* ТАРИФЫ */
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
+        .pricing-card { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px 32px; text-align: center; transition: all 0.4s; position: relative; }
+        .pricing-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-glow); }
+        .pricing-card.featured { border-color: #f59e0b; border-width: 2px; background: rgba(245,158,11,0.05); }
+        .pricing-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gradient-gold); color: white; padding: 6px 20px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+        .pricing-name { font-size: 20px; font-weight: 700; margin-bottom: 16px; }
+        .pricing-price { font-size: 48px; font-weight: 900; margin-bottom: 4px; background: linear-gradient(135deg, #fff, #a5b4fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .pricing-period { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; }
+        .pricing-features { list-style: none; text-align: left; margin-bottom: 32px; }
+        .pricing-features li { padding: 8px 0; font-size: 14px; color: var(--text-secondary); }
+        .pricing-features li::before { content: '✅ '; }
+        .pricing-btn { display: block; width: 100%; padding: 16px; border-radius: 40px; font-weight: 600; font-size: 16px; cursor: pointer; border: none; transition: all 0.3s; font-family: 'Montserrat', sans-serif; }
+        .pricing-btn.primary { background: var(--gradient-1); color: white; }
+        .pricing-btn.gold { background: var(--gradient-gold); color: white; }
+        .pricing-btn.outline { background: transparent; border: 1px solid var(--glass-border); color: var(--text); }
+        .pricing-btn:hover { transform: scale(1.03); }
+
+        /* ОТЗЫВЫ */
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
+        .testimonial-card { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 32px; }
+        .testimonial-stars { color: #f59e0b; font-size: 18px; margin-bottom: 16px; }
+        .testimonial-text { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px; font-style: italic; }
+        .testimonial-author { display: flex; align-items: center; gap: 12px; }
+        .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-1); display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .testimonial-name { font-size: 14px; font-weight: 600; }
+        .testimonial-role { font-size: 12px; color: var(--text-secondary); }
+
+        /* FAQ */
+        .faq-grid { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+        .faq-item { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 24px; cursor: pointer; transition: all 0.3s; }
+        .faq-item:hover { border-color: var(--primary); }
+        .faq-question { font-weight: 600; font-size: 16px; margin-bottom: 8px; }
+        .faq-answer { color: var(--text-secondary); font-size: 14px; line-height: 1.6; display: none; }
+        .faq-answer.show { display: block; }
+
+        /* CTA */
+        .cta-section { text-align: center; }
+        .cta-box { background: var(--gradient-1); border-radius: 40px; padding: 60px 40px; box-shadow: var(--shadow-glow); }
+        .cta-title { font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 16px; color: white; }
+        .cta-text { font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 32px; }
+
+        /* FOOTER */
+        .footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--glass-border); margin-top: 60px; }
+        .footer p { color: var(--text-secondary); font-size: 14px; }
+
+        /* MODAL */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; background: rgba(15,15,26,0.9); justify-content: center; align-items: center; }
         .modal.show { display: flex; }
         .modal-content { background: #1a1a2e; border: 1px solid var(--glass-border); border-radius: 40px; padding: 60px 40px; text-align: center; max-width: 420px; width: 90%; }
-        
+
         @media (max-width: 768px) {
+            .nav-links { display: none; }
             .input-container { flex-direction: column; background: transparent; border: none; box-shadow: none; align-items: center; }
             .topic-input { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 40px; width: 100%; text-align: center; }
             .generate-btn { width: 100%; justify-content: center; margin-top: 8px; }
             .features { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
             .hero-title { font-size: 36px; }
         }
     </style>
@@ -92,10 +158,16 @@
                 <span class="nav-logo-icon">🎨</span>
                 Презентатор ИИ
             </a>
+            <div class="nav-links">
+                <a href="#pricing" class="nav-link">Тарифы</a>
+                <a href="#testimonials" class="nav-link">Отзывы</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </div>
             <a href="/app" class="nav-cta">Открыть редактор</a>
         </div>
     </nav>
 
+    <!-- HERO -->
     <main class="hero">
         <div class="container">
             <div class="hero-content">
@@ -103,8 +175,8 @@
                     <span>✨</span>
                     <span>5 презентаций бесплатно</span>
                 </div>
-
                 <h1 class="hero-title">Создай презентацию за 1 минуту</h1>
+                <p class="hero-subtitle">Искусственный интеллект напишет текст, подберёт картинки и оформит слайды. Тебе останется только настроить под себя.</p>
 
                 <div class="input-wrapper">
                     <div class="input-container">
@@ -147,6 +219,163 @@
         </div>
     </main>
 
+    <!-- ТАРИФЫ -->
+    <section id="pricing">
+        <div class="container">
+            <h2 class="section-title">Тарифы</h2>
+            <p class="section-subtitle">Самые доступные цены на рынке. Начните бесплатно.</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-name">Бесплатный</div>
+                    <div class="pricing-price">0₽</div>
+                    <div class="pricing-period">навсегда</div>
+                    <ul class="pricing-features">
+                        <li>5 презентаций</li>
+                        <li>До 10 слайдов</li>
+                        <li>Авто-картинки</li>
+                        <li>Базовые фоны</li>
+                        <li>2 шрифта</li>
+                    </ul>
+                    <button class="pricing-btn outline" onclick="document.getElementById('topicInput').scrollIntoView()">Начать бесплатно</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">ПОПУЛЯРНЫЙ</div>
+                    <div class="pricing-name">Год</div>
+                    <div class="pricing-price">$49.99</div>
+                    <div class="pricing-period">~$4.17/мес • экономия 17%</div>
+                    <ul class="pricing-features">
+                        <li>Безлимит презентаций</li>
+                        <li>До 50 слайдов</li>
+                        <li>Все 30+ фишек</li>
+                        <li>Свой фон</li>
+                        <li>Экспорт PDF без знака</li>
+                    </ul>
+                    <button class="pricing-btn gold" onclick="alert('Скоро!')">Выбрать годовой</button>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-name">Месяц</div>
+                    <div class="pricing-price">$4.99</div>
+                    <div class="pricing-period">/месяц</div>
+                    <ul class="pricing-features">
+                        <li>Безлимит презентаций</li>
+                        <li>До 50 слайдов</li>
+                        <li>Все 30+ фишек</li>
+                        <li>Свой фон</li>
+                        <li>Экспорт PDF без знака</li>
+                    </ul>
+                    <button class="pricing-btn primary" onclick="alert('Скоро!')">Выбрать месячный</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОТЗЫВЫ -->
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Что говорят пользователи</h2>
+            <p class="section-subtitle">Присоединяйтесь к тысячам довольных клиентов</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Создал презентацию для защиты диплома за 15 минут вместо обычных 3 часов. Очень выручило!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">А</div>
+                        <div>
+                            <div class="testimonial-name">Алексей П.</div>
+                            <div class="testimonial-role">Студент МГУ</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Использую для еженедельных отчётов. Экономит кучу времени, презентации всегда выглядят профессионально."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">М</div>
+                        <div>
+                            <div class="testimonial-name">Марина И.</div>
+                            <div class="testimonial-role">Менеджер проектов</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Лучшее соотношение цены и качества. За $4.99 в месяц — это просто подарок."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">Д</div>
+                        <div>
+                            <div class="testimonial-name">Дмитрий С.</div>
+                            <div class="testimonial-role">Маркетолог</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Частые вопросы</h2>
+            <p class="section-subtitle">Всё, что вы хотели знать о сервисе</p>
+            
+            <div class="faq-grid">
+                <div class="faq-item" onclick="this.querySelector('.faq-answer').classList.toggle('show')">
+                    <div class="faq-question">Сколько презентаций можно создать бесплатно?</div>
+                    <div class="faq-answer">5 полноценных презентаций до 10 слайдов каждая. Этого достаточно, чтобы оценить все возможности сервиса.</div>
+                </div>
+                <div class="faq-item" onclick="this.querySelector('.faq-answer').classList.toggle('show')">
+                    <div class="faq-question">Нужно ли регистрироваться?</div>
+                    <div class="faq-answer">Нет, для первых 5 презентаций регистрация не требуется. Просто введите тему и нажмите «Создать».</div>
+                </div>
+                <div class="faq-item" onclick="this.querySelector('.faq-answer').classList.toggle('show')">
+                    <div class="faq-question">В каком формате можно скачать?</div>
+                    <div class="faq-answer">PPTX (PowerPoint) — бесплатно. PDF без водяного знака — в Premium тарифе.</div>
+                </div>
+                <div class="faq-item" onclick="this.querySelector('.faq-answer').classList.toggle('show')">
+                    <div class="faq-question">Можно ли отменить подписку?</div>
+                    <div class="faq-answer">Да, в любой момент. После отмены вы сохраняете доступ до конца оплаченного периода.</div>
+                </div>
+                <div class="faq-item" onclick="this.querySelector('.faq-answer').classList.toggle('show')">
+                    <div class="faq-question">Какие способы оплаты?</div>
+                    <div class="faq-answer">Stripe (Visa, Mastercard, Apple Pay) и PayPal. Все платежи защищены.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2 class="cta-title">Готовы создать первую презентацию?</h2>
+                <p class="cta-text">Начните бесплатно прямо сейчас — это займёт всего минуту</p>
+                <div class="input-wrapper">
+                    <div class="input-container">
+                        <input type="text" id="ctaInput" class="topic-input" placeholder="Введите тему презентации...">
+                        <button class="generate-btn" onclick="document.getElementById('topicInput').value=document.getElementById('ctaInput').value; generatePresentation();">
+                            <span>✨</span>
+                            <span>Создать</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Презентатор ИИ. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL -->
     <div id="loadingModal" class="modal">
         <div class="modal-content">
             <div style="font-size:80px; margin-bottom:20px;">🧑‍🏫💡</div>
