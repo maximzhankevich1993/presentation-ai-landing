@@ -7,13 +7,34 @@
     <title>Презентатор ИИ — создай презентацию за 1 минуту</title>
     <meta name="description" content="Создавай профессиональные презентации с помощью Искусственного Интеллекта. Бесплатно 5 презентаций.">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     
+    <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dark-theme.css">
+    <link rel="stylesheet" href="mobile.css">
+    
+    <!-- SEO -->
+    <link rel="canonical" href="https://prezentator-ai.com/">
+    <meta property="og:title" content="Презентатор ИИ — создай презентацию за 1 минуту">
+    <meta property="og:description" content="Искусственный интеллект напишет текст, подберёт картинки и оформит слайды.">
+    <meta property="og:image" content="https://prezentator-ai.com/og-image.png">
+    <meta property="twitter:card" content="summary_large_image">
 </head>
-<body>
+<body data-theme="light">
+    <!-- Переключатель тёмной темы -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Переключить тему">
+        <span class="light-icon">🌙</span>
+        <span class="dark-icon">☀️</span>
+    </button>
+
+    <!-- Doodle фон -->
     <div class="doodle-background">
         <div class="doodle doodle-1">✦</div>
         <div class="doodle doodle-2">⬟</div>
@@ -23,11 +44,13 @@
 
     <main class="hero">
         <div class="container">
+            <!-- Логотип -->
             <div class="logo">
                 <div class="logo-icon">🎨</div>
                 <span class="logo-text">Презентатор ИИ</span>
             </div>
 
+            <!-- Заголовок -->
             <h1 class="hero-title">
                 <span class="title-line">Создай презентацию</span>
                 <span class="title-line highlight">за 1 минуту</span>
@@ -38,6 +61,7 @@
                 и оформит слайды. Тебе останется только настроить под себя.
             </p>
 
+            <!-- Поле ввода -->
             <div class="input-wrapper">
                 <div class="input-container">
                     <input type="text" id="topicInput" class="topic-input" 
@@ -49,6 +73,7 @@
                 </div>
             </div>
 
+            <!-- Примеры -->
             <div class="examples">
                 <span class="examples-label">Попробуй:</span>
                 <div class="example-chips">
@@ -59,6 +84,7 @@
                 </div>
             </div>
 
+            <!-- Преимущества -->
             <div class="features">
                 <div class="feature-card">
                     <div class="feature-icon">🎨</div>
@@ -79,6 +105,7 @@
         </div>
     </main>
 
+    <!-- Модальное окно загрузки -->
     <div id="loadingModal" class="modal">
         <div class="modal-content">
             <div class="loading-animation">
@@ -91,6 +118,23 @@
         </div>
     </div>
 
+    <!-- Скрипты -->
     <script src="script.js"></script>
+    <script>
+        // Переключатель тёмной темы
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Загрузка сохранённой темы
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 </body>
 </html>
