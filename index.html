@@ -82,6 +82,16 @@
         .feature-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
         .feature-card p { color: var(--text-secondary); font-size: 14px; line-height: 1.6; }
 
+        /* ДЛЯ КОГО */
+        .for-whom-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
+        .for-whom-card { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 32px 24px; text-align: center; transition: all 0.4s; }
+        .for-whom-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-glow); border-color: rgba(99,102,241,0.3); }
+        .for-whom-icon { font-size: 48px; margin-bottom: 16px; }
+        .for-whom-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+        .for-whom-card p { color: var(--text-secondary); font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
+        .for-whom-link { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 14px; }
+        .for-whom-link:hover { text-decoration: underline; }
+
         .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
         .pricing-card { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px 32px; text-align: center; transition: all 0.4s; position: relative; }
         .pricing-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-glow); }
@@ -127,14 +137,7 @@
         .modal.show { display: flex; }
         .modal-content { background: #1a1a2e; border: 1px solid var(--glass-border); border-radius: 40px; padding: 60px 40px; text-align: center; max-width: 420px; width: 90%; }
 
-        /* Payment options */
-        .payment-option {
-            display: flex; align-items: center; gap: 16px;
-            background: var(--glass); border: 1px solid var(--glass-border);
-            border-radius: 16px; padding: 20px; cursor: pointer;
-            transition: all 0.3s; text-align: left;
-            font-family: 'Montserrat', sans-serif; color: var(--text);
-        }
+        .payment-option { display: flex; align-items: center; gap: 16px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 16px; padding: 20px; cursor: pointer; transition: all 0.3s; text-align: left; font-family: 'Montserrat', sans-serif; color: var(--text); }
         .payment-option:hover { border-color: var(--primary); background: rgba(99,102,241,0.1); }
         .payment-icon { font-size: 32px; }
         .payment-info { flex: 1; }
@@ -147,6 +150,7 @@
             .topic-input { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 40px; width: 100%; text-align: center; }
             .generate-btn { width: 100%; justify-content: center; margin-top: 8px; }
             .features { grid-template-columns: 1fr; }
+            .for-whom-grid { grid-template-columns: 1fr; }
             .pricing-grid { grid-template-columns: 1fr; }
             .testimonials-grid { grid-template-columns: 1fr; }
             .hero-title { font-size: 36px; }
@@ -167,6 +171,7 @@
                 Презентатор ИИ
             </a>
             <div class="nav-links">
+                <a href="#for-whom" class="nav-link">Для кого</a>
                 <a href="#pricing" class="nav-link">Тарифы</a>
                 <a href="#testimonials" class="nav-link">Отзывы</a>
                 <a href="#faq" class="nav-link">FAQ</a>
@@ -178,10 +183,7 @@
     <main class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <span>✨</span>
-                    <span>5 презентаций бесплатно</span>
-                </div>
+                <div class="hero-badge"><span>✨</span><span>5 презентаций бесплатно</span></div>
                 <h1 class="hero-title">Создай презентацию за 1 минуту</h1>
                 <p class="hero-subtitle">Искусственный интеллект напишет текст, подберёт картинки и оформит слайды. Тебе останется только настроить под себя.</p>
 
@@ -189,8 +191,7 @@
                     <div class="input-container">
                         <input type="text" id="topicInput" class="topic-input" placeholder="О чём презентация? Например: Искусственный интеллект...">
                         <button id="generateBtn" class="generate-btn" onclick="generatePresentation()">
-                            <span>✨</span>
-                            <span>Создать</span>
+                            <span>✨</span><span>Создать</span>
                         </button>
                     </div>
                 </div>
@@ -214,6 +215,41 @@
         </div>
     </main>
 
+    <!-- ДЛЯ КОГО -->
+    <section id="for-whom">
+        <div class="container">
+            <h2 class="section-title">Для кого подходит</h2>
+            <p class="section-subtitle">Наш сервис решает задачи разных пользователей</p>
+            <div class="for-whom-grid">
+                <div class="for-whom-card">
+                    <div class="for-whom-icon">🚀</div>
+                    <h3>Стартапы</h3>
+                    <p>Создайте идеальный питч-дек для инвесторов за 2 минуты. ИИ подберёт структуру, которая уже сработала у сотен стартапов.</p>
+                    <a href="#pricing" class="for-whom-link">Попробовать →</a>
+                </div>
+                <div class="for-whom-card">
+                    <div class="for-whom-icon">🎓</div>
+                    <h3>Студенты</h3>
+                    <p>Презентация к диплому или курсовой за 1 минуту. Автоматическое оформление по ГОСТ с цитатами и источниками.</p>
+                    <a href="#pricing" class="for-whom-link">Попробовать →</a>
+                </div>
+                <div class="for-whom-card">
+                    <div class="for-whom-icon">💼</div>
+                    <h3>Бизнес</h3>
+                    <p>Еженедельные отчёты, коммерческие предложения, презентации для клиентов — всё создаётся за минуты, а не часы.</p>
+                    <a href="#pricing" class="for-whom-link">Попробовать →</a>
+                </div>
+                <div class="for-whom-card">
+                    <div class="for-whom-icon">🏫</div>
+                    <h3>Преподаватели</h3>
+                    <p>Готовые презентации для уроков и лекций. ИИ подберёт структуру, факты и наглядные примеры по любой теме.</p>
+                    <a href="#pricing" class="for-whom-link">Попробовать →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ТАРИФЫ -->
     <section id="pricing">
         <div class="container">
             <h2 class="section-title">Тарифы</h2>
@@ -245,6 +281,7 @@
         </div>
     </section>
 
+    <!-- ОТЗЫВЫ -->
     <section id="testimonials">
         <div class="container">
             <h2 class="section-title">Что говорят пользователи</h2>
@@ -257,6 +294,7 @@
         </div>
     </section>
 
+    <!-- FAQ -->
     <section id="faq">
         <div class="container">
             <h2 class="section-title">Частые вопросы</h2>
@@ -271,6 +309,7 @@
         </div>
     </section>
 
+    <!-- CTA -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-box">
@@ -280,8 +319,7 @@
                     <div class="input-container">
                         <input type="text" id="ctaInput" class="topic-input" placeholder="Введите тему презентации...">
                         <button class="generate-btn" onclick="document.getElementById('topicInput').value=document.getElementById('ctaInput').value; generatePresentation();">
-                            <span>✨</span>
-                            <span>Создать</span>
+                            <span>✨</span><span>Создать</span>
                         </button>
                     </div>
                 </div>
@@ -319,7 +357,6 @@
     </div>
 
     <script>
-        // ===== ГЕНЕРАЦИЯ =====
         function generatePresentation() {
             var topic = document.getElementById('topicInput').value.trim();
             if (!topic) return;
@@ -357,27 +394,20 @@
             if (e.key === 'Enter') generatePresentation();
         });
 
-        // ===== ОПРЕДЕЛЕНИЕ СТРАНЫ ПО IP =====
         var userCountry = 'US';
-
         fetch('https://ipapi.co/json/')
             .then(function(response) { return response.json(); })
-            .then(function(data) {
-                userCountry = data.country_code || 'US';
-            })
+            .then(function(data) { userCountry = data.country_code || 'US'; })
             .catch(function() {
-                // Если не получилось — используем язык браузера
                 var lang = navigator.language || 'en-US';
                 if (lang.includes('ru')) userCountry = 'RU';
                 else if (lang.includes('be')) userCountry = 'BY';
                 else if (lang.includes('kk')) userCountry = 'KZ';
             });
 
-        // ===== ОТКРЫТИЕ МОДАЛЬНОГО ОКНА ОПЛАТЫ =====
         function openPaymentModal() {
             var options = document.getElementById('paymentOptions');
             var subtitle = document.getElementById('paymentSubtitle');
-            
             options.innerHTML = '';
             
             var paymentMethods = {
@@ -385,12 +415,8 @@
                     { icon: '💳', name: 'Stripe', desc: 'Visa, Mastercard, Apple Pay', action: function() { alert('Оплата через Stripe будет доступна после деплоя!'); } },
                     { icon: '🅿️', name: 'PayPal', desc: 'Безопасная оплата через PayPal', action: function() { alert('Оплата через PayPal будет доступна после деплоя!'); } }
                 ],
-                'GB': [
-                    { icon: '💳', name: 'Stripe', desc: 'Visa, Mastercard', action: function() { alert('Оплата через Stripe будет доступна после деплоя!'); } },
-                    { icon: '🅿️', name: 'PayPal', desc: 'Безопасная оплата', action: function() { alert('Оплата через PayPal будет доступна после деплоя!'); } }
-                ],
                 'RU': [
-                    { icon: '🚀', name: 'Boosty.to', desc: 'Официальная платформа для авторов. Поддерживает подписки.', action: function() { window.open('https://boosty.to/презентатор-ии', '_blank'); } },
+                    { icon: '🚀', name: 'Boosty.to', desc: 'Официальная платформа для авторов. Поддерживает подписки.', action: function() { window.open('https://boosty.to/', '_blank'); } },
                     { icon: '💬', name: 'Написать в Telegram', desc: 'Ручная активация Premium. Ответим в течение дня.', action: function() { window.open('https://t.me/prezentator_ai', '_blank'); } }
                 ],
                 'BY': [
@@ -401,12 +427,8 @@
                 ]
             };
 
-            // Страны ЕС
             var euCountries = ['DE','FR','IT','ES','NL','BE','AT','PL','SE','DK','FI','PT','IE','GR','CZ','RO','HU','BG','SK','HR','LT','SI','LV','EE','CY','LU','MT'];
-
-            if (euCountries.indexOf(userCountry) !== -1) {
-                userCountry = 'US'; // ЕС = те же Stripe/PayPal
-            }
+            if (euCountries.indexOf(userCountry) !== -1) userCountry = 'US';
 
             var methods = paymentMethods[userCountry] || paymentMethods['US'];
             subtitle.textContent = 'Ваш регион: ' + userCountry;
