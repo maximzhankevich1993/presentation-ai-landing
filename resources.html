@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Библиотека ресурсов для презентаций | Презентатор ИИ</title>
+    <meta name="description" content="Бесплатные изображения, иконки и шрифты для создания презентаций. Интеграция с Unsplash, Pixabay, Flaticon и Google Fonts.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #6366f1; --bg: #0f0f1a; --text: #f1f5f9; --text-secondary: #94a3b8; --glass: rgba(255,255,255,0.05); --glass-border: rgba(255,255,255,0.1); --gradient-1: linear-gradient(135deg, #6366f1, #8b5cf6); --shadow-glow: 0 0 40px rgba(99,102,241,0.3); }
+        body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+        
+        .navbar { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 100; width: 90%; max-width: 800px; }
+        .nav-glass { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 40px; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; }
+        .nav-logo-icon { width: 36px; height: 36px; background: var(--gradient-1); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .nav-cta { padding: 10px 24px; background: var(--gradient-1); border: none; border-radius: 30px; color: white; font-weight: 600; cursor: pointer; text-decoration: none; font-size: 14px; }
+        
+        .container { max-width: 1000px; margin: 0 auto; padding: 120px 24px 60px; }
+        h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 800; margin-bottom: 16px; }
+        .subtitle { color: var(--text-secondary); font-size: 18px; margin-bottom: 60px; }
+        
+        .resources-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 40px; }
+        .resource-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 24px; padding: 32px; transition: all 0.3s; }
+        .resource-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-glow); border-color: rgba(99,102,241,0.3); }
+        .resource-icon { font-size: 48px; margin-bottom: 16px; }
+        .resource-card h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+        .resource-card p { color: var(--text-secondary); font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
+        .resource-tag { display: inline-block; padding: 4px 12px; background: rgba(99,102,241,0.1); border-radius: 20px; font-size: 12px; color: var(--primary); margin-bottom: 16px; }
+        
+        .cta-box { background: var(--gradient-1); border-radius: 40px; padding: 60px 40px; text-align: center; box-shadow: var(--shadow-glow); }
+        .cta-box h2 { font-size: 28px; font-weight: 800; margin-bottom: 16px; color: white; }
+        .cta-btn { display: inline-block; padding: 16px 40px; background: white; color: var(--primary); border-radius: 40px; font-weight: 700; font-size: 18px; text-decoration: none; }
+        
+        .footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--glass-border); }
+        .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; }
+        .footer-links a:hover { color: var(--primary); }
+        .footer p { color: var(--text-secondary); font-size: 14px; }
+        
+        @media (max-width: 768px) { .resources-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-glass">
+            <a href="/" class="nav-logo"><span class="nav-logo-icon">🎨</span>Презентатор ИИ</a>
+            <a href="/" class="nav-cta">← На главную</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Библиотека ресурсов</h1>
+        <p class="subtitle">Все изображения, иконки и шрифты, доступные в нашем сервисе</p>
+
+        <div class="resources-grid">
+            <div class="resource-card">
+                <div class="resource-icon">🖼</div>
+                <h2>Unsplash</h2>
+                <span class="resource-tag">Встроено</span>
+                <p>3+ миллиона бесплатных фотографий высокого разрешения. Автоматический подбор картинок к каждому слайду.</p>
+                <p style="font-size:12px; color:var(--text-secondary);">Источник: unsplash.com</p>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">🎬</div>
+                <h2>Pixabay</h2>
+                <span class="resource-tag">Резервный</span>
+                <p>2+ миллиона бесплатных фото и видео. Используется как запасной источник, если Unsplash недоступен.</p>
+                <p style="font-size:12px; color:var(--text-secondary);">Источник: pixabay.com</p>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">🎯</div>
+                <h2>Flaticon</h2>
+                <span class="resource-tag">Premium</span>
+                <p>10+ миллионов иконок в SVG и PNG. Доступно для Premium-пользователей. Идеально для инфографики.</p>
+                <p style="font-size:12px; color:var(--text-secondary);">Источник: flaticon.com</p>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">✍️</div>
+                <h2>Google Fonts</h2>
+                <span class="resource-tag">Встроено</span>
+                <p>1000+ бесплатных шрифтов. Мы используем Montserrat для современного и чистого дизайна.</p>
+                <p style="font-size:12px; color:var(--text-secondary);">Источник: fonts.google.com</p>
+            </div>
+        </div>
+
+        <div class="cta-box">
+            <h2>Попробуйте все ресурсы в деле</h2>
+            <p style="color:rgba(255,255,255,0.8); margin-bottom:32px;">Создайте презентацию с автоматическим подбором картинок</p>
+            <a href="/" class="cta-btn">Создать презентацию →</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="/">Главная</a>
+            <a href="compare.html">Сравнение</a>
+            <a href="privacy.html">Конфиденциальность</a>
+            <a href="terms.html">Условия</a>
+            <a href="cookies.html">Cookie</a>
+        </div>
+        <p>© 2026 Презентатор ИИ. Все права защищены.</p>
+    </footer>
+</body>
+</html>
