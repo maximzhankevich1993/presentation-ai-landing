@@ -36,12 +36,26 @@
         .content ul li { margin-bottom: 8px; }
         .content ul li::marker { color: var(--primary); }
         
-        .cta-box { background: var(--gradient-1); border-radius: 40px; padding: 60px 40px; text-align: center; box-shadow: var(--shadow-glow); margin-bottom: 40px; }
-        .cta-box h2 { font-size: 28px; font-weight: 800; margin-bottom: 16px; color: white; }
-        .cta-btn { display: inline-block; padding: 16px 40px; background: white; color: var(--primary); border-radius: 40px; font-weight: 700; font-size: 18px; text-decoration: none; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 40px 0; }
+        .pricing-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px 24px; text-align: center; }
+        .pricing-card.featured { border-color: #10b981; border-width: 2px; background: rgba(16,185,129,0.05); }
+        .pricing-name { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+        .pricing-price { font-size: 36px; font-weight: 900; background: linear-gradient(135deg, #fff, #a5b4fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .pricing-period { color: var(--text-secondary); font-size: 13px; margin-bottom: 16px; }
+        .pricing-features { list-style: none; text-align: left; margin-bottom: 24px; }
+        .pricing-features li { padding: 6px 0; font-size: 13px; color: var(--text-secondary); }
+        .pricing-features li::before { content: '✅ '; }
+        .pricing-btn { display: block; width: 100%; padding: 14px; border-radius: 30px; font-weight: 600; font-size: 14px; cursor: pointer; border: none; font-family: 'Montserrat', sans-serif; }
+        .pricing-btn.green { background: linear-gradient(135deg, #10b981, #34d399); color: white; }
+        .pricing-btn.primary { background: var(--gradient-1); color: white; }
+        .pricing-btn.outline { background: transparent; border: 1px solid var(--glass-border); color: var(--text); }
         
         .footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--glass-border); }
+        .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; }
         .footer p { color: var(--text-secondary); font-size: 14px; }
+        
+        @media (max-width: 768px) { .pricing-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -65,26 +79,68 @@
                 <li>Биология — схемы, классификации, примеры</li>
                 <li>Физика — формулы, законы, опыты</li>
                 <li>Литература — анализ произведений, биографии</li>
-                <li>Математика — теоремы, доказательства, задачи</li>
-                <li>Иностранные языки — грамматика, лексика, примеры</li>
             </ul>
 
             <h2>📋 Стандартная структура урока</h2>
             <p>ИИ создаёт презентацию по схеме: тема урока → цели → новый материал → примеры → практика → итоги → домашнее задание. Экономит 2-3 часа подготовки.</p>
 
-            <h2>🎯 Автоматические факты и примеры</h2>
-            <p>Наш ИИ находит интересные факты и примеры по теме, которые сделают урок запоминающимся. Можно настроить уровень сложности под класс или группу.</p>
-        </div>
+            <h2>🌍 Поддерживаемые стандарты</h2>
+            <p>ФГОС (Россия), Common Core (США), National Curriculum (UK), Cambridge International, IB, Bildungsstandards (Германия) и другие. Сервис автоматически определяет вашу страну и подбирает стандарт.</p>
 
-        <div class="cta-box">
-            <h2>Подготовьте урок за минуту</h2>
-            <p>Бесплатно. Без регистрации. 5 презентаций.</p>
-            <a href="/" class="cta-btn">Создать презентацию →</a>
+            <h2>💰 Тарифы для учителей</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-name">Бесплатный</div>
+                    <div class="pricing-price">0</div>
+                    <div class="pricing-period">навсегда</div>
+                    <ul class="pricing-features"><li>5 планов/мес</li><li>3 теста/мес</li></ul>
+                    <button class="pricing-btn outline" onclick="alert('Скоро!')">Начать</button>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-name">Teacher Pro</div>
+                    <div class="pricing-price" data-price="4.99">$4.99</div>
+                    <div class="pricing-period">/месяц</div>
+                    <ul class="pricing-features"><li>Безлимит планов</li><li>Авто-тесты</li><li>Все стандарты</li></ul>
+                    <button class="pricing-btn green" onclick="alert('Скоро!')">Выбрать</button>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-name">Школьный</div>
+                    <div class="pricing-price" data-price="29.99">$29.99</div>
+                    <div class="pricing-period">/10 учителей</div>
+                    <ul class="pricing-features"><li>Всё из Pro</li><li>Админ-панель</li></ul>
+                    <button class="pricing-btn primary" onclick="alert('Скоро!')">Выбрать</button>
+                </div>
+            </div>
         </div>
     </div>
 
     <footer class="footer">
-        <div class="container"><p>© 2026 Презентатор ИИ. Все права защищены.</p></div>
+        <div class="footer-links"><a href="/">Главная</a><a href="business.html">Бизнесу</a><a href="privacy.html">Конфиденциальность</a></div>
+        <p>© 2026 Презентатор ИИ</p>
     </footer>
+
+    <script>
+        var currencyData = {
+            'US':{symbol:'$',rate:1,name:'USD'},'GB':{symbol:'£',rate:0.8,name:'GBP'},
+            'DE':{symbol:'€',rate:0.9,name:'EUR'},'FR':{symbol:'€',rate:0.9,name:'EUR'},
+            'RU':{symbol:'₽',rate:50,name:'RUB'},'BY':{symbol:'Br',rate:3,name:'BYN'},
+            'KZ':{symbol:'₸',rate:500,name:'KZT'},'IN':{symbol:'₹',rate:50,name:'INR'},
+            'BR':{symbol:'R$',rate:5,name:'BRL'},'JP':{symbol:'¥',rate:150,name:'JPY'},
+        };
+        var userCurrency = {symbol:'$',rate:1,name:'USD'};
+        function formatPrice(p) {
+            var lp = Math.round(p * userCurrency.rate);
+            if (['RUB','KZT','INR','JPY'].indexOf(userCurrency.name)!==-1) return lp.toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ')+' '+userCurrency.symbol;
+            return userCurrency.symbol+lp;
+        }
+        function updatePrices() {
+            document.querySelectorAll('[data-price]').forEach(function(el){el.textContent=formatPrice(parseFloat(el.getAttribute('data-price')));});
+        }
+        fetch('https://ipapi.co/json/').then(r=>r.json()).then(d=>{
+            userCurrency = currencyData[d.country_code] || currencyData['US'];
+            updatePrices();
+        }).catch(function(){updatePrices();});
+        updatePrices();
+    </script>
 </body>
 </html>
