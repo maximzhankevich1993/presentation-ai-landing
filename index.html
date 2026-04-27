@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Презентатор ИИ — создай презентацию за 1 минуту | VIP-доступ</title>
-    <meta name="description" content="Создавай профессиональные презентации с помощью ИИ. Первые 50 пользователей получат пожизненный Premium! Бесплатно 5 презентаций.">
+    <meta name="description" content="Создавай профессиональные презентации с помощью ИИ. Первые 50 пользователей получат пожизненный Premium!">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,7 +89,6 @@
         .for-whom-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
         .for-whom-card p { color: var(--text-secondary); font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
         .for-whom-link { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 14px; }
-        .for-whom-link:hover { text-decoration: underline; }
 
         .tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 40px; background: var(--glass); border-radius: 40px; padding: 6px; max-width: 500px; margin-left: auto; margin-right: auto; }
         .tab-btn { padding: 12px 24px; border-radius: 35px; border: none; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: 'Montserrat', sans-serif; background: transparent; color: var(--text-secondary); }
@@ -97,7 +96,8 @@
         .tab-content { display: none; }
         .tab-content.active { display: block; }
 
-        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
+        .pricing-grid { display: grid; gap: 24px; max-width: 1000px; margin: 0 auto; }
+        .pricing-grid.cols3 { grid-template-columns: repeat(3, 1fr); }
         .pricing-grid.vip-grid { grid-template-columns: 1fr; max-width: 450px; margin-bottom: 48px; }
         .pricing-card { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px 32px; text-align: center; transition: all 0.4s; position: relative; }
         .pricing-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-glow); }
@@ -165,7 +165,7 @@
             .input-container { flex-direction: column; background: transparent; border: none; box-shadow: none; align-items: center; }
             .topic-input { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 40px; width: 100%; text-align: center; }
             .generate-btn { width: 100%; justify-content: center; margin-top: 8px; }
-            .features, .pricing-grid, .for-whom-grid, .testimonials-grid { grid-template-columns: 1fr; }
+            .features, .pricing-grid.cols3, .for-whom-grid, .testimonials-grid { grid-template-columns: 1fr; }
             .hero-title { font-size: 36px; }
             .hero-buttons { flex-direction: column; align-items: center; }
             .tabs { flex-wrap: wrap; }
@@ -173,22 +173,13 @@
     </style>
 </head>
 <body>
-    <div class="bg-animation">
-        <div class="bg-orb bg-orb-1"></div>
-        <div class="bg-orb bg-orb-2"></div>
-        <div class="bg-orb bg-orb-3"></div>
-    </div>
+    <div class="bg-animation"><div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div><div class="bg-orb bg-orb-3"></div></div>
 
     <nav class="navbar">
         <div class="nav-glass">
             <a href="/" class="nav-logo"><span class="nav-logo-icon">🎨</span>Презентатор ИИ</a>
-            <div class="nav-links">
-                <a href="#for-whom" class="nav-link">Для кого</a>
-                <a href="#pricing" class="nav-link">Тарифы</a>
-                <a href="#testimonials" class="nav-link">Отзывы</a>
-                <a href="#faq" class="nav-link">FAQ</a>
-            </div>
-            <a href="#" class="nav-cta" onclick="alert('Редактор скоро будет доступен! Следите за обновлениями.'); return false;">Открыть редактор</a>
+            <div class="nav-links"><a href="#for-whom" class="nav-link">Для кого</a><a href="#pricing" class="nav-link">Тарифы</a><a href="#testimonials" class="nav-link">Отзывы</a><a href="#faq" class="nav-link">FAQ</a></div>
+            <a href="#" class="nav-cta" onclick="alert('Редактор скоро будет доступен!'); return false;">Открыть редактор</a>
         </div>
     </nav>
 
@@ -198,35 +189,17 @@
                 <div class="hero-badge vip"><span>👑</span><span>Первые 50 — Premium навсегда!</span></div>
                 <h1 class="hero-title">Создай презентацию за 1 минуту</h1>
                 <p class="hero-subtitle">Для бизнеса, учителей и всех, кто хочет сэкономить время</p>
-                
                 <div class="hero-buttons">
                     <a href="#pricing" class="hero-btn primary">🎨 Для всех</a>
                     <a href="teacher.html" class="hero-btn green">🏫 Учителям</a>
                     <a href="business.html" class="hero-btn gold">💼 Бизнесу</a>
                 </div>
-
-                <div class="input-wrapper">
-                    <div class="input-container">
-                        <input type="text" id="topicInput" class="topic-input" placeholder="О чём презентация? Например: Искусственный интеллект...">
-                        <button class="generate-btn" onclick="generatePresentation()"><span>✨</span><span>Создать</span></button>
-                    </div>
-                </div>
-
-                <div class="examples-section">
-                    <span class="examples-label">Популярные темы:</span>
-                    <div class="example-chips">
-                        <button class="chip" onclick="document.getElementById('topicInput').value='Искусственный интеллект'">🤖 ИИ</button>
-                        <button class="chip" onclick="document.getElementById('topicInput').value='Бизнес-план для стартапа'">📈 Бизнес</button>
-                        <button class="chip" onclick="document.getElementById('topicInput').value='Глобальное потепление'">🌍 Экология</button>
-                        <button class="chip" onclick="document.getElementById('topicInput').value='Будущее космонавтики'">🚀 Космос</button>
-                    </div>
-                </div>
+                <div class="input-wrapper"><div class="input-container"><input type="text" id="topicInput" class="topic-input" placeholder="О чём презентация?"><button class="generate-btn" onclick="generatePresentation()"><span>✨</span><span>Создать</span></button></div></div>
             </div>
-
             <div class="features">
-                <div class="feature-card"><div class="feature-icon">🎨</div><h3>5 презентаций</h3><p>бесплатно, без регистрации</p></div>
-                <div class="feature-card"><div class="feature-icon">📊</div><h3>До 10 слайдов</h3><p>в каждой презентации</p></div>
-                <div class="feature-card"><div class="feature-icon">🖼</div><h3>Авто-картинки</h3><p>ИИ подберёт иллюстрации</p></div>
+                <div class="feature-card"><div class="feature-icon">🎨</div><h3>5 презентаций</h3><p>бесплатно</p></div>
+                <div class="feature-card"><div class="feature-icon">📊</div><h3>До 10 слайдов</h3><p>в каждой</p></div>
+                <div class="feature-card"><div class="feature-icon">🖼</div><h3>Авто-картинки</h3><p>ИИ подберёт</p></div>
             </div>
         </div>
     </main>
@@ -236,10 +209,10 @@
             <h2 class="section-title">Для кого подходит</h2>
             <p class="section-subtitle">Специальные решения для каждой аудитории</p>
             <div class="for-whom-grid">
-                <div class="for-whom-card"><div class="for-whom-icon">🚀</div><h3>Стартапы</h3><p>Идеальный питч-дек для инвесторов за 2 минуты.</p><a href="pitch-deck.html" class="for-whom-link">Узнать больше →</a></div>
-                <div class="for-whom-card"><div class="for-whom-icon">🏫</div><h3>Учителя</h3><p>Планы уроков по стандартам вашей страны.</p><a href="teacher.html" class="for-whom-link">Узнать больше →</a></div>
-                <div class="for-whom-card"><div class="for-whom-icon">💼</div><h3>Бизнес</h3><p>КП, отчёты, презентации с интеграциями.</p><a href="business.html" class="for-whom-link">Узнать больше →</a></div>
-                <div class="for-whom-card"><div class="for-whom-icon">🎓</div><h3>Студенты</h3><p>Презентация к диплому с ГОСТом и авто-цитатами.</p><a href="student.html" class="for-whom-link">Узнать больше →</a></div>
+                <div class="for-whom-card"><div class="for-whom-icon">🚀</div><h3>Стартапы</h3><p>Питч-дек за 2 минуты.</p><a href="pitch-deck.html" class="for-whom-link">→</a></div>
+                <div class="for-whom-card"><div class="for-whom-icon">🏫</div><h3>Учителя</h3><p>Планы уроков.</p><a href="teacher.html" class="for-whom-link">→</a></div>
+                <div class="for-whom-card"><div class="for-whom-icon">💼</div><h3>Бизнес</h3><p>КП, отчёты.</p><a href="business.html" class="for-whom-link">→</a></div>
+                <div class="for-whom-card"><div class="for-whom-icon">🎓</div><h3>Студенты</h3><p>Диплом с ГОСТ.</p><a href="student.html" class="for-whom-link">→</a></div>
             </div>
         </div>
     </section>
@@ -247,23 +220,16 @@
     <section id="pricing">
         <div class="container">
             <h2 class="section-title">Тарифы</h2>
-            <p class="section-subtitle">Самые доступные цены на рынке. Начните бесплатно.</p>
+            <p class="section-subtitle">Цены в вашей местной валюте</p>
             
             <div class="pricing-grid vip-grid">
                 <div class="pricing-card vip-card">
-                    <div class="pricing-badge fire">VIP 🔥 ОСТАЛОСЬ 50 МЕСТ</div>
+                    <div class="pricing-badge fire">VIP 🔥 50 МЕСТ</div>
                     <div class="pricing-name">Первые 50</div>
-                    <div class="pricing-price vip-price">0₽</div>
-                    <div class="pricing-period">пожизненный доступ</div>
-                    <ul class="pricing-features">
-                        <li>Пожизненный Premium</li>
-                        <li>Все 30+ уникальных фишек</li>
-                        <li>Безлимит презентаций</li>
-                        <li>Все фоны, шрифты и цвета</li>
-                        <li>Экспорт PDF без водяного знака</li>
-                        <li>Статус VIP 👑 в профиле</li>
-                    </ul>
-                    <button class="pricing-btn gold" onclick="alert('VIP-доступ будет доступен после запуска!')">🔥 Занять место</button>
+                    <div class="pricing-price vip-price">0</div>
+                    <div class="pricing-period">пожизненно</div>
+                    <ul class="pricing-features"><li>Пожизненный Premium</li><li>Все 30+ фишек</li><li>Безлимит</li></ul>
+                    <button class="pricing-btn gold" onclick="alert('Скоро!')">🔥 Занять</button>
                 </div>
             </div>
 
@@ -274,24 +240,24 @@
             </div>
 
             <div id="tab-general" class="tab-content active">
-                <div class="pricing-grid">
-                    <div class="pricing-card"><div class="pricing-name">Бесплатный</div><div class="pricing-price">0₽</div><div class="pricing-period">навсегда</div><ul class="pricing-features"><li>5 презентаций</li><li>До 10 слайдов</li><li>Авто-картинки</li></ul><button class="pricing-btn outline" onclick="document.getElementById('topicInput').scrollIntoView()">Начать бесплатно</button></div>
-                    <div class="pricing-card featured"><div class="pricing-badge gold">ПОПУЛЯРНЫЙ</div><div class="pricing-name">Год</div><div class="pricing-price">$49.99</div><div class="pricing-period">~$4.17/мес</div><ul class="pricing-features"><li>Безлимит презентаций</li><li>До 50 слайдов</li><li>Все 30+ фишек</li></ul><button class="pricing-btn gold" onclick="openPaymentModal()">Выбрать годовой</button></div>
-                    <div class="pricing-card"><div class="pricing-name">Месяц</div><div class="pricing-price">$4.99</div><div class="pricing-period">/месяц</div><ul class="pricing-features"><li>Безлимит презентаций</li><li>До 50 слайдов</li><li>Все 30+ фишек</li></ul><button class="pricing-btn primary" onclick="openPaymentModal()">Выбрать месячный</button></div>
+                <div class="pricing-grid cols3">
+                    <div class="pricing-card"><div class="pricing-name">Бесплатный</div><div class="pricing-price">0</div><div class="pricing-period">навсегда</div><ul class="pricing-features"><li>5 презентаций</li><li>До 10 слайдов</li></ul><button class="pricing-btn outline" onclick="document.getElementById('topicInput').scrollIntoView()">Начать</button></div>
+                    <div class="pricing-card featured"><div class="pricing-badge gold">ПОПУЛЯРНЫЙ</div><div class="pricing-name">Год</div><div class="pricing-price" data-price="49.99">$49.99</div><div class="pricing-period">/год</div><ul class="pricing-features"><li>Безлимит</li><li>50 слайдов</li><li>Все фишки</li></ul><button class="pricing-btn gold" onclick="openPaymentModal()">Выбрать</button></div>
+                    <div class="pricing-card"><div class="pricing-name">Месяц</div><div class="pricing-price" data-price="4.99">$4.99</div><div class="pricing-period">/мес</div><ul class="pricing-features"><li>Безлимит</li><li>50 слайдов</li><li>Все фишки</li></ul><button class="pricing-btn primary" onclick="openPaymentModal()">Выбрать</button></div>
                 </div>
             </div>
             <div id="tab-teacher" class="tab-content">
-                <div class="pricing-grid">
-                    <div class="pricing-card"><div class="pricing-name">Бесплатный</div><div class="pricing-price">0₽</div><div class="pricing-period">навсегда</div><ul class="pricing-features"><li>5 планов уроков/мес</li></ul><button class="pricing-btn outline" onclick="document.getElementById('topicInput').scrollIntoView()">Начать</button></div>
-                    <div class="pricing-card featured-green"><div class="pricing-badge green">УЧИТЕЛЯМ</div><div class="pricing-name">Teacher Pro</div><div class="pricing-price">$4.99</div><div class="pricing-period">/мес</div><ul class="pricing-features"><li>Безлимит планов</li><li>Авто-тесты</li></ul><button class="pricing-btn green" onclick="openPaymentModal()">Выбрать</button></div>
-                    <div class="pricing-card"><div class="pricing-name">Школьный</div><div class="pricing-price">$29.99</div><div class="pricing-period">/10 учителей</div><ul class="pricing-features"><li>Всё из Teacher Pro</li></ul><button class="pricing-btn primary" onclick="openPaymentModal()">Выбрать</button></div>
+                <div class="pricing-grid cols3">
+                    <div class="pricing-card"><div class="pricing-name">Бесплатный</div><div class="pricing-price">0</div><div class="pricing-period">навсегда</div><ul class="pricing-features"><li>5 планов/мес</li></ul><button class="pricing-btn outline" onclick="document.getElementById('topicInput').scrollIntoView()">Начать</button></div>
+                    <div class="pricing-card featured-green"><div class="pricing-badge green">УЧИТЕЛЯМ</div><div class="pricing-name">Teacher Pro</div><div class="pricing-price" data-price="4.99">$4.99</div><div class="pricing-period">/мес</div><ul class="pricing-features"><li>Безлимит планов</li></ul><button class="pricing-btn green" onclick="openPaymentModal()">Выбрать</button></div>
+                    <div class="pricing-card"><div class="pricing-name">Школьный</div><div class="pricing-price" data-price="29.99">$29.99</div><div class="pricing-period">/10 учителей</div><ul class="pricing-features"><li>Всё из Pro</li></ul><button class="pricing-btn primary" onclick="openPaymentModal()">Выбрать</button></div>
                 </div>
             </div>
             <div id="tab-corporate" class="tab-content">
-                <div class="pricing-grid">
-                    <div class="pricing-card"><div class="pricing-name">Business</div><div class="pricing-price">$9.99</div><div class="pricing-period">/мес</div><ul class="pricing-features"><li>Бренд-кит</li></ul><button class="pricing-btn primary" onclick="openPaymentModal()">Выбрать</button></div>
-                    <div class="pricing-card featured"><div class="pricing-badge gold">ПОПУЛЯРНЫЙ</div><div class="pricing-name">Corporate</div><div class="pricing-price">$49.99</div><div class="pricing-period">/10 чел.</div><ul class="pricing-features"><li>White-label</li></ul><button class="pricing-btn gold" onclick="openPaymentModal()">Выбрать</button></div>
-                    <div class="pricing-card"><div class="pricing-name">Enterprise</div><div class="pricing-price">$199</div><div class="pricing-period">/50 чел.</div><ul class="pricing-features"><li>On-premise</li></ul><button class="pricing-btn outline" onclick="openPaymentModal()">Связаться</button></div>
+                <div class="pricing-grid cols3">
+                    <div class="pricing-card"><div class="pricing-name">Business</div><div class="pricing-price" data-price="9.99">$9.99</div><div class="pricing-period">/мес</div><ul class="pricing-features"><li>Бренд-кит</li></ul><button class="pricing-btn primary" onclick="openPaymentModal()">Выбрать</button></div>
+                    <div class="pricing-card featured"><div class="pricing-badge gold">ПОПУЛЯРНЫЙ</div><div class="pricing-name">Corporate</div><div class="pricing-price" data-price="49.99">$49.99</div><div class="pricing-period">/10 чел.</div><ul class="pricing-features"><li>White-label</li></ul><button class="pricing-btn gold" onclick="openPaymentModal()">Выбрать</button></div>
+                    <div class="pricing-card"><div class="pricing-name">Enterprise</div><div class="pricing-price" data-price="199">$199</div><div class="pricing-period">/50 чел.</div><ul class="pricing-features"><li>On-premise</li></ul><button class="pricing-btn outline" onclick="openPaymentModal()">Связаться</button></div>
                 </div>
             </div>
         </div>
@@ -299,83 +265,85 @@
 
     <section id="testimonials">
         <div class="container">
-            <h2 class="section-title">Что говорят пользователи</h2>
-            <p class="section-subtitle">Присоединяйтесь к тысячам довольных клиентов</p>
+            <h2 class="section-title">Отзывы</h2>
             <div class="testimonials-grid">
-                <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"Создал презентацию для диплома за 15 минут вместо 3 часов!"</p><div class="testimonial-author"><div class="testimonial-avatar">А</div><div><div class="testimonial-name">Алексей П.</div><div class="testimonial-role">Студент</div></div></div></div>
-                <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"Готовлю планы уроков за 2 минуты. Раньше уходило 2-3 часа."</p><div class="testimonial-author"><div class="testimonial-avatar">Е</div><div><div class="testimonial-name">Елена В.</div><div class="testimonial-role">Учитель</div></div></div></div>
-                <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"Лучшее соотношение цены и качества. За $4.99 — подарок."</p><div class="testimonial-author"><div class="testimonial-avatar">Д</div><div><div class="testimonial-name">Дмитрий С.</div><div class="testimonial-role">Маркетолог</div></div></div></div>
+                <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p>"Диплом за 15 минут!"</p><div class="testimonial-author"><div class="testimonial-avatar">А</div><div><div class="testimonial-name">Алексей</div><div class="testimonial-role">Студент</div></div></div></div>
+                <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p>"Планы уроков за 2 минуты!"</p><div class="testimonial-author"><div class="testimonial-avatar">Е</div><div><div class="testimonial-name">Елена</div><div class="testimonial-role">Учитель</div></div></div></div>
+                <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p>"Лучшая цена!"</p><div class="testimonial-author"><div class="testimonial-avatar">Д</div><div><div class="testimonial-name">Дмитрий</div><div class="testimonial-role">Маркетолог</div></div></div></div>
             </div>
         </div>
     </section>
 
     <section id="faq">
         <div class="container">
-            <h2 class="section-title">Частые вопросы</h2>
-            <p class="section-subtitle">Всё, что вы хотели знать о сервисе</p>
+            <h2 class="section-title">FAQ</h2>
             <div class="faq-grid">
-                <div class="faq-item" onclick="this.querySelector('.faq-answer').classList.toggle('show')"><div class="faq-question">👑 Как получить VIP-доступ?</div><div class="faq-answer">Зарегистрируйтесь среди первых 50 пользователей и получите пожизненный Premium бесплатно!</div></div>
-                <div class="faq-item" onclick="this.querySelector('.faq-answer').classList.toggle('show')"><div class="faq-question">Сколько презентаций можно создать бесплатно?</div><div class="faq-answer">5 полноценных презентаций до 10 слайдов каждая.</div></div>
-                <div class="faq-item" onclick="this.querySelector('.faq-answer').classList.toggle('show')"><div class="faq-question">Как работает автоопределение страны?</div><div class="faq-answer">Сервис определяет страну по IP и подбирает стандарты, валюту и интеграции.</div></div>
-                <div class="faq-item" onclick="this.querySelector('.faq-answer').classList.toggle('show')"><div class="faq-question">Можно ли отменить подписку?</div><div class="faq-answer">Да, в любой момент. Доступ сохраняется до конца оплаченного периода.</div></div>
-                <div class="faq-item" onclick="this.querySelector('.faq-answer').classList.toggle('show')"><div class="faq-question">Какие способы оплаты?</div><div class="faq-answer">Stripe/PayPal для США и ЕС, Boosty для России, Payoneer для Беларуси.</div></div>
+                <div class="faq-item" onclick="this.querySelector('.faq-answer').classList.toggle('show')"><div class="faq-question">👑 VIP?</div><div class="faq-answer">Первые 50 — Premium навсегда!</div></div>
+                <div class="faq-item" onclick="this.querySelector('.faq-answer').classList.toggle('show')"><div class="faq-question">Сколько бесплатно?</div><div class="faq-answer">5 презентаций.</div></div>
             </div>
         </div>
     </section>
 
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-box">
-                <h2 class="cta-title">Готовы создать первую презентацию?</h2>
-                <p class="cta-text">Начните бесплатно — займёт всего минуту</p>
-                <div class="input-wrapper">
-                    <div class="input-container">
-                        <input type="text" id="ctaInput" class="topic-input" placeholder="Введите тему презентации...">
-                        <button class="generate-btn" onclick="document.getElementById('topicInput').value=document.getElementById('ctaInput').value; generatePresentation();"><span>✨</span><span>Создать</span></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="cta-section"><div class="container"><div class="cta-box"><h2 class="cta-title">Готовы?</h2><p class="cta-text">Начните бесплатно</p><div class="input-wrapper"><div class="input-container"><input type="text" id="ctaInput" class="topic-input" placeholder="Тема..."><button class="generate-btn" onclick="document.getElementById('topicInput').value=document.getElementById('ctaInput').value;generatePresentation();"><span>✨</span><span>Создать</span></button></div></div></div></div></section>
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-links">
-                <a href="/">Главная</a>
-                <a href="compare.html">Сравнение</a>
-                <a href="resources.html">Ресурсы</a>
-                <a href="privacy.html">Конфиденциальность</a>
-                <a href="terms.html">Условия</a>
-                <a href="cookies.html">Cookie</a>
-            </div>
-            <p>© 2026 Презентатор ИИ. Все права защищены.</p>
+            <div class="footer-links"><a href="/">Главная</a><a href="compare.html">Сравнение</a><a href="resources.html">Ресурсы</a><a href="privacy.html">Конфиденциальность</a><a href="terms.html">Условия</a><a href="cookies.html">Cookie</a></div>
+            <p>© 2026 Презентатор ИИ</p>
         </div>
     </footer>
 
-    <div id="loadingModal" class="modal">
-        <div class="modal-content">
-            <div style="font-size:80px; margin-bottom:20px;">🧑‍🏫💡</div>
-            <p id="loadingText" style="font-family:'Caveat',cursive; font-size:24px; color:white; margin-bottom:24px;">🤔 Анализирую тему...</p>
-            <div style="width:100%; height:6px; background:rgba(255,255,255,0.1); border-radius:10px; overflow:hidden;"><div id="progressBar" style="height:100%; background:var(--gradient-1); border-radius:10px; width:0%;"></div></div>
-        </div>
-    </div>
+    <div id="loadingModal" class="modal"><div class="modal-content"><div style="font-size:80px;">🧑‍🏫💡</div><p id="loadingText" style="font-family:'Caveat',cursive;font-size:24px;color:white;">🤔 Анализирую...</p><div style="width:100%;height:6px;background:rgba(255,255,255,0.1);border-radius:10px;"><div id="progressBar" style="height:100%;background:var(--gradient-1);border-radius:10px;width:0%;"></div></div></div></div>
 
-    <div id="paymentModal" class="modal">
-        <div class="modal-content" style="max-width:500px; padding:40px;">
-            <div style="font-size:40px; margin-bottom:16px;">💳</div>
-            <h2 style="font-size:24px; font-weight:800; margin-bottom:8px;">Выберите способ оплаты</h2>
-            <p id="paymentSubtitle" style="color:var(--text-secondary); margin-bottom:24px;">Мы определили ваш регион</p>
-            <div id="paymentOptions" style="display:flex; flex-direction:column; gap:12px;"></div>
-            <button onclick="document.getElementById('paymentModal').classList.remove('show')" style="margin-top:20px; padding:12px 32px; background:transparent; border:1px solid var(--glass-border); border-radius:30px; color:var(--text); cursor:pointer; font-family:'Montserrat',sans-serif;">Закрыть</button>
-        </div>
-    </div>
+    <div id="paymentModal" class="modal"><div class="modal-content" style="max-width:500px;padding:40px;"><div style="font-size:40px;">💳</div><h2 style="font-size:24px;font-weight:800;">Способ оплаты</h2><p id="paymentSubtitle" style="color:var(--text-secondary);"></p><div id="paymentOptions" style="display:flex;flex-direction:column;gap:12px;"></div><button onclick="document.getElementById('paymentModal').classList.remove('show')" style="margin-top:20px;padding:12px 32px;background:transparent;border:1px solid var(--glass-border);border-radius:30px;color:var(--text);cursor:pointer;">Закрыть</button></div></div>
 
     <script>
+        var currencyData = {
+            'US': { symbol: '$', rate: 1, name: 'USD' },
+            'GB': { symbol: '£', rate: 0.8, name: 'GBP' },
+            'DE': { symbol: '€', rate: 0.9, name: 'EUR' },
+            'FR': { symbol: '€', rate: 0.9, name: 'EUR' },
+            'IT': { symbol: '€', rate: 0.9, name: 'EUR' },
+            'ES': { symbol: '€', rate: 0.9, name: 'EUR' },
+            'PL': { symbol: 'zł', rate: 3.8, name: 'PLN' },
+            'RU': { symbol: '₽', rate: 50, name: 'RUB' },
+            'BY': { symbol: 'Br', rate: 3, name: 'BYN' },
+            'KZ': { symbol: '₸', rate: 500, name: 'KZT' },
+            'IN': { symbol: '₹', rate: 50, name: 'INR' },
+            'BR': { symbol: 'R$', rate: 5, name: 'BRL' },
+            'JP': { symbol: '¥', rate: 150, name: 'JPY' },
+            'CN': { symbol: '¥', rate: 7, name: 'CNY' },
+            'TR': { symbol: '₺', rate: 30, name: 'TRY' },
+        };
+        var userCountry = 'US';
+        var userCurrency = { symbol: '$', rate: 1, name: 'USD' };
+
+        function formatPrice(usdPrice) {
+            var localPrice = Math.round(usdPrice * userCurrency.rate);
+            if (localPrice < 1) localPrice = Math.round(usdPrice * userCurrency.rate * 10) / 10;
+            if (['RUB','KZT','INR','JPY'].indexOf(userCurrency.name) !== -1) {
+                return localPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' ' + userCurrency.symbol;
+            }
+            return userCurrency.symbol + localPrice;
+        }
+
+        function updatePrices() {
+            document.querySelectorAll('[data-price]').forEach(function(el) {
+                el.textContent = formatPrice(parseFloat(el.getAttribute('data-price')));
+            });
+        }
+
+        fetch('https://ipapi.co/json/').then(function(r){return r.json();}).then(function(d){
+            userCountry = d.country_code || 'US';
+            userCurrency = currencyData[userCountry] || currencyData['US'];
+            updatePrices();
+        }).catch(function(){ updatePrices(); });
+
         function switchTab(tab) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+            document.querySelectorAll('.tab-content').forEach(function(c){c.classList.remove('active');});
             event.target.classList.add('active');
-            document.getElementById('tab-' + tab).classList.add('active');
+            document.getElementById('tab-'+tab).classList.add('active');
         }
 
         function generatePresentation() {
@@ -383,40 +351,37 @@
             if (!topic) return;
             var modal = document.getElementById('loadingModal');
             modal.classList.add('show');
-            var messages = ['🤔 Анализирую тему...','📚 Собираю информацию...','💡 Придумываю структуру...','✍️ Пишу текст...','✨ Готово!'];
+            var messages = ['🤔 Анализирую...','📚 Собираю...','💡 Придумываю...','✍️ Пишу...','✨ Готово!'];
             var step = 0, progress = 0;
             document.getElementById('loadingText').textContent = messages[0];
             document.getElementById('progressBar').style.width = '0%';
-            var msgTimer = setInterval(function() { step++; if (step < messages.length) document.getElementById('loadingText').textContent = messages[step]; }, 1500);
-            var progTimer = setInterval(function() { progress += 2; if (progress <= 100) document.getElementById('progressBar').style.width = progress + '%'; }, 100);
-            setTimeout(function() { clearInterval(msgTimer); clearInterval(progTimer); modal.classList.remove('show'); }, 5000);
+            var msgTimer = setInterval(function(){step++;if(step<messages.length)document.getElementById('loadingText').textContent=messages[step];},1500);
+            var progTimer = setInterval(function(){progress+=2;if(progress<=100)document.getElementById('progressBar').style.width=progress+'%';},100);
+            setTimeout(function(){clearInterval(msgTimer);clearInterval(progTimer);modal.classList.remove('show');},5000);
         }
-
-        document.getElementById('topicInput').addEventListener('keypress', function(e) { if (e.key === 'Enter') generatePresentation(); });
-
-        var userCountry = 'US';
-        fetch('https://ipapi.co/json/').then(r => r.json()).then(d => { userCountry = d.country_code || 'US'; }).catch(() => { var l = navigator.language || 'en-US'; if (l.includes('ru')) userCountry = 'RU'; });
 
         function openPaymentModal() {
             var opts = document.getElementById('paymentOptions');
             var sub = document.getElementById('paymentSubtitle');
             opts.innerHTML = '';
             var methods = {
-                'US': [{ icon: '💳', name: 'Stripe', desc: 'Visa, Mastercard', action: function() { alert('Скоро!'); } }],
-                'RU': [{ icon: '🚀', name: 'Boosty.to', desc: 'Для авторов', action: function() { window.open('https://boosty.to/', '_blank'); } }],
-                'BY': [{ icon: '🏦', name: 'Payoneer', desc: 'Платежи', action: function() { alert('Скоро!'); } }],
+                'US': [{ icon: '💳', name: 'Stripe', desc: 'Visa, Mastercard', action: function(){alert('Скоро!');} }],
+                'RU': [{ icon: '🚀', name: 'Boosty.to', desc: 'Для авторов', action: function(){window.open('https://boosty.to/','_blank');} }],
+                'BY': [{ icon: '🏦', name: 'Payoneer', desc: 'Платежи', action: function(){alert('Скоро!');} }],
             };
             var eu = ['DE','FR','IT','ES','NL','BE','AT','PL','SE','DK','FI','PT','IE','GR','CZ','RO','HU','BG','SK','HR','LT','SI','LV','EE','CY','LU','MT'];
             if (eu.indexOf(userCountry) !== -1) userCountry = 'US';
             var m = methods[userCountry] || methods['US'];
-            sub.textContent = 'Ваш регион: ' + userCountry;
-            m.forEach(function(method) {
+            sub.textContent = 'Регион: ' + userCountry + ' | Валюта: ' + userCurrency.symbol;
+            m.forEach(function(method){
                 var d = document.createElement('div'); d.className = 'payment-option'; d.onclick = method.action;
                 d.innerHTML = '<div class="payment-icon">'+method.icon+'</div><div class="payment-info"><div class="payment-name">'+method.name+'</div><div class="payment-desc">'+method.desc+'</div></div><div style="font-size:20px;">→</div>';
                 opts.appendChild(d);
             });
             document.getElementById('paymentModal').classList.add('show');
         }
+
+        updatePrices();
     </script>
 </body>
 </html>
