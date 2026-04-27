@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /app/
+Disallow: /api/
+
+Sitemap: https://prezentator-ai.com/sitemap.xml
+
+Host: prezentator-ai.com
