@@ -45,8 +45,7 @@
         .nav-cta-outline { padding: 10px 24px; background: transparent; border: 1px solid var(--glass-border); border-radius: 30px; color: var(--text); font-weight: 600; cursor: pointer; transition: all 0.3s; text-decoration: none; font-size: 14px; margin-right: 8px; }
         .nav-cta-outline:hover { background: var(--glass); }
 
-        /* Бургер-меню */
-        .burger-btn { display: none; position: fixed; top: 20px; right: 20px; z-index: 200; width: 44px; height: 44px; border-radius: 12px; background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); color: var(--text); font-size: 24px; cursor: pointer; }
+        .burger-btn { display: none; background: transparent; border: none; color: var(--text); font-size: 24px; cursor: pointer; padding: 4px 8px; }
         .mobile-menu { display: none; position: fixed; top: 70px; right: 20px; z-index: 200; background: var(--glass); backdrop-filter: blur(30px); border: 1px solid var(--glass-border); border-radius: 16px; padding: 12px; flex-direction: column; gap: 8px; min-width: 200px; box-shadow: var(--shadow-lg); }
         .mobile-menu.show { display: flex; }
         .mobile-menu a { padding: 12px 16px; border-radius: 12px; color: var(--text); text-decoration: none; font-size: 14px; font-weight: 500; transition: all 0.2s; }
@@ -173,10 +172,10 @@
             .nav-links { display: none; }
             .nav-cta { display: none; }
             .nav-cta-outline { display: none; }
-            .nav-glass { padding: 8px 16px; justify-content: flex-start; }
-            .nav-logo { font-size: 0; }
-            .nav-logo-icon { width: 30px; height: 30px; font-size: 16px; }
-            .burger-btn { display: flex; align-items: center; justify-content: center; }
+            .nav-glass { padding: 8px 16px; justify-content: space-between; }
+            .burger-btn { display: block; }
+            .nav-logo { font-size: 14px; gap: 8px; }
+            .nav-logo-icon { width: 28px; height: 28px; font-size: 14px; }
             .input-container { flex-direction: column; background: transparent; border: none; box-shadow: none; align-items: center; }
             .topic-input { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 40px; width: 100%; text-align: center; }
             .generate-btn { width: 100%; justify-content: center; margin-top: 8px; }
@@ -191,21 +190,19 @@
 <body>
     <div class="bg-animation"><div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div><div class="bg-orb bg-orb-3"></div></div>
 
-    <!-- Бургер-меню -->
-    <button class="burger-btn" onclick="toggleMenu()">☰</button>
+    <nav class="navbar">
+        <div class="nav-glass">
+            <a href="/" class="nav-logo"><span class="nav-logo-icon">🎨</span><span>Презентатор ИИ</span></a>
+            <div class="nav-links"><a href="#for-whom" class="nav-link">Для кого</a><a href="#pricing" class="nav-link">Тарифы</a><a href="#testimonials" class="nav-link">Отзывы</a><a href="#faq" class="nav-link">FAQ</a></div>
+            <a href="#" class="nav-cta-outline" onclick="alert('Личный кабинет скоро будет доступен!'); return false;">Войти</a>
+            <a href="#" class="nav-cta" onclick="alert('Редактор скоро будет доступен!'); return false;">Открыть редактор</a>
+            <button class="burger-btn" onclick="toggleMenu()">☰</button>
+        </div>
+    </nav>
     <div class="mobile-menu" id="mobileMenu">
         <a href="#" onclick="alert('Личный кабинет скоро будет доступен!'); return false;">🔑 Войти</a>
         <a href="#" onclick="alert('Редактор скоро будет доступен!'); return false;">📝 Открыть редактор</a>
     </div>
-
-    <nav class="navbar">
-        <div class="nav-glass">
-            <a href="/" class="nav-logo"><span class="nav-logo-icon">🎨</span>Презентатор ИИ</a>
-            <div class="nav-links"><a href="#for-whom" class="nav-link">Для кого</a><a href="#pricing" class="nav-link">Тарифы</a><a href="#testimonials" class="nav-link">Отзывы</a><a href="#faq" class="nav-link">FAQ</a></div>
-            <a href="#" class="nav-cta-outline" onclick="alert('Личный кабинет скоро будет доступен!'); return false;">Войти</a>
-            <a href="#" class="nav-cta" onclick="alert('Редактор скоро будет доступен!'); return false;">Открыть редактор</a>
-        </div>
-    </nav>
 
     <main class="hero">
         <div class="container">
@@ -245,7 +242,6 @@
         <div class="container">
             <h2 class="section-title">Тарифы</h2>
             <p class="section-subtitle">Цены в вашей местной валюте</p>
-            
             <div class="pricing-grid vip-grid">
                 <div class="pricing-card vip-card">
                     <div class="pricing-badge fire">VIP 🔥 50 МЕСТ</div>
@@ -256,18 +252,16 @@
                     <button class="pricing-btn gold" onclick="alert('Скоро!')">🔥 Занять</button>
                 </div>
             </div>
-
             <div class="tabs">
                 <button class="tab-btn active" onclick="switchTab('general')">🎨 Для всех</button>
                 <button class="tab-btn" onclick="switchTab('teacher')">🏫 Учителям</button>
                 <button class="tab-btn" onclick="switchTab('corporate')">💼 Бизнесу</button>
             </div>
-
             <div id="tab-general" class="tab-content active">
                 <div class="pricing-grid cols3">
                     <div class="pricing-card"><div class="pricing-name">Бесплатный</div><div class="pricing-price">0</div><div class="pricing-period">навсегда</div><ul class="pricing-features"><li>5 презентаций</li></ul><button class="pricing-btn outline" onclick="document.getElementById('topicInput').scrollIntoView()">Начать</button></div>
-                    <div class="pricing-card featured"><div class="pricing-badge gold">ПОПУЛЯРНЫЙ</div><div class="pricing-name">Год</div><div class="pricing-price" data-price="49.99">$49.99</div><div class="pricing-period">/год</div><ul class="pricing-features"><li>Безлимит</li><li>Все фишки</li></ul><button class="pricing-btn gold" onclick="openPaymentModal()">Выбрать</button></div>
-                    <div class="pricing-card"><div class="pricing-name">Месяц</div><div class="pricing-price" data-price="4.99">$4.99</div><div class="pricing-period">/мес</div><ul class="pricing-features"><li>Безлимит</li><li>Все фишки</li></ul><button class="pricing-btn primary" onclick="openPaymentModal()">Выбрать</button></div>
+                    <div class="pricing-card featured"><div class="pricing-badge gold">ПОПУЛЯРНЫЙ</div><div class="pricing-name">Год</div><div class="pricing-price" data-price="49.99">$49.99</div><div class="pricing-period">/год</div><ul class="pricing-features"><li>Безлимит</li></ul><button class="pricing-btn gold" onclick="openPaymentModal()">Выбрать</button></div>
+                    <div class="pricing-card"><div class="pricing-name">Месяц</div><div class="pricing-price" data-price="4.99">$4.99</div><div class="pricing-period">/мес</div><ul class="pricing-features"><li>Безлимит</li></ul><button class="pricing-btn primary" onclick="openPaymentModal()">Выбрать</button></div>
                 </div>
             </div>
             <div id="tab-teacher" class="tab-content">
@@ -323,22 +317,15 @@
 
     <script>
         function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('show'); }
-
-        var currencyData = {
-            'US':{symbol:'$',rate:1,name:'USD'},'GB':{symbol:'£',rate:0.8,name:'GBP'},
-            'DE':{symbol:'€',rate:0.9,name:'EUR'},'FR':{symbol:'€',rate:0.9,name:'EUR'},
-            'RU':{symbol:'₽',rate:50,name:'RUB'},'BY':{symbol:'Br',rate:3,name:'BYN'},
-            'KZ':{symbol:'₸',rate:500,name:'KZT'},'IN':{symbol:'₹',rate:50,name:'INR'},
-            'BR':{symbol:'R$',rate:5,name:'BRL'},'JP':{symbol:'¥',rate:150,name:'JPY'},
-        };
-        var userCountry='US',userCurrency={symbol:'$',rate:1,name:'USD'};
-        function formatPrice(p){var lp=Math.round(p*userCurrency.rate);if(['RUB','KZT','INR','JPY'].indexOf(userCurrency.name)!==-1)return lp.toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ')+' '+userCurrency.symbol;return userCurrency.symbol+lp;}
-        function updatePrices(){document.querySelectorAll('[data-price]').forEach(function(el){el.textContent=formatPrice(parseFloat(el.getAttribute('data-price')));});}
-        fetch('https://ipapi.co/json/').then(r=>r.json()).then(d=>{userCountry=d.country_code||'US';userCurrency=currencyData[userCountry]||currencyData['US'];updatePrices();}).catch(function(){updatePrices();});
+        var currencyData={'US':{symbol:'$',rate:1},'GB':{symbol:'£',rate:0.8},'DE':{symbol:'€',rate:0.9},'FR':{symbol:'€',rate:0.9},'RU':{symbol:'₽',rate:50},'BY':{symbol:'Br',rate:3},'KZ':{symbol:'₸',rate:500},'IN':{symbol:'₹',rate:50},'BR':{symbol:'R$',rate:5},'JP':{symbol:'¥',rate:150}};
+        var uc={symbol:'$',rate:1};
+        function fp(p){var lp=Math.round(p*uc.rate);if(['RUB','KZT','INR','JPY'].indexOf(uc.name)!==-1||!uc.name)return lp.toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ')+' '+uc.symbol;return uc.symbol+lp;}
+        function up(){document.querySelectorAll('[data-price]').forEach(function(el){el.textContent=fp(parseFloat(el.getAttribute('data-price')));});}
+        fetch('https://ipapi.co/json/').then(r=>r.json()).then(d=>{var c=d.country_code||'US';uc=currencyData[c]||currencyData['US'];uc.name=c;up();}).catch(function(){up();});
         function switchTab(tab){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));event.target.classList.add('active');document.getElementById('tab-'+tab).classList.add('active');}
-        function generatePresentation(){var t=document.getElementById('topicInput').value.trim();if(!t)return;var m=document.getElementById('loadingModal');m.classList.add('show');var s=0,p=0;document.getElementById('loadingText').textContent='🤔 Анализирую...';document.getElementById('progressBar').style.width='0%';var mi=setInterval(function(){s++;if(s<5)document.getElementById('loadingText').textContent(['🤔 Анализирую...','📚 Собираю...','💡 Придумываю...','✍️ Пишу...','✨ Готово!'][s]);},1500);var pi=setInterval(function(){p+=2;if(p<=100)document.getElementById('progressBar').style.width=p+'%';},100);setTimeout(function(){clearInterval(mi);clearInterval(pi);m.classList.remove('show');},5000);}
-        function openPaymentModal(){var o=document.getElementById('paymentOptions'),s=document.getElementById('paymentSubtitle');o.innerHTML='';var m={'US':[{icon:'💳',name:'Stripe',desc:'Visa, Mastercard',action:function(){alert('Скоро!');}}],'RU':[{icon:'🚀',name:'Boosty.to',desc:'Для авторов',action:function(){window.open('https://boosty.to/','_blank');}}],'BY':[{icon:'🏦',name:'Payoneer',desc:'Платежи',action:function(){alert('Скоро!');}}]};var eu=['DE','FR','IT','ES','NL','BE','AT','PL','SE','DK','FI','PT','IE','GR','CZ','RO','HU','BG','SK','HR','LT','SI','LV','EE','CY','LU','MT'];if(eu.indexOf(userCountry)!==-1)userCountry='US';var mm=m[userCountry]||m['US'];s.textContent='Регион: '+userCountry+' | Валюта: '+userCurrency.symbol;mm.forEach(function(mt){var d=document.createElement('div');d.className='payment-option';d.onclick=mt.action;d.innerHTML='<div class="payment-icon">'+mt.icon+'</div><div class="payment-info"><div class="payment-name">'+mt.name+'</div><div class="payment-desc">'+mt.desc+'</div></div><div style="font-size:20px;">→</div>';o.appendChild(d);});document.getElementById('paymentModal').classList.add('show');}
-        updatePrices();
+        function generatePresentation(){var t=document.getElementById('topicInput').value.trim();if(!t)return;var m=document.getElementById('loadingModal');m.classList.add('show');var s=0,p=0;document.getElementById('loadingText').textContent='🤔 Анализирую...';document.getElementById('progressBar').style.width='0%';var mi=setInterval(function(){s++;if(s<5)document.getElementById('loadingText').textContent=['🤔 Анализирую...','📚 Собираю...','💡 Придумываю...','✍️ Пишу...','✨ Готово!'][s];},1500);var pi=setInterval(function(){p+=2;if(p<=100)document.getElementById('progressBar').style.width=p+'%';},100);setTimeout(function(){clearInterval(mi);clearInterval(pi);m.classList.remove('show');},5000);}
+        function openPaymentModal(){var o=document.getElementById('paymentOptions'),s=document.getElementById('paymentSubtitle');o.innerHTML='';var m={'US':[{icon:'💳',name:'Stripe',desc:'Visa, Mastercard',action:function(){alert('Скоро!');}}],'RU':[{icon:'🚀',name:'Boosty.to',desc:'Для авторов',action:function(){window.open('https://boosty.to/','_blank');}}],'BY':[{icon:'🏦',name:'Payoneer',desc:'Платежи',action:function(){alert('Скоро!');}}]};var eu=['DE','FR','IT','ES','NL','BE','AT','PL','SE','DK','FI','PT','IE','GR','CZ','RO','HU','BG','SK','HR','LT','SI','LV','EE','CY','LU','MT'];if(eu.indexOf(userCountry)!==-1)userCountry='US';var mm=m[userCountry]||m['US'];s.textContent='Регион: '+userCountry+' | Валюта: '+uc.symbol;mm.forEach(function(mt){var d=document.createElement('div');d.className='payment-option';d.onclick=mt.action;d.innerHTML='<div class="payment-icon">'+mt.icon+'</div><div class="payment-info"><div class="payment-name">'+mt.name+'</div><div class="payment-desc">'+mt.desc+'</div></div><div style="font-size:20px;">→</div>';o.appendChild(d);});document.getElementById('paymentModal').classList.add('show');}
+        up();
     </script>
 </body>
 </html>
