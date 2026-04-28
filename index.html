@@ -181,7 +181,9 @@
             .hero-title { font-size: 36px; }
             .hero-buttons { flex-direction: column; align-items: center; }
             .tabs { flex-wrap: wrap; }
-            .hero { padding-top: 140px; }
+            .hero { padding-top: 140px; } 
+            .burger-btn { display: flex; align-items: center; justify-content: center; }
+            .nav-cta { display: none; }
         }
         }
     </style>
@@ -342,6 +344,10 @@
         };
         var userCountry = 'US';
         var userCurrency = { symbol: '$', rate: 1, name: 'USD' };
+
+function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('show');
+        }
 
         function formatPrice(usdPrice) {
             var localPrice = Math.round(usdPrice * userCurrency.rate);
