@@ -3,329 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Презентатор ИИ — создай презентацию за 1 минуту | VIP-доступ</title>
-    <meta name="description" content="Создавай профессиональные презентации с помощью ИИ. Первые 50 пользователей получат пожизненный Premium!">
+    <title>Презентатор ИИ — создай презентацию за 1 минуту</title>
+    <meta name="description" content="Создавай профессиональные презентации с ИИ. Бесплатно 5 презентаций. Стиль Gamma.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --primary: #6366f1; --bg: #0f0f1a; --text: #f1f5f9; --text-secondary: #94a3b8;
-            --glass: rgba(255,255,255,0.05); --glass-border: rgba(255,255,255,0.1);
-            --gradient-1: linear-gradient(135deg, #6366f1, #8b5cf6);
-            --gradient-gold: linear-gradient(135deg, #f59e0b, #ef4444);
-            --gradient-green: linear-gradient(135deg, #10b981, #34d399);
-            --shadow-lg: 0 25px 50px -12px rgba(0,0,0,0.5);
-            --shadow-glow: 0 0 40px rgba(99,102,241,0.3);
-        }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-        .bg-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-        .bg-orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.3; animation: float 20s infinite; }
-        .bg-orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, #6366f1, transparent); top: -200px; left: -200px; }
-        .bg-orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, #06b6d4, transparent); bottom: -200px; right: -200px; animation-delay: -7s; }
-        .bg-orb-3 { width: 400px; height: 400px; background: radial-gradient(circle, #f59e0b, transparent); top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: -14s; }
-        @keyframes float { 0%,100% { transform: translate(0,0) scale(1) } 25% { transform: translate(100px,-50px) scale(1.1) } 50% { transform: translate(-50px,100px) scale(0.9) } 75% { transform: translate(-100px,-100px) scale(1.05) } }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #FFFFFF; color: #111111; -webkit-font-smoothing: antialiased; }
         
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; }
-        
-        .navbar { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 100; width: 90%; max-width: 900px; }
-        .nav-glass { background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 40px; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; box-shadow: var(--shadow-lg); }
-        .nav-logo { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; }
-        .nav-logo-icon { width: 36px; height: 36px; background: var(--gradient-1); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
-        .nav-links { display: flex; gap: 20px; }
-        .nav-link { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.3s; }
-        .nav-link:hover { color: var(--text); }
-        .nav-cta { padding: 10px 24px; background: var(--gradient-1); border: none; border-radius: 30px; color: white; font-weight: 600; cursor: pointer; transition: all 0.3s; text-decoration: none; font-size: 14px; }
-        .nav-cta:hover { transform: scale(1.05); box-shadow: var(--shadow-glow); }
-        .nav-cta-outline { padding: 10px 24px; background: transparent; border: 1px solid var(--glass-border); border-radius: 30px; color: var(--text); font-weight: 600; cursor: pointer; transition: all 0.3s; text-decoration: none; font-size: 14px; margin-right: 8px; }
-        .nav-cta-outline:hover { background: var(--glass); }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
 
-        .burger-btn { display: none; background: transparent; border: none; color: var(--text); font-size: 24px; cursor: pointer; padding: 4px 8px; }
-        .mobile-menu { display: none; position: fixed; top: 70px; right: 20px; z-index: 200; background: var(--glass); backdrop-filter: blur(30px); border: 1px solid var(--glass-border); border-radius: 16px; padding: 12px; flex-direction: column; gap: 8px; min-width: 200px; box-shadow: var(--shadow-lg); }
-        .mobile-menu.show { display: flex; }
-        .mobile-menu a { padding: 12px 16px; border-radius: 12px; color: var(--text); text-decoration: none; font-size: 14px; font-weight: 500; transition: all 0.2s; }
-        .mobile-menu a:hover { background: rgba(99,102,241,0.1); }
+        /* NAV */
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.06); }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 56px; max-width: 900px; margin: 0 auto; padding: 0 24px; }
+        .nav-logo { font-weight: 700; font-size: 18px; color: #111; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .nav-logo-icon { width: 28px; height: 28px; background: #111; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-link { color: #555; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-link:hover { color: #111; }
+        .btn { padding: 10px 20px; border-radius: 100px; font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.2s; border: none; text-decoration: none; display: inline-block; }
+        .btn-primary { background: #111; color: #fff; }
+        .btn-primary:hover { background: #333; transform: scale(1.02); }
+        .btn-outline { background: transparent; border: 1px solid #ddd; color: #111; }
+        .btn-outline:hover { border-color: #111; }
 
-        section { padding: 100px 0; }
-        .section-title { text-align: center; font-size: clamp(32px, 5vw, 48px); font-weight: 800; margin-bottom: 16px; }
-        .section-subtitle { text-align: center; color: var(--text-secondary); font-size: 18px; margin-bottom: 60px; }
-        
-        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; }
-        .hero-content { text-align: center; max-width: 800px; margin: 0 auto; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 40px; padding: 8px 20px; margin-bottom: 16px; font-size: 14px; color: var(--text-secondary); }
-        .hero-badge.vip { border-color: #f59e0b; background: rgba(245,158,11,0.1); color: #f59e0b; font-weight: 600; animation: pulse 2s infinite; }
-        @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.4); } 50% { box-shadow: 0 0 0 10px rgba(245,158,11,0); } }
-        .hero-title { font-size: clamp(40px, 8vw, 72px); font-weight: 800; line-height: 1.1; margin-bottom: 24px; background: linear-gradient(135deg, #fff 0%, #a5b4fc 50%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero-subtitle { font-size: 18px; color: var(--text-secondary); margin-bottom: 32px; line-height: 1.6; }
-        
-        .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
-        .hero-btn { padding: 14px 28px; border-radius: 40px; font-weight: 600; font-size: 15px; cursor: pointer; transition: all 0.3s; text-decoration: none; font-family: 'Montserrat', sans-serif; display: flex; align-items: center; gap: 8px; }
-        .hero-btn.primary { background: var(--gradient-1); color: white; border: none; }
-        .hero-btn.green { background: var(--gradient-green); color: white; border: none; }
-        .hero-btn.gold { background: var(--gradient-gold); color: white; border: none; }
-        .hero-btn:hover { transform: scale(1.05); }
-        
-        .input-wrapper { max-width: 700px; margin: 0 auto; position: relative; }
-        .input-container { display: flex; gap: 12px; background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--glass-border); padding: 8px; border-radius: 60px; box-shadow: var(--shadow-lg); }
-        .topic-input { flex: 1; padding: 18px 24px; border: none; outline: none; font-size: 16px; background: transparent; color: var(--text); font-family: 'Montserrat', sans-serif; }
-        .topic-input::placeholder { color: #64748b; }
-        .generate-btn { display: flex; align-items: center; gap: 8px; padding: 0 32px; background: var(--gradient-1); border: none; border-radius: 50px; color: white; font-size: 16px; font-weight: 600; cursor: pointer; font-family: 'Montserrat', sans-serif; transition: all 0.3s; white-space: nowrap; }
-        .generate-btn:hover { transform: scale(1.05); box-shadow: var(--shadow-glow); }
-        
-        .examples-section { margin-top: 32px; }
-        .examples-label { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; display: block; }
-        .example-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-        .chip { padding: 10px 20px; background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 40px; font-size: 14px; color: var(--text); cursor: pointer; font-family: 'Montserrat', sans-serif; transition: all 0.3s; }
-        .chip:hover { border-color: var(--primary); background: rgba(99,102,241,0.1); transform: translateY(-2px); }
-        
-        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 80px; }
-        .feature-card { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px 24px; text-align: center; transition: all 0.4s; }
-        .feature-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-glow); border-color: rgba(99,102,241,0.3); }
-        .feature-icon { font-size: 48px; margin-bottom: 20px; }
-        .feature-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
-        .feature-card p { color: var(--text-secondary); font-size: 14px; line-height: 1.6; }
+        /* HERO */
+        .hero { padding: 120px 0 60px; text-align: center; }
+        .hero-badge { display: inline-block; padding: 6px 16px; background: #F5F5F7; border-radius: 100px; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 24px; }
+        .hero h1 { font-size: clamp(36px, 6vw, 56px); font-weight: 900; line-height: 1.15; margin-bottom: 16px; letter-spacing: -1px; }
+        .hero p { font-size: 18px; color: #666; margin-bottom: 36px; line-height: 1.5; }
 
-        .for-whom-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
-        .for-whom-card { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 32px 24px; text-align: center; transition: all 0.4s; }
-        .for-whom-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-glow); border-color: rgba(99,102,241,0.3); }
-        .for-whom-icon { font-size: 48px; margin-bottom: 16px; }
-        .for-whom-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
-        .for-whom-card p { color: var(--text-secondary); font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
-        .for-whom-link { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 14px; }
+        /* INPUT */
+        .input-wrapper { max-width: 550px; margin: 0 auto; display: flex; gap: 10px; background: #F5F5F7; border-radius: 16px; padding: 6px; transition: all 0.2s; }
+        .input-wrapper:focus-within { background: #fff; box-shadow: 0 0 0 3px rgba(0,0,0,0.08); }
+        .topic-input { flex: 1; padding: 14px 16px; border: none; outline: none; font-size: 15px; background: transparent; font-family: 'Inter', sans-serif; }
+        .generate-btn { padding: 12px 24px; background: #111; color: #fff; border: none; border-radius: 12px; font-weight: 600; font-size: 15px; cursor: pointer; white-space: nowrap; font-family: 'Inter', sans-serif; transition: all 0.2s; }
+        .generate-btn:hover { background: #333; }
 
-        .tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 40px; background: var(--glass); border-radius: 40px; padding: 6px; max-width: 500px; margin-left: auto; margin-right: auto; }
-        .tab-btn { padding: 12px 24px; border-radius: 35px; border: none; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: 'Montserrat', sans-serif; background: transparent; color: var(--text-secondary); }
-        .tab-btn.active { background: var(--gradient-1); color: white; }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
+        /* EXAMPLES */
+        .examples { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 20px; }
+        .chip { padding: 8px 18px; background: #F5F5F7; border: none; border-radius: 100px; font-size: 13px; color: #444; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.2s; }
+        .chip:hover { background: #E8E8ED; }
 
-        .pricing-grid { display: grid; gap: 24px; max-width: 1000px; margin: 0 auto; }
-        .pricing-grid.cols3 { grid-template-columns: repeat(3, 1fr); }
-        .pricing-grid.vip-grid { grid-template-columns: 1fr; max-width: 450px; margin-bottom: 48px; }
-        .pricing-card { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px 32px; text-align: center; transition: all 0.4s; position: relative; }
-        .pricing-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-glow); }
-        .pricing-card.featured { border-color: #f59e0b; border-width: 2px; background: rgba(245,158,11,0.05); }
-        .pricing-card.featured-green { border-color: #10b981; border-width: 2px; background: rgba(16,185,129,0.05); }
-        .pricing-card.vip-card { border-color: #F59E0B; border-width: 3px; background: rgba(245,158,11,0.08); box-shadow: 0 0 40px rgba(245,158,11,0.3); animation: vipGlow 2s infinite; }
-        @keyframes vipGlow { 0%,100% { box-shadow: 0 0 20px rgba(245,158,11,0.3); } 50% { box-shadow: 0 0 40px rgba(245,158,11,0.6); } }
-        .pricing-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); padding: 6px 20px; border-radius: 20px; font-size: 12px; font-weight: 700; color: white; }
-        .pricing-badge.gold { background: var(--gradient-gold); }
-        .pricing-badge.green { background: var(--gradient-green); }
-        .pricing-badge.fire { background: linear-gradient(135deg, #ef4444, #f59e0b); animation: pulse 1.5s infinite; }
-        .pricing-name { font-size: 20px; font-weight: 700; margin-bottom: 16px; }
-        .pricing-price { font-size: 48px; font-weight: 900; margin-bottom: 4px; background: linear-gradient(135deg, #fff, #a5b4fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .pricing-price.vip-price { background: linear-gradient(135deg, #F59E0B, #EF4444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 56px; }
-        .pricing-period { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; }
-        .pricing-features { list-style: none; text-align: left; margin-bottom: 32px; }
-        .pricing-features li { padding: 8px 0; font-size: 14px; color: var(--text-secondary); }
-        .pricing-features li::before { content: '✅ '; }
-        .pricing-btn { display: block; width: 100%; padding: 16px; border-radius: 40px; font-weight: 600; font-size: 16px; cursor: pointer; border: none; transition: all 0.3s; font-family: 'Montserrat', sans-serif; }
-        .pricing-btn.primary { background: var(--gradient-1); color: white; }
-        .pricing-btn.gold { background: var(--gradient-gold); color: white; }
-        .pricing-btn.green { background: var(--gradient-green); color: white; }
-        .pricing-btn.outline { background: transparent; border: 1px solid var(--glass-border); color: var(--text); }
-        .pricing-btn:hover { transform: scale(1.03); }
+        /* FEATURES */
+        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 60px 0; }
+        .feature-card { background: #F9F9FB; border-radius: 20px; padding: 28px 22px; text-align: center; transition: all 0.3s; }
+        .feature-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
+        .feature-icon { font-size: 36px; margin-bottom: 14px; }
+        .feature-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+        .feature-card p { font-size: 13px; color: #666; line-height: 1.5; }
 
-        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
-        .testimonial-card { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 32px; }
-        .testimonial-stars { color: #f59e0b; font-size: 18px; margin-bottom: 16px; }
-        .testimonial-text { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px; font-style: italic; }
-        .testimonial-author { display: flex; align-items: center; gap: 12px; }
-        .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-1); display: flex; align-items: center; justify-content: center; font-weight: 700; }
-        .testimonial-name { font-size: 14px; font-weight: 600; }
-        .testimonial-role { font-size: 12px; color: var(--text-secondary); }
+        /* PRICING */
+        .pricing { padding: 60px 0; }
+        .section-title { text-align: center; font-size: 32px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .section-sub { text-align: center; color: #666; margin-bottom: 40px; font-size: 15px; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .pricing-card { background: #F9F9FB; border-radius: 20px; padding: 32px 24px; text-align: center; transition: all 0.3s; position: relative; }
+        .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+        .pricing-card.featured { background: #111; color: #fff; }
+        .pricing-card.featured .pricing-name, .pricing-card.featured .pricing-price, .pricing-card.featured .pricing-period, .pricing-card.featured li { color: #fff; }
+        .pricing-card.featured .pricing-btn { background: #fff; color: #111; }
+        .pricing-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #FFD60A; color: #111; padding: 4px 16px; border-radius: 100px; font-size: 12px; font-weight: 700; }
+        .pricing-name { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+        .pricing-price { font-size: 40px; font-weight: 900; margin-bottom: 4px; }
+        .pricing-period { font-size: 13px; color: #888; margin-bottom: 20px; }
+        .pricing-features { list-style: none; text-align: left; margin-bottom: 24px; }
+        .pricing-features li { padding: 6px 0; font-size: 13px; color: #555; }
+        .pricing-features li::before { content: '✓ '; color: #34C759; font-weight: 700; }
 
-        .faq-grid { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
-        .faq-item { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 24px; cursor: pointer; transition: all 0.3s; }
-        .faq-item:hover { border-color: var(--primary); }
-        .faq-question { font-weight: 600; font-size: 16px; margin-bottom: 8px; }
-        .faq-answer { color: var(--text-secondary); font-size: 14px; line-height: 1.6; display: none; }
-        .faq-answer.show { display: block; }
+        /* FOOTER */
+        .footer { border-top: 1px solid #eee; padding: 20px 0; text-align: center; }
+        .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 12px; }
+        .footer-links a { color: #888; text-decoration: none; font-size: 13px; }
+        .footer-links a:hover { color: #111; }
+        .footer p { color: #aaa; font-size: 12px; }
 
-        .cta-section { text-align: center; }
-        .cta-box { background: var(--gradient-1); border-radius: 40px; padding: 60px 40px; box-shadow: var(--shadow-glow); }
-        .cta-title { font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 16px; color: white; }
-        .cta-text { font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 32px; }
-
-        .footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--glass-border); margin-top: 60px; }
-        .footer p { color: var(--text-secondary); font-size: 14px; }
-        .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
-        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.3s; }
-        .footer-links a:hover { color: var(--primary); }
-
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; background: rgba(15,15,26,0.9); justify-content: center; align-items: center; }
+        /* MODAL */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; backdrop-filter: blur(4px); }
         .modal.show { display: flex; }
-        .modal-content { background: #1a1a2e; border: 1px solid var(--glass-border); border-radius: 40px; padding: 60px 40px; text-align: center; max-width: 420px; width: 90%; }
-        .payment-option { display: flex; align-items: center; gap: 16px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 16px; padding: 20px; cursor: pointer; transition: all 0.3s; text-align: left; font-family: 'Montserrat', sans-serif; color: var(--text); }
-        .payment-option:hover { border-color: var(--primary); background: rgba(99,102,241,0.1); }
-        .payment-icon { font-size: 32px; }
-        .payment-info { flex: 1; }
-        .payment-name { font-weight: 600; font-size: 16px; }
-        .payment-desc { font-size: 12px; color: var(--text-secondary); }
+        .modal-content { background: #fff; border-radius: 24px; padding: 32px; text-align: center; max-width: 360px; width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .nav-cta { display: none; }
-            .nav-cta-outline { display: none; }
-            .nav-glass { padding: 8px 16px; justify-content: space-between; }
-            .burger-btn { display: block; }
-            .nav-logo { font-size: 14px; gap: 8px; }
-            .nav-logo-icon { width: 28px; height: 28px; font-size: 14px; }
-            .input-container { flex-direction: column; background: transparent; border: none; box-shadow: none; align-items: center; }
-            .topic-input { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 40px; width: 100%; text-align: center; }
-            .generate-btn { width: 100%; justify-content: center; margin-top: 8px; }
-            .features, .pricing-grid.cols3, .for-whom-grid, .testimonials-grid { grid-template-columns: 1fr; }
-            .hero-title { font-size: 36px; }
-            .hero-buttons { flex-direction: column; align-items: center; }
-            .tabs { flex-wrap: wrap; }
-            .hero { padding-top: 140px; }
+            .features, .pricing-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 32px; }
+            .input-wrapper { flex-direction: column; background: transparent; }
+            .topic-input { background: #F5F5F7; border-radius: 12px; }
         }
     </style>
 </head>
 <body>
-    <div class="bg-animation"><div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div><div class="bg-orb bg-orb-3"></div></div>
-
     <nav class="navbar">
-        <div class="nav-glass">
-            <a href="/" class="nav-logo"><span class="nav-logo-icon">🎨</span><span>Презентатор ИИ</span></a>
-            <div class="nav-links"><a href="#for-whom" class="nav-link">Для кого</a><a href="#pricing" class="nav-link">Тарифы</a><a href="#testimonials" class="nav-link">Отзывы</a><a href="#faq" class="nav-link">FAQ</a></div>
-            <a href="#" class="nav-cta-outline" onclick="alert('Личный кабинет скоро будет доступен!'); return false;">Войти</a>
-            <a href="#" class="nav-cta" onclick="alert('Редактор скоро будет доступен!'); return false;">Открыть редактор</a>
-            <button class="burger-btn" onclick="toggleMenu()">☰</button>
+        <div class="nav-inner">
+            <a href="/" class="nav-logo"><span class="nav-logo-icon">🎨</span>Презентатор ИИ</a>
+            <div class="nav-links">
+                <a href="#pricing" class="nav-link">Тарифы</a>
+                <a href="#" class="btn btn-outline">Войти</a>
+                <a href="#" class="btn btn-primary">Регистрация</a>
+            </div>
         </div>
     </nav>
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#" onclick="alert('Личный кабинет скоро будет доступен!'); return false;">🔑 Войти</a>
-        <a href="#" onclick="alert('Редактор скоро будет доступен!'); return false;">📝 Открыть редактор</a>
-    </div>
 
     <main class="hero">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge vip"><span>👑</span><span>Первые 50 — Premium навсегда!</span></div>
-                <h1 class="hero-title">Создай презентацию за 1 минуту</h1>
-                <p class="hero-subtitle">Для бизнеса, учителей и всех, кто хочет сэкономить время</p>
-                <div class="hero-buttons">
-                    <a href="#pricing" class="hero-btn primary">🎨 Для всех</a>
-                    <a href="teacher.html" class="hero-btn green">🏫 Учителям</a>
-                    <a href="business.html" class="hero-btn gold">💼 Бизнесу</a>
-                </div>
-                <div class="input-wrapper"><div class="input-container"><input type="text" id="topicInput" class="topic-input" placeholder="О чём презентация?"><button class="generate-btn" onclick="generatePresentation()"><span>✨</span><span>Создать</span></button></div></div>
+            <div class="hero-badge">✨ 5 презентаций бесплатно</div>
+            <h1>Создай презентацию<br>за 1 минуту</h1>
+            <p>Искусственный интеллект напишет текст, подберёт картинки<br>и оформит слайды. Тебе останется только настроить под себя.</p>
+
+            <div class="input-wrapper">
+                <input type="text" id="topicInput" class="topic-input" placeholder="О чём презентация? Например: Искусственный интеллект...">
+                <button class="generate-btn" onclick="generatePresentation()">✨ Создать</button>
             </div>
-            <div class="features">
-                <div class="feature-card"><div class="feature-icon">🎨</div><h3>5 презентаций</h3><p>бесплатно</p></div>
-                <div class="feature-card"><div class="feature-icon">📊</div><h3>До 10 слайдов</h3><p>в каждой</p></div>
-                <div class="feature-card"><div class="feature-icon">🖼</div><h3>Авто-картинки</h3><p>ИИ подберёт</p></div>
+
+            <div class="examples">
+                <button class="chip" onclick="document.getElementById('topicInput').value='Искусственный интеллект'">🤖 Искусственный интеллект</button>
+                <button class="chip" onclick="document.getElementById('topicInput').value='Бизнес-план для стартапа'">📈 Бизнес-план</button>
+                <button class="chip" onclick="document.getElementById('topicInput').value='Глобальное потепление'">🌍 Экология</button>
+                <button class="chip" onclick="document.getElementById('topicInput').value='Будущее космонавтики'">🚀 Космос</button>
             </div>
         </div>
     </main>
 
-    <section id="for-whom">
-        <div class="container">
-            <h2 class="section-title">Для кого подходит</h2>
-            <p class="section-subtitle">Специальные решения для каждой аудитории</p>
-            <div class="for-whom-grid">
-                <div class="for-whom-card"><div class="for-whom-icon">🚀</div><h3>Стартапы</h3><p>Питч-дек за 2 минуты.</p><a href="pitch-deck.html" class="for-whom-link">→</a></div>
-                <div class="for-whom-card"><div class="for-whom-icon">🏫</div><h3>Учителя</h3><p>Планы уроков.</p><a href="teacher.html" class="for-whom-link">→</a></div>
-                <div class="for-whom-card"><div class="for-whom-icon">💼</div><h3>Бизнес</h3><p>КП, отчёты.</p><a href="business.html" class="for-whom-link">→</a></div>
-                <div class="for-whom-card"><div class="for-whom-icon">🎓</div><h3>Студенты</h3><p>Диплом с ГОСТ.</p><a href="student.html" class="for-whom-link">→</a></div>
-            </div>
+    <div class="container">
+        <div class="features">
+            <div class="feature-card"><div class="feature-icon">🎨</div><h3>30+ уникальных фишек</h3><p>Анти-шаблоны, Story Mode, бренд-кит, авто-цитаты ГОСТ</p></div>
+            <div class="feature-card"><div class="feature-icon">⚡</div><h3>Создание за 1 минуту</h3><p>Введите тему — получите готовую презентацию с картинками</p></div>
+            <div class="feature-card"><div class="feature-icon">💎</div><h3>Premium за $4.99/мес</h3><p>Самая низкая цена на рынке. 50+ слайдов, все функции</p></div>
         </div>
-    </section>
+    </div>
 
-    <section id="pricing">
+    <section id="pricing" class="pricing">
         <div class="container">
             <h2 class="section-title">Тарифы</h2>
-            <p class="section-subtitle">Цены в вашей местной валюте</p>
-            <div class="pricing-grid vip-grid">
-                <div class="pricing-card vip-card">
-                    <div class="pricing-badge fire">VIP 🔥 50 МЕСТ</div>
-                    <div class="pricing-name">Первые 50</div>
-                    <div class="pricing-price vip-price">0</div>
-                    <div class="pricing-period">пожизненно</div>
-                    <ul class="pricing-features"><li>Пожизненный Premium</li><li>Все 30+ фишек</li></ul>
-                    <button class="pricing-btn gold" onclick="alert('Скоро!')">🔥 Занять</button>
+            <p class="section-sub">Начните бесплатно, масштабируйтесь когда нужно</p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-name">Бесплатный</div>
+                    <div class="pricing-price">$0</div>
+                    <div class="pricing-period">навсегда</div>
+                    <ul class="pricing-features"><li>5 презентаций</li><li>До 10 слайдов</li><li>Авто-картинки</li><li>Базовые фоны</li></ul>
+                    <a href="#" class="btn btn-outline" style="width:100%">Начать</a>
                 </div>
-            </div>
-            <div class="tabs">
-                <button class="tab-btn active" onclick="switchTab('general')">🎨 Для всех</button>
-                <button class="tab-btn" onclick="switchTab('teacher')">🏫 Учителям</button>
-                <button class="tab-btn" onclick="switchTab('corporate')">💼 Бизнесу</button>
-            </div>
-            <div id="tab-general" class="tab-content active">
-                <div class="pricing-grid cols3">
-                    <div class="pricing-card"><div class="pricing-name">Бесплатный</div><div class="pricing-price">0</div><div class="pricing-period">навсегда</div><ul class="pricing-features"><li>5 презентаций</li></ul><button class="pricing-btn outline" onclick="document.getElementById('topicInput').scrollIntoView()">Начать</button></div>
-                    <div class="pricing-card featured"><div class="pricing-badge gold">ПОПУЛЯРНЫЙ</div><div class="pricing-name">Год</div><div class="pricing-price" data-price="49.99">$49.99</div><div class="pricing-period">/год</div><ul class="pricing-features"><li>Безлимит</li></ul><button class="pricing-btn gold" onclick="openPaymentModal()">Выбрать</button></div>
-                    <div class="pricing-card"><div class="pricing-name">Месяц</div><div class="pricing-price" data-price="4.99">$4.99</div><div class="pricing-period">/мес</div><ul class="pricing-features"><li>Безлимит</li></ul><button class="pricing-btn primary" onclick="openPaymentModal()">Выбрать</button></div>
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">ПОПУЛЯРНЫЙ</div>
+                    <div class="pricing-name">Pro</div>
+                    <div class="pricing-price">$4.99</div>
+                    <div class="pricing-period">/месяц</div>
+                    <ul class="pricing-features"><li>Безлимитные презентации</li><li>До 50 слайдов</li><li>Все 30+ фишек</li><li>Экспорт PDF без знака</li></ul>
+                    <a href="#" class="btn btn-primary" style="width:100%; background:#fff; color:#111">Выбрать</a>
                 </div>
-            </div>
-            <div id="tab-teacher" class="tab-content">
-                <div class="pricing-grid cols3">
-                    <div class="pricing-card"><div class="pricing-name">Бесплатный</div><div class="pricing-price">0</div><div class="pricing-period">навсегда</div><ul class="pricing-features"><li>5 планов/мес</li></ul><button class="pricing-btn outline" onclick="document.getElementById('topicInput').scrollIntoView()">Начать</button></div>
-                    <div class="pricing-card featured-green"><div class="pricing-badge green">УЧИТЕЛЯМ</div><div class="pricing-name">Teacher Pro</div><div class="pricing-price" data-price="4.99">$4.99</div><div class="pricing-period">/мес</div><ul class="pricing-features"><li>Безлимит планов</li></ul><button class="pricing-btn green" onclick="openPaymentModal()">Выбрать</button></div>
-                    <div class="pricing-card"><div class="pricing-name">Школьный</div><div class="pricing-price" data-price="29.99">$29.99</div><div class="pricing-period">/10 учителей</div><ul class="pricing-features"><li>Всё из Pro</li></ul><button class="pricing-btn primary" onclick="openPaymentModal()">Выбрать</button></div>
-                </div>
-            </div>
-            <div id="tab-corporate" class="tab-content">
-                <div class="pricing-grid cols3">
-                    <div class="pricing-card"><div class="pricing-name">Business</div><div class="pricing-price" data-price="9.99">$9.99</div><div class="pricing-period">/мес</div><ul class="pricing-features"><li>Бренд-кит</li></ul><button class="pricing-btn primary" onclick="openPaymentModal()">Выбрать</button></div>
-                    <div class="pricing-card featured"><div class="pricing-badge gold">ПОПУЛЯРНЫЙ</div><div class="pricing-name">Corporate</div><div class="pricing-price" data-price="49.99">$49.99</div><div class="pricing-period">/10 чел.</div><ul class="pricing-features"><li>White-label</li></ul><button class="pricing-btn gold" onclick="openPaymentModal()">Выбрать</button></div>
-                    <div class="pricing-card"><div class="pricing-name">Enterprise</div><div class="pricing-price" data-price="199">$199</div><div class="pricing-period">/50 чел.</div><ul class="pricing-features"><li>On-premise</li></ul><button class="pricing-btn outline" onclick="openPaymentModal()">Связаться</button></div>
+                <div class="pricing-card">
+                    <div class="pricing-name">Год</div>
+                    <div class="pricing-price">$49</div>
+                    <div class="pricing-period">/год ($4.08/мес)</div>
+                    <ul class="pricing-features"><li>Всё из Pro</li><li>Экономия 17%</li><li>Приоритетная поддержка</li></ul>
+                    <a href="#" class="btn btn-outline" style="width:100%">Выбрать</a>
                 </div>
             </div>
         </div>
     </section>
-
-    <section id="testimonials">
-        <div class="container">
-            <h2 class="section-title">Отзывы</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p>"Диплом за 15 минут!"</p><div class="testimonial-author"><div class="testimonial-avatar">А</div><div><div class="testimonial-name">Алексей</div><div class="testimonial-role">Студент</div></div></div></div>
-                <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p>"Планы уроков за 2 минуты!"</p><div class="testimonial-author"><div class="testimonial-avatar">Е</div><div><div class="testimonial-name">Елена</div><div class="testimonial-role">Учитель</div></div></div></div>
-                <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p>"Лучшая цена!"</p><div class="testimonial-author"><div class="testimonial-avatar">Д</div><div><div class="testimonial-name">Дмитрий</div><div class="testimonial-role">Маркетолог</div></div></div></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="faq">
-        <div class="container">
-            <h2 class="section-title">FAQ</h2>
-            <div class="faq-grid">
-                <div class="faq-item" onclick="this.querySelector('.faq-answer').classList.toggle('show')"><div class="faq-question">👑 VIP?</div><div class="faq-answer">Первые 50 — Premium навсегда!</div></div>
-                <div class="faq-item" onclick="this.querySelector('.faq-answer').classList.toggle('show')"><div class="faq-question">Сколько бесплатно?</div><div class="faq-answer">5 презентаций.</div></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section"><div class="container"><div class="cta-box"><h2 class="cta-title">Готовы?</h2><p class="cta-text">Начните бесплатно</p><div class="input-wrapper"><div class="input-container"><input type="text" id="ctaInput" class="topic-input" placeholder="Тема..."><button class="generate-btn" onclick="document.getElementById('topicInput').value=document.getElementById('ctaInput').value;generatePresentation();"><span>✨</span><span>Создать</span></button></div></div></div></div></section>
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-links"><a href="/">Главная</a><a href="compare.html">Сравнение</a><a href="resources.html">Ресурсы</a><a href="privacy.html">Конфиденциальность</a><a href="terms.html">Условия</a><a href="cookies.html">Cookie</a></div>
+            <div class="footer-links">
+                <a href="compare.html">Сравнение</a>
+                <a href="teacher.html">Учителям</a>
+                <a href="business.html">Бизнесу</a>
+                <a href="privacy.html">Конфиденциальность</a>
+                <a href="terms.html">Условия</a>
+            </div>
             <p>© 2026 Презентатор ИИ</p>
         </div>
     </footer>
 
-    <div id="loadingModal" class="modal"><div class="modal-content"><div style="font-size:80px;">🧑‍🏫💡</div><p id="loadingText" style="font-family:'Caveat',cursive;font-size:24px;color:white;">🤔 Анализирую...</p><div style="width:100%;height:6px;background:rgba(255,255,255,0.1);border-radius:10px;"><div id="progressBar" style="height:100%;background:var(--gradient-1);border-radius:10px;width:0%;"></div></div></div></div>
-
-    <div id="paymentModal" class="modal"><div class="modal-content" style="max-width:500px;padding:40px;"><div style="font-size:40px;">💳</div><h2 style="font-size:24px;font-weight:800;">Способ оплаты</h2><p id="paymentSubtitle" style="color:var(--text-secondary);"></p><div id="paymentOptions" style="display:flex;flex-direction:column;gap:12px;"></div><button onclick="document.getElementById('paymentModal').classList.remove('show')" style="margin-top:20px;padding:12px 32px;background:transparent;border:1px solid var(--glass-border);border-radius:30px;color:var(--text);cursor:pointer;">Закрыть</button></div></div>
+    <div id="loadingModal" class="modal">
+        <div class="modal-content">
+            <div style="font-size:40px; margin-bottom:12px;">✨</div>
+            <p id="loadingText" style="font-weight:600; font-size:16px;">Создаю презентацию...</p>
+            <div style="width:100%; height:4px; background:#eee; border-radius:4px; margin-top:16px;">
+                <div id="progressBar" style="height:100%; background:#111; border-radius:4px; width:0%;"></div>
+            </div>
+        </div>
+    </div>
 
     <script>
-        function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('show'); }
-        var currencyData={'US':{symbol:'$',rate:1},'GB':{symbol:'£',rate:0.8},'DE':{symbol:'€',rate:0.9},'FR':{symbol:'€',rate:0.9},'RU':{symbol:'₽',rate:50},'BY':{symbol:'Br',rate:3},'KZ':{symbol:'₸',rate:500},'IN':{symbol:'₹',rate:50},'BR':{symbol:'R$',rate:5},'JP':{symbol:'¥',rate:150}};
-        var uc={symbol:'$',rate:1};
-        function fp(p){var lp=Math.round(p*uc.rate);if(['RUB','KZT','INR','JPY'].indexOf(uc.name)!==-1||!uc.name)return lp.toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ')+' '+uc.symbol;return uc.symbol+lp;}
-        function up(){document.querySelectorAll('[data-price]').forEach(function(el){el.textContent=fp(parseFloat(el.getAttribute('data-price')));});}
-        fetch('https://ipapi.co/json/').then(r=>r.json()).then(d=>{var c=d.country_code||'US';uc=currencyData[c]||currencyData['US'];uc.name=c;up();}).catch(function(){up();});
-        function switchTab(tab){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));event.target.classList.add('active');document.getElementById('tab-'+tab).classList.add('active');}
-        function generatePresentation(){var t=document.getElementById('topicInput').value.trim();if(!t)return;var m=document.getElementById('loadingModal');m.classList.add('show');var s=0,p=0;document.getElementById('loadingText').textContent='🤔 Анализирую...';document.getElementById('progressBar').style.width='0%';var mi=setInterval(function(){s++;if(s<5)document.getElementById('loadingText').textContent=['🤔 Анализирую...','📚 Собираю...','💡 Придумываю...','✍️ Пишу...','✨ Готово!'][s];},1500);var pi=setInterval(function(){p+=2;if(p<=100)document.getElementById('progressBar').style.width=p+'%';},100);setTimeout(function(){clearInterval(mi);clearInterval(pi);m.classList.remove('show');},5000);}
-        function openPaymentModal(){var o=document.getElementById('paymentOptions'),s=document.getElementById('paymentSubtitle');o.innerHTML='';var m={'US':[{icon:'💳',name:'Stripe',desc:'Visa, Mastercard',action:function(){alert('Скоро!');}}],'RU':[{icon:'🚀',name:'Boosty.to',desc:'Для авторов',action:function(){window.open('https://boosty.to/','_blank');}}],'BY':[{icon:'🏦',name:'Payoneer',desc:'Платежи',action:function(){alert('Скоро!');}}]};var eu=['DE','FR','IT','ES','NL','BE','AT','PL','SE','DK','FI','PT','IE','GR','CZ','RO','HU','BG','SK','HR','LT','SI','LV','EE','CY','LU','MT'];if(eu.indexOf(userCountry)!==-1)userCountry='US';var mm=m[userCountry]||m['US'];s.textContent='Регион: '+userCountry+' | Валюта: '+uc.symbol;mm.forEach(function(mt){var d=document.createElement('div');d.className='payment-option';d.onclick=mt.action;d.innerHTML='<div class="payment-icon">'+mt.icon+'</div><div class="payment-info"><div class="payment-name">'+mt.name+'</div><div class="payment-desc">'+mt.desc+'</div></div><div style="font-size:20px;">→</div>';o.appendChild(d);});document.getElementById('paymentModal').classList.add('show');}
-        up();
+        function generatePresentation() {
+            var topic = document.getElementById('topicInput').value.trim();
+            if (!topic) return;
+            var modal = document.getElementById('loadingModal');
+            modal.classList.add('show');
+            var p = 0;
+            var bar = document.getElementById('progressBar');
+            var txt = document.getElementById('loadingText');
+            var msgs = ['Создаю презентацию...', 'Подбираю картинки...', 'Оформляю...', 'Готово!'];
+            var i = 0;
+            var mt = setInterval(function() { i++; if (i < msgs.length) txt.textContent = msgs[i]; }, 1200);
+            var pt = setInterval(function() { p += 4; if (p <= 100) bar.style.width = p + '%'; }, 120);
+            setTimeout(function() { clearInterval(mt); clearInterval(pt); modal.classList.remove('show'); }, 5000);
+        }
     </script>
 </body>
 </html>
