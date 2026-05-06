@@ -12,91 +12,110 @@
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif; background: #F2F2F7; color: #000; -webkit-font-smoothing: antialiased; }
+        :root {
+            --bg: #121212;
+            --card: #1A1A1A;
+            --hover: #282828;
+            --text: #FFFFFF;
+            --subtext: #B3B3B3;
+            --green: #1DB954;
+            --green-hover: #1ED760;
+            --blue: #007AFF;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
         
         .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
 
-        /* NAV — iOS blur */
-        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(242,242,247,0.72); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 0.5px solid rgba(0,0,0,0.08); }
+        /* NAV — Spotify dark */
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(18,18,18,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
         .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 48px; max-width: 900px; margin: 0 auto; padding: 0 20px; }
-        .nav-logo { font-weight: 700; font-size: 17px; color: #000; text-decoration: none; }
+        .nav-logo { font-weight: 700; font-size: 17px; color: var(--text); text-decoration: none; }
         .nav-links { display: flex; gap: 16px; align-items: center; }
-        .nav-link { color: #007AFF; text-decoration: none; font-size: 15px; font-weight: 500; }
-        .btn { padding: 8px 18px; border-radius: 100px; font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.2s; border: none; text-decoration: none; display: inline-block; font-family: inherit; }
-        .btn-primary { background: #007AFF; color: #fff; }
-        .btn-primary:hover { background: #0066D6; }
-        .btn-outline { background: transparent; color: #007AFF; }
+        .nav-link { color: var(--subtext); text-decoration: none; font-size: 14px; font-weight: 600; transition: color 0.2s; }
+        .nav-link:hover { color: var(--text); }
+        .btn { padding: 8px 20px; border-radius: 100px; font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.2s; border: none; text-decoration: none; display: inline-block; font-family: inherit; text-transform: uppercase; letter-spacing: 0.5px; }
+        .btn-green { background: var(--green); color: #000; }
+        .btn-green:hover { background: var(--green-hover); transform: scale(1.03); }
+        .btn-outline { background: transparent; border: 1px solid var(--subtext); color: var(--text); }
+        .btn-outline:hover { border-color: var(--text); }
 
         /* HERO */
-        .hero { padding: 100px 0 40px; text-align: center; }
-        .hero-badge { display: inline-block; padding: 6px 14px; background: #fff; border-radius: 100px; font-size: 13px; font-weight: 600; color: #007AFF; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .hero { padding: 110px 0 50px; text-align: center; }
+        .hero-gradient { position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(29,185,84,0.15) 0%, transparent 70%); pointer-events: none; }
+        .hero-badge { display: inline-block; padding: 6px 14px; background: var(--card); border-radius: 100px; font-size: 12px; font-weight: 700; color: var(--green); margin-bottom: 20px; letter-spacing: 0.5px; text-transform: uppercase; }
         .hero-badge.vip { background: #FFD60A; color: #000; animation: pulse 2s infinite; }
-        @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,214,10,0.4); } 50% { box-shadow: 0 0 0 12px rgba(255,214,10,0); } }
-        .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 900; line-height: 1.1; margin-bottom: 10px; letter-spacing: -0.5px; }
-        .hero p { font-size: 17px; color: #555; margin-bottom: 28px; line-height: 1.4; }
+        @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,214,10,0.4); } 50% { box-shadow: 0 0 0 14px rgba(255,214,10,0); } }
+        .hero h1 { font-size: clamp(38px, 7vw, 64px); font-weight: 900; line-height: 1.05; margin-bottom: 12px; letter-spacing: -1.5px; }
+        .hero p { font-size: 16px; color: var(--subtext); margin-bottom: 32px; line-height: 1.4; }
 
-        /* INPUT — iOS search bar */
-        .input-wrapper { max-width: 480px; margin: 0 auto; display: flex; gap: 8px; background: #E5E5EA; border-radius: 16px; padding: 4px; transition: all 0.2s; }
-        .input-wrapper:focus-within { background: #fff; box-shadow: 0 0 0 3px rgba(0,122,255,0.25); }
-        .topic-input { flex: 1; padding: 12px 14px; border: none; outline: none; font-size: 15px; background: transparent; font-family: inherit; }
-        .generate-btn { padding: 10px 20px; background: #007AFF; color: #fff; border: none; border-radius: 14px; font-weight: 600; font-size: 15px; cursor: pointer; white-space: nowrap; font-family: inherit; }
-        .generate-btn:hover { background: #0066D6; }
+        /* INPUT — Spotify search style */
+        .input-wrapper { max-width: 480px; margin: 0 auto; display: flex; gap: 8px; background: var(--card); border-radius: 16px; padding: 5px; transition: all 0.2s; border: 1px solid transparent; }
+        .input-wrapper:focus-within { border-color: var(--green); background: var(--hover); }
+        .topic-input { flex: 1; padding: 14px 16px; border: none; outline: none; font-size: 15px; background: transparent; color: var(--text); font-family: inherit; }
+        .topic-input::placeholder { color: #777; }
+        .generate-btn { padding: 12px 24px; background: var(--green); color: #000; border: none; border-radius: 14px; font-weight: 700; font-size: 14px; cursor: pointer; white-space: nowrap; font-family: inherit; text-transform: uppercase; letter-spacing: 0.5px; }
+        .generate-btn:hover { background: var(--green-hover); }
 
         /* EXAMPLES */
-        .examples { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 14px; }
-        .chip { padding: 7px 14px; background: #fff; border: none; border-radius: 100px; font-size: 13px; color: #333; cursor: pointer; font-family: inherit; box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: all 0.2s; }
-        .chip:hover { background: #007AFF; color: #fff; }
+        .examples { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 16px; }
+        .chip { padding: 7px 16px; background: var(--card); border: none; border-radius: 100px; font-size: 12px; color: var(--subtext); cursor: pointer; font-family: inherit; font-weight: 500; transition: all 0.2s; }
+        .chip:hover { background: var(--hover); color: var(--text); }
 
         /* FEATURES */
-        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 40px 0; }
-        .feature-card { background: #fff; border-radius: 20px; padding: 24px 18px; text-align: center; box-shadow: 0 1px 6px rgba(0,0,0,0.04); transition: all 0.25s; }
-        .feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
-        .feature-icon { font-size: 32px; margin-bottom: 10px; }
+        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 50px 0; }
+        .feature-card { background: var(--card); border-radius: 16px; padding: 28px 20px; text-align: center; transition: all 0.25s; cursor: pointer; }
+        .feature-card:hover { background: var(--hover); transform: translateY(-3px); }
+        .feature-icon { font-size: 34px; margin-bottom: 12px; }
         .feature-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
-        .feature-card p { font-size: 12px; color: #777; line-height: 1.4; }
+        .feature-card p { font-size: 12px; color: var(--subtext); line-height: 1.4; }
 
         /* PRICING CAROUSEL */
-        .pricing { padding: 40px 0 60px; }
-        .section-title { text-align: center; font-size: 28px; font-weight: 800; margin-bottom: 4px; letter-spacing: -0.5px; }
-        .section-sub { text-align: center; color: #888; margin-bottom: 28px; font-size: 14px; }
-        .carousel { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 10px 0 20px; scrollbar-width: none; }
+        .pricing { padding: 50px 0 70px; }
+        .section-title { text-align: center; font-size: 30px; font-weight: 900; margin-bottom: 4px; letter-spacing: -1px; }
+        .section-sub { text-align: center; color: var(--subtext); margin-bottom: 32px; font-size: 14px; }
+        .carousel { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 8px 0 20px; scrollbar-width: none; }
         .carousel::-webkit-scrollbar { display: none; }
-        .pricing-card { flex: 0 0 260px; scroll-snap-align: start; background: #fff; border-radius: 22px; padding: 28px 20px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.05); transition: all 0.3s; position: relative; }
-        .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(0,0,0,0.1); }
-        .pricing-card.featured { background: #000; color: #fff; }
-        .pricing-card.featured .pricing-name, .pricing-card.featured .pricing-price, .pricing-card.featured .pricing-period, .pricing-card.featured li { color: #fff; }
-        .pricing-card.featured .btn { background: #fff; color: #000; }
-        .pricing-card.vip { background: #FFD60A; color: #000; border: 3px solid #000; }
+        .pricing-card { flex: 0 0 255px; scroll-snap-align: start; background: var(--card); border-radius: 20px; padding: 28px 20px; text-align: center; transition: all 0.3s; position: relative; }
+        .pricing-card:hover { background: var(--hover); transform: translateY(-4px); }
+        .pricing-card.featured { background: var(--green); color: #000; }
+        .pricing-card.featured .pricing-name, .pricing-card.featured .pricing-price, .pricing-card.featured .pricing-period, .pricing-card.featured li { color: #000; }
+        .pricing-card.featured .btn { background: #000; color: var(--green); }
+        .pricing-card.vip { background: #FFD60A; color: #000; }
         .pricing-card.vip .btn { background: #000; color: #FFD60A; }
         .pricing-badge { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: #FF3B30; color: #fff; padding: 4px 14px; border-radius: 100px; font-size: 11px; font-weight: 700; }
         .pricing-name { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
-        .pricing-price { font-size: 36px; font-weight: 900; margin-bottom: 2px; }
-        .pricing-period { font-size: 12px; color: #999; margin-bottom: 16px; }
+        .pricing-price { font-size: 38px; font-weight: 900; margin-bottom: 2px; }
+        .pricing-period { font-size: 12px; color: var(--subtext); margin-bottom: 16px; }
         .pricing-features { list-style: none; text-align: left; margin-bottom: 20px; }
-        .pricing-features li { padding: 5px 0; font-size: 13px; color: #555; }
-        .pricing-features li::before { content: '✓ '; color: #34C759; font-weight: 700; }
+        .pricing-features li { padding: 5px 0; font-size: 13px; color: var(--subtext); }
+        .pricing-features li::before { content: '✓ '; color: var(--green); font-weight: 700; }
+        .pricing-card.featured .pricing-features li, .pricing-card.vip .pricing-features li { color: #000; }
+        .pricing-card.featured .pricing-features li::before, .pricing-card.vip .pricing-features li::before { color: #000; }
 
         /* FOOTER */
-        .footer { border-top: 0.5px solid rgba(0,0,0,0.1); padding: 18px 0; text-align: center; }
+        .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 20px 0; text-align: center; }
         .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 8px; }
-        .footer-links a { color: #888; text-decoration: none; font-size: 12px; }
-        .footer p { color: #aaa; font-size: 11px; }
+        .footer-links a { color: var(--subtext); text-decoration: none; font-size: 12px; }
+        .footer-links a:hover { color: var(--text); }
+        .footer p { color: #555; font-size: 11px; }
 
         /* MODAL */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; background: rgba(0,0,0,0.35); justify-content: center; align-items: center; backdrop-filter: blur(6px); }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; backdrop-filter: blur(8px); }
         .modal.show { display: flex; }
-        .modal-content { background: #fff; border-radius: 24px; padding: 28px; text-align: center; max-width: 320px; width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+        .modal-content { background: var(--card); border-radius: 20px; padding: 28px; text-align: center; max-width: 300px; width: 90%; }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .features { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 28px; }
+            .hero h1 { font-size: 30px; }
             .input-wrapper { flex-direction: column; background: transparent; }
-            .topic-input { background: #E5E5EA; border-radius: 14px; }
+            .topic-input { background: var(--card); border-radius: 14px; }
         }
     </style>
 </head>
 <body>
+    <div class="hero-gradient"></div>
+
     <nav class="navbar">
         <div class="nav-inner">
             <a href="/" class="nav-logo">🎨 Презентатор ИИ</a>
@@ -159,7 +178,7 @@
                 </div>
                 <!-- Pro -->
                 <div class="pricing-card featured">
-                    <div class="pricing-badge" style="background:#007AFF;">ПОПУЛЯРНЫЙ</div>
+                    <div class="pricing-badge" style="background:#000;">ПОПУЛЯРНЫЙ</div>
                     <div class="pricing-name">Pro</div>
                     <div class="pricing-price">$4.99</div>
                     <div class="pricing-period">/месяц</div>
