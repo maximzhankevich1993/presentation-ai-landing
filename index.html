@@ -20,13 +20,11 @@
             --subtext: #B3B3B3;
             --green: #1DB954;
             --green-hover: #1ED760;
-            --blue: #007AFF;
         }
         body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
         
         .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
 
-        /* NAV — Spotify dark */
         .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(18,18,18,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
         .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 48px; max-width: 900px; margin: 0 auto; padding: 0 20px; }
         .nav-logo { font-weight: 700; font-size: 17px; color: var(--text); text-decoration: none; }
@@ -39,8 +37,7 @@
         .btn-outline { background: transparent; border: 1px solid var(--subtext); color: var(--text); }
         .btn-outline:hover { border-color: var(--text); }
 
-        /* HERO */
-        .hero { padding: 110px 0 50px; text-align: center; }
+        .hero { padding: 110px 0 50px; text-align: center; position: relative; }
         .hero-gradient { position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(29,185,84,0.15) 0%, transparent 70%); pointer-events: none; }
         .hero-badge { display: inline-block; padding: 6px 14px; background: var(--card); border-radius: 100px; font-size: 12px; font-weight: 700; color: var(--green); margin-bottom: 20px; letter-spacing: 0.5px; text-transform: uppercase; }
         .hero-badge.vip { background: #FFD60A; color: #000; animation: pulse 2s infinite; }
@@ -48,7 +45,6 @@
         .hero h1 { font-size: clamp(38px, 7vw, 64px); font-weight: 900; line-height: 1.05; margin-bottom: 12px; letter-spacing: -1.5px; }
         .hero p { font-size: 16px; color: var(--subtext); margin-bottom: 32px; line-height: 1.4; }
 
-        /* INPUT — Spotify search style */
         .input-wrapper { max-width: 480px; margin: 0 auto; display: flex; gap: 8px; background: var(--card); border-radius: 16px; padding: 5px; transition: all 0.2s; border: 1px solid transparent; }
         .input-wrapper:focus-within { border-color: var(--green); background: var(--hover); }
         .topic-input { flex: 1; padding: 14px 16px; border: none; outline: none; font-size: 15px; background: transparent; color: var(--text); font-family: inherit; }
@@ -56,12 +52,10 @@
         .generate-btn { padding: 12px 24px; background: var(--green); color: #000; border: none; border-radius: 14px; font-weight: 700; font-size: 14px; cursor: pointer; white-space: nowrap; font-family: inherit; text-transform: uppercase; letter-spacing: 0.5px; }
         .generate-btn:hover { background: var(--green-hover); }
 
-        /* EXAMPLES */
         .examples { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 16px; }
         .chip { padding: 7px 16px; background: var(--card); border: none; border-radius: 100px; font-size: 12px; color: var(--subtext); cursor: pointer; font-family: inherit; font-weight: 500; transition: all 0.2s; }
         .chip:hover { background: var(--hover); color: var(--text); }
 
-        /* FEATURES */
         .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 50px 0; }
         .feature-card { background: var(--card); border-radius: 16px; padding: 28px 20px; text-align: center; transition: all 0.25s; cursor: pointer; }
         .feature-card:hover { background: var(--hover); transform: translateY(-3px); }
@@ -69,7 +63,6 @@
         .feature-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
         .feature-card p { font-size: 12px; color: var(--subtext); line-height: 1.4; }
 
-        /* PRICING CAROUSEL */
         .pricing { padding: 50px 0 70px; }
         .section-title { text-align: center; font-size: 30px; font-weight: 900; margin-bottom: 4px; letter-spacing: -1px; }
         .section-sub { text-align: center; color: var(--subtext); margin-bottom: 32px; font-size: 14px; }
@@ -92,14 +85,12 @@
         .pricing-card.featured .pricing-features li, .pricing-card.vip .pricing-features li { color: #000; }
         .pricing-card.featured .pricing-features li::before, .pricing-card.vip .pricing-features li::before { color: #000; }
 
-        /* FOOTER */
         .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 20px 0; text-align: center; }
         .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 8px; }
         .footer-links a { color: var(--subtext); text-decoration: none; font-size: 12px; }
         .footer-links a:hover { color: var(--text); }
         .footer p { color: #555; font-size: 11px; }
 
-        /* MODAL */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; backdrop-filter: blur(8px); }
         .modal.show { display: flex; }
         .modal-content { background: var(--card); border-radius: 20px; padding: 28px; text-align: center; max-width: 300px; width: 90%; }
@@ -118,7 +109,7 @@
 
     <nav class="navbar">
         <div class="nav-inner">
-            <a href="/" class="nav-logo">🎨 Презентатор ИИ</a>
+            <a href="index.html" class="nav-logo">🎨 Презентатор ИИ</a>
             <div class="nav-links">
                 <a href="#pricing" class="nav-link">Тарифы</a>
                 <a href="#" class="btn btn-outline">Войти</a>
@@ -159,7 +150,6 @@
             <h2 class="section-title">Тарифы</h2>
             <p class="section-sub">Листайте ← →</p>
             <div class="carousel">
-                <!-- VIP -->
                 <div class="pricing-card vip">
                     <div class="pricing-badge" style="background:#FF3B30;">🔥 VIP</div>
                     <div class="pricing-name">Первые 50</div>
@@ -168,7 +158,6 @@
                     <ul class="pricing-features"><li>Пожизненный Premium</li><li>Все 30+ фишек</li><li>Безлимит</li></ul>
                     <a href="#" class="btn btn-outline" style="width:100%; background:#000; color:#FFD60A; font-weight:700;">🔥 Занять</a>
                 </div>
-                <!-- Free -->
                 <div class="pricing-card">
                     <div class="pricing-name">Бесплатный</div>
                     <div class="pricing-price">$0</div>
@@ -176,7 +165,6 @@
                     <ul class="pricing-features"><li>5 презентаций</li><li>До 10 слайдов</li><li>Авто-картинки</li></ul>
                     <a href="#" class="btn btn-outline" style="width:100%">Начать</a>
                 </div>
-                <!-- Pro -->
                 <div class="pricing-card featured">
                     <div class="pricing-badge" style="background:#000;">ПОПУЛЯРНЫЙ</div>
                     <div class="pricing-name">Pro</div>
@@ -185,7 +173,6 @@
                     <ul class="pricing-features"><li>Безлимит</li><li>50 слайдов</li><li>Все фишки</li></ul>
                     <a href="#" class="btn btn-outline" style="width:100%">Выбрать</a>
                 </div>
-                <!-- Год -->
                 <div class="pricing-card">
                     <div class="pricing-name">Год</div>
                     <div class="pricing-price">$49</div>
@@ -203,12 +190,23 @@
                 <a href="compare.html">Сравнение</a>
                 <a href="teacher.html">Учителям</a>
                 <a href="business.html">Бизнесу</a>
+                <a href="student.html">Студентам</a>
                 <a href="privacy.html">Конфиденциальность</a>
                 <a href="terms.html">Условия</a>
             </div>
             <p>© 2026 Презентатор ИИ</p>
         </div>
     </footer>
+
+    <div id="loadingModal" class="modal">
+        <div class="modal-content">
+            <div style="font-size:36px; margin-bottom:8px;">✨</div>
+            <p id="loadingText" style="font-weight:600; font-size:15px; color:white;">Создаю презентацию...</p>
+            <div style="width:100%; height:4px; background:rgba(255,255,255,0.1); border-radius:4px; margin-top:14px;">
+                <div id="progressBar" style="height:100%; background:var(--green); border-radius:4px; width:0%;"></div>
+            </div>
+        </div>
+    </div>
 
     <script>
         function generatePresentation() {
@@ -219,7 +217,10 @@
             var msgs = ['Создаю презентацию...','Подбираю картинки...','Оформляю...','Готово!'];
             var mt = setInterval(function() { i++; if (i < msgs.length) x.textContent = msgs[i]; }, 1200);
             var pt = setInterval(function() { p += 5; if (p <= 100) b.style.width = p + '%'; }, 100);
-            setTimeout(function() { clearInterval(mt); clearInterval(pt); m.classList.remove('show'); }, 4500);
+            setTimeout(function() { 
+                clearInterval(mt); clearInterval(pt); m.classList.remove('show'); 
+                window.location.href = 'http://localhost:3000?topic=' + encodeURIComponent(t); 
+            }, 4500);
         }
     </script>
 </body>
