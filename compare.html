@@ -3,264 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сравнение сервисов для создания презентаций | Презентатор ИИ</title>
-    <meta name="description" content="Сравнение цен и возможностей Презентатор ИИ с Gamma, Beautiful.ai, Canva, Prezi. Почему мы лучше?">
+    <title>Сравнение сервисов — Презентатор ИИ</title>
+    <meta name="description" content="Сравнение Презентатор ИИ с Gamma, Beautiful.ai, Canva. Почему мы лучше?">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --primary: #6366f1;
-            --bg: #0f0f1a;
-            --text: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --glass: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --gradient-1: linear-gradient(135deg, #6366f1, #8b5cf6);
-            --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.3);
-            --success: #10b981;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-        }
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            -webkit-font-smoothing: antialiased;
-        }
-        .bg-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-        .bg-orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.2; animation: float 20s infinite; }
-        .bg-orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, #6366f1, transparent); top: -200px; left: -200px; }
-        .bg-orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, #06b6d4, transparent); bottom: -200px; right: -200px; animation-delay: -7s; }
-        @keyframes float { 0%,100% { transform: translate(0,0) scale(1) } 25% { transform: translate(100px,-50px) scale(1.1) } 50% { transform: translate(-50px,100px) scale(0.9) } 75% { transform: translate(-100px,-100px) scale(1.05) } }
+        :root { --bg: #121212; --card: #1A1A1A; --hover: #282828; --text: #FFFFFF; --subtext: #B3B3B3; --green: #1DB954; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
         
-        .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; position: relative; z-index: 10; }
-        
-        .navbar { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 100; width: 90%; max-width: 800px; }
-        .nav-glass { background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 40px; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; }
-        .nav-logo { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; }
-        .nav-logo-icon { width: 36px; height: 36px; background: var(--gradient-1); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
-        .nav-cta { padding: 10px 24px; background: var(--gradient-1); border: none; border-radius: 30px; color: white; font-weight: 600; cursor: pointer; text-decoration: none; font-size: 14px; transition: all 0.3s; }
-        .nav-cta:hover { transform: scale(1.05); box-shadow: var(--shadow-glow); }
-        
-        .hero { padding-top: 120px; text-align: center; }
-        .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 800; margin-bottom: 16px; }
-        .hero p { color: var(--text-secondary); font-size: 18px; margin-bottom: 60px; }
-        
-        .comparison-table { overflow-x: auto; margin-bottom: 60px; }
-        table { width: 100%; border-collapse: collapse; min-width: 800px; }
-        th, td { padding: 16px 20px; text-align: center; border-bottom: 1px solid var(--glass-border); }
-        th { background: var(--glass); font-weight: 700; font-size: 14px; }
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(18,18,18,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 48px; max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        .nav-logo { font-weight: 700; font-size: 17px; color: var(--text); text-decoration: none; }
+        .btn-green { padding: 8px 18px; border-radius: 100px; font-weight: 700; font-size: 13px; text-decoration: none; display: inline-block; font-family: inherit; background: var(--green); color: #000; }
+
+        .hero { padding: 100px 0 30px; text-align: center; }
+        .hero h1 { font-size: clamp(28px, 5vw, 40px); font-weight: 900; letter-spacing: -1px; margin-bottom: 8px; }
+        .hero p { color: var(--subtext); font-size: 15px; }
+
+        .table-wrap { overflow-x: auto; margin-bottom: 30px; }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; font-size: 13px; }
+        th, td { padding: 12px 14px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        th { font-weight: 700; color: var(--subtext); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
         th:first-child, td:first-child { text-align: left; font-weight: 600; }
-        td { font-size: 14px; color: var(--text-secondary); }
-        tr:hover td { background: rgba(99,102,241,0.03); }
-        .our-column { background: rgba(99,102,241,0.1) !important; }
-        .our-header { background: var(--gradient-1) !important; color: white !important; }
-        .check { color: var(--success); font-size: 20px; }
-        .cross { color: var(--danger); font-size: 20px; }
-        .price-highlight { color: var(--success); font-weight: 700; }
-        .winner { color: var(--warning); font-weight: 700; }
-        
-        .cta-section { text-align: center; padding: 80px 0; }
-        .cta-box { background: var(--gradient-1); border-radius: 40px; padding: 60px 40px; box-shadow: var(--shadow-glow); }
-        .cta-box h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 16px; color: white; }
-        .cta-box p { font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 32px; }
-        .cta-btn { display: inline-block; padding: 16px 40px; background: white; color: var(--primary); border-radius: 40px; font-weight: 700; font-size: 18px; text-decoration: none; transition: all 0.3s; }
-        .cta-btn:hover { transform: scale(1.05); }
-        
-        .verdict { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px; margin-bottom: 60px; }
-        .verdict h2 { font-size: 28px; font-weight: 800; margin-bottom: 20px; }
-        .verdict-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .verdict-card { text-align: center; padding: 20px; }
-        .verdict-icon { font-size: 40px; margin-bottom: 12px; }
-        .verdict-card h3 { font-size: 18px; margin-bottom: 8px; }
-        .verdict-card p { font-size: 13px; color: var(--text-secondary); }
-        
-        .footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--glass-border); }
-        .footer p { color: var(--text-secondary); font-size: 14px; }
-        
-        @media (max-width: 768px) {
-            .verdict-grid { grid-template-columns: 1fr; }
-        }
+        .our { background: rgba(29,185,84,0.08); }
+        .our th { color: var(--green); }
+        .check { color: var(--green); font-size: 16px; }
+        .cross { color: #FF3B30; font-size: 16px; }
+
+        .verdict { text-align: center; padding: 30px 0; }
+        .verdict h2 { font-size: 24px; font-weight: 800; margin-bottom: 16px; }
+        .verdict-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .verdict-card { background: var(--card); border-radius: 16px; padding: 20px 14px; }
+        .verdict-card .icon { font-size: 28px; margin-bottom: 6px; }
+        .verdict-card h3 { font-size: 14px; font-weight: 700; }
+        .verdict-card p { font-size: 11px; color: var(--subtext); margin-top: 4px; }
+
+        .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 16px 0; text-align: center; }
+        .footer a { color: var(--subtext); text-decoration: none; font-size: 12px; }
+
+        @media (max-width: 768px) { .verdict-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-    <div class="bg-animation">
-        <div class="bg-orb bg-orb-1"></div>
-        <div class="bg-orb bg-orb-2"></div>
-    </div>
-
     <nav class="navbar">
-        <div class="nav-glass">
-            <a href="/" class="nav-logo">
-                <span class="nav-logo-icon">🎨</span>
-                Презентатор ИИ
-            </a>
-            <a href="/" class="nav-cta">← На главную</a>
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">🎨 Презентатор ИИ</a>
+            <a href="/" class="btn-green">← На главную</a>
         </div>
     </nav>
 
-    <main class="hero">
-        <div class="container">
-            <h1>Сравнение сервисов для создания презентаций</h1>
-            <p>Почему Презентатор ИИ — лучший выбор в 2026 году</p>
-        </div>
-    </main>
-
     <div class="container">
-        <!-- Вердикт -->
-        <div class="verdict">
-            <h2>🏆 Почему мы лучше</h2>
-            <div class="verdict-grid">
-                <div class="verdict-card">
-                    <div class="verdict-icon">💰</div>
-                    <h3>Самая низкая цена</h3>
-                    <p>В 3-5 раз дешевле конкурентов при большем количестве функций</p>
-                </div>
-                <div class="verdict-card">
-                    <div class="verdict-icon">🎨</div>
-                    <h3>Уникальный дизайн</h3>
-                    <p>Glassmorphism, анимированный фон, частицы — такого нет ни у кого</p>
-                </div>
-                <div class="verdict-card">
-                    <div class="verdict-icon">🤖</div>
-                    <h3>30+ фишек</h3>
-                    <p>Smart Data, анти-шаблоны, Story Mode, авто-цитаты — больше, чем у любого конкурента</p>
-                </div>
-            </div>
+        <div class="hero">
+            <h1>Сравнение сервисов</h1>
+            <p>Почему Презентатор ИИ — лучший выбор</p>
         </div>
 
-        <!-- Таблица сравнения -->
-        <div class="comparison-table">
+        <div class="table-wrap">
             <table>
-                <thead>
-                    <tr>
-                        <th>Характеристика</th>
-                        <th>Gamma</th>
-                        <th>Beautiful.ai</th>
-                        <th>Canva</th>
-                        <th>Prezi</th>
-                        <th class="our-header">Наш сервис</th>
-                    </tr>
-                </thead>
+                <thead><tr><th>Функция</th><th>Gamma</th><th>Beautiful.ai</th><th>Canva</th><th class="our">Мы</th></tr></thead>
                 <tbody>
-                    <tr>
-                        <td>Цена (месяц)</td>
-                        <td>$18</td>
-                        <td>$12</td>
-                        <td>$15</td>
-                        <td>$7</td>
-                        <td class="our-column price-highlight">$4.99 ⭐</td>
-                    </tr>
-                    <tr>
-                        <td>Бесплатный тариф</td>
-                        <td><span class="check">✓</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="check">✓</span></td>
-                        <td><span class="check">✓</span></td>
-                        <td class="our-column"><span class="check">✓</span> (5 презентаций)</td>
-                    </tr>
-                    <tr>
-                        <td>AI-генерация</td>
-                        <td><span class="check">✓</span></td>
-                        <td><span class="check">✓</span></td>
-                        <td><span class="check">✓</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td class="our-column"><span class="check">✓</span> (DeepSeek)</td>
-                    </tr>
-                    <tr>
-                        <td>Авто-картинки</td>
-                        <td><span class="check">✓</span></td>
-                        <td><span class="check">✓</span></td>
-                        <td><span class="check">✓</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td class="our-column"><span class="check">✓</span> (Unsplash)</td>
-                    </tr>
-                    <tr>
-                        <td>Анти-шаблоны</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td class="our-column winner">✅ Уникально</td>
-                    </tr>
-                    <tr>
-                        <td>Story Mode</td>
-                        <td><span class="check">✓</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td class="our-column winner">✅ Уникально</td>
-                    </tr>
-                    <tr>
-                        <td>Бренд-кит из лого</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="check">✓</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td class="our-column winner">✅ Уникально</td>
-                    </tr>
-                    <tr>
-                        <td>Репетиция с AI</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td class="our-column winner">✅ Уникально</td>
-                    </tr>
-                    <tr>
-                        <td>Авто-цитаты (ГОСТ/APA)</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td class="our-column winner">✅ Уникально</td>
-                    </tr>
-                    <tr>
-                        <td>Русский язык</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="check">✓</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td class="our-column"><span class="check">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td>Оплата из РФ/СНГ</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td class="our-column winner">✅ Boosty/Payoneer</td>
-                    </tr>
-                    <tr>
-                        <td>Приостановка подписки</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td class="our-column winner">✅ Уникально</td>
-                    </tr>
+                    <tr><td>Цена (мес)</td><td>$18</td><td>$12</td><td>$15</td><td class="our"><strong style="color:var(--green)">$4.99</strong></td></tr>
+                    <tr><td>Бесплатный</td><td>Ограничен</td><td>Нет AI</td><td>Есть</td><td class="our"><span class="check">✓</span> 5 презентаций</td></tr>
+                    <tr><td>AI-генерация</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td class="our"><span class="check">✓</span></td></tr>
+                    <tr><td>Русский язык</td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td class="our"><span class="check">✓</span></td></tr>
+                    <tr><td>Анти-шаблоны</td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td class="our"><span class="check">✓</span></td></tr>
+                    <tr><td>Авто-цитаты ГОСТ</td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td class="our"><span class="check">✓</span></td></tr>
+                    <tr><td>Оплата из РФ/СНГ</td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td class="our"><span class="check">✓</span></td></tr>
                 </tbody>
             </table>
         </div>
-    </div>
 
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-box">
-                <h2>Попробуйте сами — это бесплатно</h2>
-                <p>5 презентаций без регистрации. Убедитесь, что мы лучшие.</p>
-                <a href="/" class="cta-btn">Создать презентацию →</a>
+        <div class="verdict">
+            <h2>Почему мы</h2>
+            <div class="verdict-grid">
+                <div class="verdict-card"><div class="icon">💰</div><h3>В 3 раза дешевле</h3><p>Лучшая цена при большем функционале</p></div>
+                <div class="verdict-card"><div class="icon">🎨</div><h3>Уникальный дизайн</h3><p>Анти-шаблоны, Story Mode</p></div>
+                <div class="verdict-card"><div class="icon">🌍</div><h3>Локальные стандарты</h3><p>Автоопределение страны</p></div>
             </div>
         </div>
-    </section>
+    </div>
 
     <footer class="footer">
-        <div class="container"><p>© 2026 Презентатор ИИ. Все права защищены.</p></div>
+        <a href="/">Главная</a> · <a href="teacher.html">Учителям</a> · <a href="business.html">Бизнесу</a> · <a href="privacy.html">Конфиденциальность</a>
+        <p style="color:#555; margin-top:6px;">© 2026 Презентатор ИИ</p>
     </footer>
 </body>
 </html>
