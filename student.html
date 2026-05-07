@@ -18,8 +18,8 @@
         
         .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(18,18,18,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
         .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 48px; max-width: 720px; margin: 0 auto; padding: 0 20px; }
-        .nav-logo { font-weight: 700; font-size: 17px; color: var(--text); text-decoration: none; }
-        .btn { padding: 8px 18px; border-radius: 100px; font-weight: 700; font-size: 13px; text-decoration: none; display: inline-block; font-family: inherit; }
+        .nav-logo { font-weight: 700; font-size: 17px; color: var(--text); cursor: pointer; }
+        .btn { padding: 8px 18px; border-radius: 100px; font-weight: 700; font-size: 13px; cursor: pointer; border: none; font-family: inherit; }
         .btn-green { background: var(--green); color: #000; }
 
         .hero { padding: 100px 0 40px; }
@@ -37,7 +37,7 @@
         .cta h2 { font-size: 24px; font-weight: 800; margin-bottom: 16px; }
 
         .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 18px 0; text-align: center; }
-        .footer a { color: var(--subtext); text-decoration: none; font-size: 12px; }
+        .footer span { color: var(--subtext); font-size: 12px; cursor: pointer; }
 
         @media (max-width: 768px) { .features { grid-template-columns: 1fr; } }
     </style>
@@ -45,8 +45,8 @@
 <body>
     <nav class="navbar">
         <div class="nav-inner">
-            <a href="/" class="nav-logo">🎨 Презентатор ИИ</a>
-            <a href="/" class="btn btn-green">← На главную</a>
+            <span class="nav-logo" onclick="window.location.href='index.html'">🎨 Презентатор ИИ</span>
+            <span class="btn btn-green" onclick="window.location.href='index.html'">← На главную</span>
         </div>
     </nav>
 
@@ -65,12 +65,14 @@
 
         <div class="cta">
             <h2>Создайте презентацию к диплому</h2>
-            <a href="/" class="btn btn-green" style="padding:12px 28px; font-size:14px;">✨ Создать бесплатно</a>
+            <span class="btn btn-green" style="padding:12px 28px; font-size:14px; display:inline-block;" onclick="window.location.href='index.html'">✨ Создать бесплатно</span>
         </div>
     </div>
 
     <footer class="footer">
-        <a href="/">Главная</a> · <a href="teacher.html">Учителям</a> · <a href="business.html">Бизнесу</a>
+        <span onclick="window.location.href='index.html'">Главная</span> · 
+        <span onclick="window.location.href='teacher.html'">Учителям</span> · 
+        <span onclick="window.location.href='business.html'">Бизнесу</span>
         <p style="color:#555; margin-top:6px;">© 2026 Презентатор ИИ</p>
     </footer>
 </body>
