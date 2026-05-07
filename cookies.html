@@ -3,52 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Политика Cookie | Презентатор ИИ</title>
-    <meta name="robots" content="noindex, follow">
-    
+    <title>Cookie — Презентатор ИИ</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --primary: #6366f1; --bg: #0f0f1a; --text: #f1f5f9; --text-secondary: #94a3b8; }
-        body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; }
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
-        h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; }
-        .last-updated { color: var(--text-secondary); font-size: 14px; margin-bottom: 40px; }
-        h2 { font-size: 22px; font-weight: 700; margin: 40px 0 16px; color: var(--primary); }
-        p { margin-bottom: 16px; color: var(--text-secondary); }
-        .back-link { display: inline-block; margin-top: 40px; color: var(--primary); text-decoration: none; font-weight: 600; }
+        :root { --bg: #121212; --card: #1A1A1A; --text: #FFFFFF; --subtext: #B3B3B3; --green: #1DB954; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+        .container { max-width: 700px; margin: 0 auto; padding: 80px 20px 40px; }
+        h1 { font-size: 28px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 8px; }
+        h2 { font-size: 18px; font-weight: 700; margin: 24px 0 8px; color: var(--green); }
+        p, li { font-size: 14px; color: var(--subtext); margin-bottom: 8px; }
+        .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 16px 0; text-align: center; margin-top: 40px; }
+        .footer a { color: var(--subtext); font-size: 12px; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Политика Cookie</h1>
-        <p class="last-updated">Последнее обновление: 26 апреля 2026 года</p>
-
-        <h2>Какие cookie мы используем</h2>
-        <p>Мы используем минимальный набор технических cookie, необходимых для работы сервиса:</p>
-        
+        <p style="color:var(--subtext); font-size:12px;">Последнее обновление: 2026</p>
         <h2>Необходимые cookie</h2>
-        <p>Эти cookie обязательны для работы сервиса и не могут быть отключены:</p>
-        <ul>
-            <li><strong>session_token</strong> — хранит зашифрованный токен вашей сессии (удаляется при выходе)</li>
-            <li><strong>theme_preference</strong> — сохраняет выбранную тему оформления (светлая/тёмная)</li>
-            <li><strong>language</strong> — сохраняет выбранный язык интерфейса</li>
-        </ul>
-
+        <p>session_token — токен сессии (удаляется при выходе).</p>
+        <p>theme_preference — тема оформления.</p>
+        <p>language — выбранный язык.</p>
         <h2>Мы НЕ используем</h2>
-        <ul>
-            <li>❌ Отслеживающие cookie</li>
-            <li>❌ Рекламные cookie</li>
-            <li>❌ Cookie третьих лиц</li>
-            <li>❌ Google Analytics или аналоги</li>
-        </ul>
+        <p>❌ Отслеживающие cookie</p>
+        <p>❌ Рекламные cookie</p>
+        <p>❌ Cookie третьих лиц</p>
 
-        <p>Ваши данные не передаются рекламным сетям. Вы можете удалить cookie в настройках браузера в любой момент.</p>
-
-        <a href="/" class="back-link">← На главную</a>
+        <div class="footer">
+            <a href="/">← На главную</a>
+            <p style="color:#555; margin-top:6px;">© 2026 Презентатор ИИ</p>
+        </div>
     </div>
 </body>
 </html>
