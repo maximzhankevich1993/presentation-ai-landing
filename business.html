@@ -3,143 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Бизнес-презентации за 1 минуту | Презентатор ИИ</title>
-    <meta name="description" content="Коммерческие предложения, отчёты, презентации для клиентов. Экономия до 80% времени.">
-    <meta name="keywords" content="коммерческое предложение, КП, отчёт, презентация для клиентов, бизнес-презентация">
-    <link rel="canonical" href="https://prezentator-ai.com/business.html">
+    <title>Бизнесу — Презентатор ИИ</title>
+    <meta name="description" content="Коммерческие предложения, отчёты, презентации для клиентов с интеграциями и комплаенсом.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --primary: #6366f1; --bg: #0f0f1a; --text: #f1f5f9; --text-secondary: #94a3b8; --glass: rgba(255,255,255,0.05); --glass-border: rgba(255,255,255,0.1); --gradient-1: linear-gradient(135deg, #6366f1, #8b5cf6); --shadow-glow: 0 0 40px rgba(99,102,241,0.3); }
-        body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+        :root { --bg: #121212; --card: #1A1A1A; --hover: #282828; --text: #FFFFFF; --subtext: #B3B3B3; --green: #1DB954; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
         
-        .navbar { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 100; width: 90%; }
-        .nav-glass { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 40px; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; }
-        .nav-logo { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; }
-        .nav-logo-icon { width: 36px; height: 36px; background: var(--gradient-1); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
-        .nav-cta { padding: 10px 24px; background: var(--gradient-1); border: none; border-radius: 30px; color: white; font-weight: 600; cursor: pointer; text-decoration: none; font-size: 14px; }
-        
-        .hero { padding-top: 120px; }
-        .hero h1 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
-        .hero p { color: var(--text-secondary); font-size: 18px; margin-bottom: 40px; line-height: 1.6; }
-        
-        .content { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px; margin-bottom: 40px; }
-        .content h2 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; }
-        .content h2:first-child { margin-top: 0; }
-        .content p { color: var(--text-secondary); font-size: 16px; line-height: 1.8; margin-bottom: 16px; }
-        .content ul { color: var(--text-secondary); font-size: 16px; line-height: 1.8; padding-left: 24px; margin-bottom: 16px; }
-        .content ul li { margin-bottom: 8px; }
-        
-        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 40px 0; }
-        .pricing-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px 24px; text-align: center; }
-        .pricing-card.featured { border-color: #f59e0b; border-width: 2px; background: rgba(245,158,11,0.05); }
-        .pricing-name { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
-        .pricing-price { font-size: 36px; font-weight: 900; background: linear-gradient(135deg, #fff, #a5b4fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .pricing-period { color: var(--text-secondary); font-size: 13px; margin-bottom: 16px; }
-        .pricing-features { list-style: none; text-align: left; margin-bottom: 24px; }
-        .pricing-features li { padding: 6px 0; font-size: 13px; color: var(--text-secondary); }
-        .pricing-features li::before { content: '✅ '; }
-        .pricing-btn { display: block; width: 100%; padding: 14px; border-radius: 30px; font-weight: 600; font-size: 14px; cursor: pointer; border: none; font-family: 'Montserrat', sans-serif; }
-        .pricing-btn.gold { background: linear-gradient(135deg, #f59e0b, #ef4444); color: white; }
-        .pricing-btn.primary { background: var(--gradient-1); color: white; }
-        .pricing-btn.outline { background: transparent; border: 1px solid var(--glass-border); color: var(--text); }
-        
-        .footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--glass-border); }
-        .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
-        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; }
-        .footer p { color: var(--text-secondary); font-size: 14px; }
-        
-        @media (max-width: 768px) { .pricing-grid { grid-template-columns: 1fr; } }
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(18,18,18,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 48px; max-width: 720px; margin: 0 auto; padding: 0 20px; }
+        .nav-logo { font-weight: 700; font-size: 17px; color: var(--text); text-decoration: none; }
+        .btn { padding: 8px 18px; border-radius: 100px; font-weight: 700; font-size: 13px; text-decoration: none; display: inline-block; font-family: inherit; }
+        .btn-green { background: var(--green); color: #000; }
+
+        .hero { padding: 100px 0 40px; }
+        .hero h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 900; letter-spacing: -1px; margin-bottom: 8px; }
+        .hero p { color: var(--subtext); font-size: 16px; margin-bottom: 30px; }
+
+        .benefits { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 40px; }
+        .benefit-card { background: var(--card); border-radius: 16px; padding: 24px 18px; transition: all 0.2s; }
+        .benefit-card:hover { background: var(--hover); }
+        .benefit-icon { font-size: 28px; margin-bottom: 8px; }
+        .benefit-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+        .benefit-card p { font-size: 12px; color: var(--subtext); }
+
+        .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 40px; }
+        .price-card { background: var(--card); border-radius: 16px; padding: 24px 16px; text-align: center; }
+        .price-card.featured { background: var(--green); color: #000; }
+        .price-card.featured .price, .price-card.featured .name { color: #000; }
+        .name { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+        .price { font-size: 32px; font-weight: 900; margin-bottom: 2px; }
+        .period { font-size: 11px; color: var(--subtext); margin-bottom: 12px; }
+        .price-card.featured .period { color: #000; }
+        ul { list-style: none; text-align: left; margin-bottom: 14px; }
+        ul li { font-size: 12px; color: var(--subtext); padding: 3px 0; }
+        ul li::before { content: '✓ '; color: var(--green); font-weight: 700; }
+        .price-card.featured ul li { color: #000; }
+        .price-card.featured ul li::before { color: #000; }
+
+        .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 18px 0; text-align: center; }
+        .footer a { color: var(--subtext); text-decoration: none; font-size: 12px; }
+
+        @media (max-width: 768px) { .benefits, .pricing { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <div class="nav-glass">
-            <a href="/" class="nav-logo"><span class="nav-logo-icon">🎨</span>Презентатор ИИ</a>
-            <a href="/" class="nav-cta">← На главную</a>
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">🎨 Презентатор ИИ</a>
+            <a href="/" class="btn btn-green">← На главную</a>
         </div>
     </nav>
 
     <div class="container">
         <div class="hero">
-            <h1>Бизнес-презентации за 1 минуту</h1>
-            <p>Коммерческие предложения, еженедельные отчёты, презентации для клиентов — всё создаётся автоматически. Экономия до 80% времени.</p>
+            <h1>💼 Бизнесу</h1>
+            <p>Коммерческие предложения, отчёты, презентации с интеграциями и комплаенсом.</p>
         </div>
 
-        <div class="content">
-            <h2>💼 Какие документы можно создать</h2>
-            <ul>
-                <li>Коммерческое предложение (КП) — для отправки клиентам</li>
-                <li>Еженедельный отчёт — с ключевыми метриками</li>
-                <li>Презентация продукта — для встреч и переговоров</li>
-                <li>Инвестиционный меморандум — для привлечения финансирования</li>
-            </ul>
+        <div class="benefits">
+            <div class="benefit-card"><div class="benefit-icon">🏷</div><h3>Бренд-кит из логотипа</h3><p>Загрузите логотип — получите цвета и шрифты.</p></div>
+            <div class="benefit-card"><div class="benefit-icon">🔗</div><h3>CRM-интеграции</h3><p>Salesforce, HubSpot, Битрикс24, 1С.</p></div>
+            <div class="benefit-card"><div class="benefit-icon">📄</div><h3>Авто-документы</h3><p>КП, счета-фактуры, отчёты, SOP.</p></div>
+            <div class="benefit-card"><div class="benefit-icon">🔒</div><h3>Комплаенс</h3><p>GDPR, 152-ФЗ, ISO под вашу страну.</p></div>
+        </div>
 
-            <h2>📊 Smart Data Injection</h2>
-            <p>Наш ИИ автоматически вставляет актуальные рыночные данные в презентацию из проверенных источников.</p>
-
-            <h2>🔗 CRM-интеграции</h2>
-            <p>Salesforce, HubSpot, Битрикс24, amoCRM, 1С:Предприятие и другие. Сервис автоматически подбирает интеграции под вашу страну.</p>
-
-            <h2>💰 Тарифы для бизнеса</h2>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-name">Business</div>
-                    <div class="pricing-price" data-price="9.99">$9.99</div>
-                    <div class="pricing-period">/месяц</div>
-                    <ul class="pricing-features"><li>Бренд-кит</li><li>50 слайдов</li></ul>
-                    <button class="pricing-btn primary" onclick="alert('Скоро!')">Выбрать</button>
-                </div>
-                <div class="pricing-card featured">
-                    <div class="pricing-name">Corporate</div>
-                    <div class="pricing-price" data-price="49.99">$49.99</div>
-                    <div class="pricing-period">/10 чел.</div>
-                    <ul class="pricing-features"><li>White-label</li><li>CRM</li><li>API</li></ul>
-                    <button class="pricing-btn gold" onclick="alert('Скоро!')">Выбрать</button>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-name">Enterprise</div>
-                    <div class="pricing-price" data-price="199">$199</div>
-                    <div class="pricing-period">/50 чел.</div>
-                    <ul class="pricing-features"><li>On-premise</li><li>SSO</li></ul>
-                    <button class="pricing-btn outline" onclick="alert('Скоро!')">Связаться</button>
-                </div>
+        <h2 style="text-align:center; margin-bottom:20px; font-size:24px; font-weight:800;">Тарифы</h2>
+        <div class="pricing">
+            <div class="price-card">
+                <div class="name">Business</div>
+                <div class="price">$9.99</div>
+                <div class="period">/месяц</div>
+                <ul><li>Бренд-кит</li><li>50 слайдов</li></ul>
+                <a href="/" class="btn btn-green" style="width:100%; text-align:center; background:transparent; border:1px solid var(--green); color:var(--green);">Выбрать</a>
+            </div>
+            <div class="price-card featured">
+                <div class="name">Corporate</div>
+                <div class="price">$49.99</div>
+                <div class="period">/10 чел.</div>
+                <ul><li>White-label</li><li>CRM</li></ul>
+                <a href="/" class="btn btn-green" style="width:100%; text-align:center; background:#000; color:var(--green); font-weight:700;">Выбрать</a>
+            </div>
+            <div class="price-card">
+                <div class="name">Enterprise</div>
+                <div class="price">$199</div>
+                <div class="period">/50 чел.</div>
+                <ul><li>On-premise</li><li>SSO</li></ul>
+                <a href="/" class="btn btn-green" style="width:100%; text-align:center; background:transparent; border:1px solid var(--green); color:var(--green);">Связаться</a>
             </div>
         </div>
     </div>
 
     <footer class="footer">
-        <div class="footer-links"><a href="/">Главная</a><a href="teacher.html">Учителям</a><a href="privacy.html">Конфиденциальность</a></div>
-        <p>© 2026 Презентатор ИИ</p>
+        <a href="/">Главная</a> · <a href="teacher.html">Учителям</a> · <a href="privacy.html">Конфиденциальность</a>
+        <p style="color:#555; margin-top:6px;">© 2026 Презентатор ИИ</p>
     </footer>
-
-    <script>
-        var currencyData = {
-            'US':{symbol:'$',rate:1,name:'USD'},'GB':{symbol:'£',rate:0.8,name:'GBP'},
-            'DE':{symbol:'€',rate:0.9,name:'EUR'},'FR':{symbol:'€',rate:0.9,name:'EUR'},
-            'RU':{symbol:'₽',rate:50,name:'RUB'},'BY':{symbol:'Br',rate:3,name:'BYN'},
-            'KZ':{symbol:'₸',rate:500,name:'KZT'},'IN':{symbol:'₹',rate:50,name:'INR'},
-            'BR':{symbol:'R$',rate:5,name:'BRL'},'JP':{symbol:'¥',rate:150,name:'JPY'},
-        };
-        var userCurrency = {symbol:'$',rate:1,name:'USD'};
-        function formatPrice(p) {
-            var lp = Math.round(p * userCurrency.rate);
-            if (['RUB','KZT','INR','JPY'].indexOf(userCurrency.name)!==-1) return lp.toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ')+' '+userCurrency.symbol;
-            return userCurrency.symbol+lp;
-        }
-        function updatePrices() {
-            document.querySelectorAll('[data-price]').forEach(function(el){el.textContent=formatPrice(parseFloat(el.getAttribute('data-price')));});
-        }
-        fetch('https://ipapi.co/json/').then(r=>r.json()).then(d=>{
-            userCurrency = currencyData[d.country_code] || currencyData['US'];
-            updatePrices();
-        }).catch(function(){updatePrices();});
-        updatePrices();
-    </script>
 </body>
 </html>
