@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сравнение сервисов — Презентатор ИИ</title>
-    <meta name="description" content="Сравнение Презентатор ИИ с Gamma, Beautiful.ai, Canva. Почему мы лучше?">
+    <title>Сравнение сервисов для презентаций — Презентатор ИИ лучший по цене и качеству</title>
+    <meta name="description" content="Сравнение Презентатор ИИ с Gamma, Beautiful.ai, Canva. Цены, функции, русский язык. Почему мы лучший выбор в 2025 году.">
+    <meta name="keywords" content="сравнение сервисов презентаций, gamma vs beautiful.ai, canva альтернатива, презентатор ии">
+    <meta property="og:title" content="Сравнение сервисов — Презентатор ИИ">
+    <meta property="og:description" content="Узнайте, почему Презентатор ИИ лучше конкурентов в 3 раза дешевле.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://presentation-ai.com/compare">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,14 +17,15 @@
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --bg: #121212; --card: #1A1A1A; --hover: #282828; --text: #FFFFFF; --subtext: #B3B3B3; --green: #1DB954; }
+        :root { --bg: #121212; --card: #1A1A1A; --hover: #282828; --text: #FFFFFF; --subtext: #B3B3B3; --green: #1DB954; --green-hover: #1ED760; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
         .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
         
         .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(18,18,18,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
         .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 48px; max-width: 900px; margin: 0 auto; padding: 0 20px; }
         .nav-logo { font-weight: 700; font-size: 17px; color: var(--text); text-decoration: none; }
-        .btn-green { padding: 8px 18px; border-radius: 100px; font-weight: 700; font-size: 13px; text-decoration: none; display: inline-block; font-family: inherit; background: var(--green); color: #000; }
+        .btn-green { padding: 8px 18px; border-radius: 100px; font-weight: 700; font-size: 13px; text-decoration: none; display: inline-block; font-family: inherit; background: var(--green); color: #000; transition: all 0.2s; }
+        .btn-green:hover { background: var(--green-hover); transform: scale(1.02); }
 
         .hero { padding: 100px 0 30px; text-align: center; }
         .hero h1 { font-size: clamp(28px, 5vw, 40px); font-weight: 900; letter-spacing: -1px; margin-bottom: 8px; }
@@ -37,16 +43,29 @@
 
         .verdict { text-align: center; padding: 30px 0; }
         .verdict h2 { font-size: 24px; font-weight: 800; margin-bottom: 16px; }
-        .verdict-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-        .verdict-card { background: var(--card); border-radius: 16px; padding: 20px 14px; }
+        .verdict-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 30px; }
+        .verdict-card { background: var(--card); border-radius: 16px; padding: 20px 14px; transition: all 0.2s; }
+        .verdict-card:hover { background: var(--hover); transform: translateY(-3px); }
         .verdict-card .icon { font-size: 28px; margin-bottom: 6px; }
         .verdict-card h3 { font-size: 14px; font-weight: 700; }
         .verdict-card p { font-size: 11px; color: var(--subtext); margin-top: 4px; }
 
-        .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 16px 0; text-align: center; }
-        .footer a { color: var(--subtext); text-decoration: none; font-size: 12px; }
+        .cta { text-align: center; padding: 30px 0 40px; }
+        .cta h3 { font-size: 22px; font-weight: 800; margin-bottom: 16px; }
+        .cta-button { display: inline-block; padding: 14px 32px; background: var(--green); color: #000; text-decoration: none; font-weight: 700; border-radius: 100px; font-size: 16px; transition: all 0.2s; }
+        .cta-button:hover { background: var(--green-hover); transform: scale(1.03); }
 
-        @media (max-width: 768px) { .verdict-grid { grid-template-columns: 1fr; } }
+        .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 16px 0; text-align: center; }
+        .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 8px; }
+        .footer-links a { color: var(--subtext); text-decoration: none; font-size: 12px; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--text); }
+        .footer p { color: #555; font-size: 11px; }
+
+        @media (max-width: 768px) { 
+            .verdict-grid { grid-template-columns: 1fr; }
+            .nav-logo { font-size: 14px; }
+            .btn-green { padding: 6px 12px; font-size: 11px; }
+        }
     </style>
 </head>
 <body>
@@ -60,37 +79,76 @@
     <div class="container">
         <div class="hero">
             <h1>Сравнение сервисов</h1>
-            <p>Почему Презентатор ИИ — лучший выбор</p>
+            <p>Почему Презентатор ИИ — лучший выбор в 2025 году</p>
         </div>
 
         <div class="table-wrap">
             <table>
-                <thead><tr><th>Функция</th><th>Gamma</th><th>Beautiful.ai</th><th>Canva</th><th class="our">Мы</th></tr></thead>
+                <thead>
+                    <tr><th>Функция</th><th>Gamma</th><th>Beautiful.ai</th><th>Canva</th><th class="our">Презентатор ИИ</th></tr>
+                </thead>
                 <tbody>
                     <tr><td>Цена (мес)</td><td>$18</td><td>$12</td><td>$15</td><td class="our"><strong style="color:var(--green)">$4.99</strong></td></tr>
-                    <tr><td>Бесплатный</td><td>Ограничен</td><td>Нет AI</td><td>Есть</td><td class="our"><span class="check">✓</span> 5 презентаций</td></tr>
+                    <tr><td>Бесплатный тариф</td><td>Ограничен</td><td>Нет AI</td><td>Есть</td><td class="our"><span class="check">✓</span> 5 презентаций</td></tr>
                     <tr><td>AI-генерация</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td class="our"><span class="check">✓</span></td></tr>
                     <tr><td>Русский язык</td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td class="our"><span class="check">✓</span></td></tr>
                     <tr><td>Анти-шаблоны</td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td class="our"><span class="check">✓</span></td></tr>
                     <tr><td>Авто-цитаты ГОСТ</td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td class="our"><span class="check">✓</span></td></tr>
                     <tr><td>Оплата из РФ/СНГ</td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td class="our"><span class="check">✓</span></td></tr>
+                    <tr><td>Бренд-кит</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td class="our"><span class="check">✓</span></td></tr>
+                    <tr><td>Story Mode</td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td class="our"><span class="check">✓</span></td></tr>
                 </tbody>
             </table>
         </div>
 
         <div class="verdict">
-            <h2>Почему мы</h2>
+            <h2>Почему выбирают нас</h2>
             <div class="verdict-grid">
                 <div class="verdict-card"><div class="icon">💰</div><h3>В 3 раза дешевле</h3><p>Лучшая цена при большем функционале</p></div>
                 <div class="verdict-card"><div class="icon">🎨</div><h3>Уникальный дизайн</h3><p>Анти-шаблоны, Story Mode</p></div>
                 <div class="verdict-card"><div class="icon">🌍</div><h3>Локальные стандарты</h3><p>Автоопределение страны</p></div>
+                <div class="verdict-card"><div class="icon">📖</div><h3>ГОСТ и цитаты</h3><p>Автоматическое оформление</p></div>
+                <div class="verdict-card"><div class="icon">⚡</div><h3>1 минута</h3><p>Быстрее конкурентов</p></div>
+                <div class="verdict-card"><div class="icon">💎</div><h3>VIP навсегда</h3><p>Первые 50 мест</p></div>
             </div>
+        </div>
+
+        <div class="cta">
+            <h3>Готовы попробовать?</h3>
+            <a href="/" class="cta-button">🚀 Создать презентацию бесплатно</a>
         </div>
     </div>
 
     <footer class="footer">
-        <a href="/">Главная</a> · <a href="teacher.html">Учителям</a> · <a href="business.html">Бизнесу</a> · <a href="privacy.html">Конфиденциальность</a>
-        <p style="color:#555; margin-top:6px;">© 2026 Презентатор ИИ</p>
+        <div class="container">
+            <div class="footer-links">
+                <a href="/">Главная</a>
+                <a href="/teacher">Учителям</a>
+                <a href="/business">Бизнесу</a>
+                <a href="/compare">Сравнение</a>
+                <a href="/privacy">Конфиденциальность</a>
+                <a href="/terms">Условия</a>
+            </div>
+            <p>© 2026 Презентатор ИИ</p>
+        </div>
     </footer>
+
+    <script>
+        // ⚡ ЗДЕСЬ УКАЖИ СВОЙ URL ПОСЛЕ ДЕПЛОЯ ⚡
+        const APP_URL = 'https://your-app-url.onrender.com';
+        
+        // Перенаправление всех внутренних ссылок в приложение
+        document.querySelectorAll('.footer-links a, .nav-logo, .cta-button').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                let path = link.getAttribute('href');
+                if (path === '/') {
+                    window.location.href = APP_URL;
+                } else {
+                    window.location.href = APP_URL + path;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
