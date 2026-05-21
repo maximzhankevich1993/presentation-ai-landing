@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Презентатор ИИ — создай презентацию за 1 минуту</title>
     <meta name="description" content="Создавай профессиональные презентации с ИИ. Бесплатно 5 презентаций. Первые 50 — Premium навсегда.">
+    <meta property="og:title" content="Презентатор ИИ — создай презентацию за 1 минуту">
+    <meta property="og:description" content="ИИ напишет текст, подберёт картинки и оформит слайды. Попробуй бесплатно!">
+    <meta property="og:image" content="/og-image.png">
+    <meta property="og:url" content="https://presentation-ai.com">
+    <meta name="twitter:card" content="summary_large_image">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -109,10 +114,10 @@
 
     <nav class="navbar">
         <div class="nav-inner">
-            <a href="index.html" class="nav-logo">🎨 Презентатор ИИ</a>
+            <a href="/" class="nav-logo">🎨 Презентатор ИИ</a>
             <div class="nav-links">
                 <a href="#pricing" class="nav-link">Тарифы</a>
-                <a href="#" class="btn btn-outline">Войти</a>
+                <a href="#" class="btn btn-outline" onclick="goToApp()">Войти</a>
             </div>
         </div>
     </nav>
@@ -129,19 +134,19 @@
             </div>
 
             <div class="examples">
-                <button class="chip" onclick="document.getElementById('topicInput').value='Искусственный интеллект'">🤖 ИИ</button>
-                <button class="chip" onclick="document.getElementById('topicInput').value='Бизнес-план'">📈 Бизнес</button>
-                <button class="chip" onclick="document.getElementById('topicInput').value='Глобальное потепление'">🌍 Экология</button>
-                <button class="chip" onclick="document.getElementById('topicInput').value='Будущее космонавтики'">🚀 Космос</button>
+                <button class="chip" onclick="setTopic('Искусственный интеллект')">🤖 ИИ</button>
+                <button class="chip" onclick="setTopic('Бизнес-план')">📈 Бизнес</button>
+                <button class="chip" onclick="setTopic('Глобальное потепление')">🌍 Экология</button>
+                <button class="chip" onclick="setTopic('Будущее космонавтики')">🚀 Космос</button>
             </div>
         </div>
     </main>
 
     <div class="container">
         <div class="features">
-            <div class="feature-card"><div class="feature-icon">🎨</div><h3>30+ фишек</h3><p>Анти-шаблоны, Story Mode, бренд-кит</p></div>
-            <div class="feature-card"><div class="feature-icon">⚡</div><h3>1 минута</h3><p>Введите тему — получите презентацию</p></div>
-            <div class="feature-card"><div class="feature-icon">💎</div><h3>от $4.99/мес</h3><p>Самая низкая цена на рынке</p></div>
+            <div class="feature-card" onclick="goToApp()"><div class="feature-icon">🎨</div><h3>30+ фишек</h3><p>Анти-шаблоны, Story Mode, бренд-кит</p></div>
+            <div class="feature-card" onclick="goToApp()"><div class="feature-icon">⚡</div><h3>1 минута</h3><p>Введите тему — получите презентацию</p></div>
+            <div class="feature-card" onclick="goToApp()"><div class="feature-icon">💎</div><h3>от $4.99/мес</h3><p>Самая низкая цена на рынке</p></div>
         </div>
     </div>
 
@@ -150,30 +155,30 @@
             <h2 class="section-title">Тарифы</h2>
             <p class="section-sub">Листайте ← →</p>
             <div class="carousel">
-                <div class="pricing-card vip">
+                <div class="pricing-card vip" onclick="claimVip()">
                     <div class="pricing-badge" style="background:#FF3B30;">🔥 VIP</div>
                     <div class="pricing-name">Первые 50</div>
                     <div class="pricing-price">0₽</div>
                     <div class="pricing-period">навсегда</div>
                     <ul class="pricing-features"><li>Пожизненный Premium</li><li>Все 30+ фишек</li><li>Безлимит</li></ul>
-                    <a href="#" class="btn btn-outline" style="width:100%; background:#000; color:#FFD60A; font-weight:700;">🔥 Занять</a>
+                    <a href="#" class="btn" style="width:100%; background:#000; color:#FFD60A; font-weight:700;">🔥 Занять место</a>
                 </div>
-                <div class="pricing-card">
+                <div class="pricing-card" onclick="goToApp()">
                     <div class="pricing-name">Бесплатный</div>
                     <div class="pricing-price">$0</div>
                     <div class="pricing-period">навсегда</div>
                     <ul class="pricing-features"><li>5 презентаций</li><li>До 10 слайдов</li><li>Авто-картинки</li></ul>
                     <a href="#" class="btn btn-outline" style="width:100%">Начать</a>
                 </div>
-                <div class="pricing-card featured">
+                <div class="pricing-card featured" onclick="goToApp()">
                     <div class="pricing-badge" style="background:#000;">ПОПУЛЯРНЫЙ</div>
                     <div class="pricing-name">Pro</div>
                     <div class="pricing-price">$4.99</div>
                     <div class="pricing-period">/месяц</div>
                     <ul class="pricing-features"><li>Безлимит</li><li>50 слайдов</li><li>Все фишки</li></ul>
-                    <a href="#" class="btn btn-outline" style="width:100%">Выбрать</a>
+                    <a href="#" class="btn" style="width:100%; background:#000; color:var(--green);">Выбрать</a>
                 </div>
-                <div class="pricing-card">
+                <div class="pricing-card" onclick="goToApp()">
                     <div class="pricing-name">Год</div>
                     <div class="pricing-price">$49</div>
                     <div class="pricing-period">/год</div>
@@ -187,12 +192,12 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-links">
-                <a href="compare.html">Сравнение</a>
-                <a href="teacher.html">Учителям</a>
-                <a href="business.html">Бизнесу</a>
-                <a href="student.html">Студентам</a>
-                <a href="privacy.html">Конфиденциальность</a>
-                <a href="terms.html">Условия</a>
+                <a href="/compare">Сравнение</a>
+                <a href="/teacher">Учителям</a>
+                <a href="/business">Бизнесу</a>
+                <a href="/student">Студентам</a>
+                <a href="/privacy">Конфиденциальность</a>
+                <a href="/terms">Условия</a>
             </div>
             <p>© 2026 Презентатор ИИ</p>
         </div>
@@ -209,19 +214,76 @@
     </div>
 
     <script>
+        // ⚡ ЗДЕСЬ УКАЖИ СВОЙ URL ПОСЛЕ ДЕПЛОЯ ⚡
+        const APP_URL = 'https://your-app-url.onrender.com'; // ← ИЗМЕНИ НА СВОЙ!
+        
+        function goToApp() {
+            window.location.href = APP_URL;
+        }
+        
+        function setTopic(topic) {
+            document.getElementById('topicInput').value = topic;
+        }
+        
+        function claimVip() {
+            window.location.href = APP_URL + '/vip';
+        }
+        
         function generatePresentation() {
-            var t = document.getElementById('topicInput').value.trim();
-            if (!t) return;
-            var m = document.getElementById('loadingModal'), b = document.getElementById('progressBar'), x = document.getElementById('loadingText');
-            m.classList.add('show'); var p = 0, i = 0;
-            var msgs = ['Создаю презентацию...','Подбираю картинки...','Оформляю...','Готово!'];
-            var mt = setInterval(function() { i++; if (i < msgs.length) x.textContent = msgs[i]; }, 1200);
-            var pt = setInterval(function() { p += 5; if (p <= 100) b.style.width = p + '%'; }, 100);
-            setTimeout(function() { 
-                clearInterval(mt); clearInterval(pt); m.classList.remove('show'); 
-                window.location.href = 'http://localhost:3000?topic=' + encodeURIComponent(t); 
+            var topic = document.getElementById('topicInput').value.trim();
+            if (!topic) {
+                alert('Введите тему презентации');
+                return;
+            }
+            
+            var modal = document.getElementById('loadingModal');
+            var progressBar = document.getElementById('progressBar');
+            var loadingText = document.getElementById('loadingText');
+            
+            modal.classList.add('show');
+            
+            var progress = 0;
+            var msgIndex = 0;
+            var msgs = ['Создаю презентацию...', 'Подбираю картинки...', 'Оформляю слайды...', 'Готово!'];
+            
+            var progressInterval = setInterval(function() {
+                progress += 5;
+                if (progress <= 100) {
+                    progressBar.style.width = progress + '%';
+                }
+            }, 100);
+            
+            var textInterval = setInterval(function() {
+                msgIndex++;
+                if (msgIndex < msgs.length) {
+                    loadingText.textContent = msgs[msgIndex];
+                }
+            }, 1200);
+            
+            // После генерации переходим в приложение
+            setTimeout(function() {
+                clearInterval(progressInterval);
+                clearInterval(textInterval);
+                modal.classList.remove('show');
+                window.location.href = APP_URL + '/?topic=' + encodeURIComponent(topic);
             }, 4500);
         }
+        
+        // Добавляем обработчики для всех кнопок "Выбрать" и "Начать"
+        document.querySelectorAll('.pricing-card .btn, .feature-card').forEach(function(el) {
+            el.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                goToApp();
+            });
+        });
+        
+        // VIP карточка
+        document.querySelector('.pricing-card.vip').addEventListener('click', function(e) {
+            if (e.target.tagName !== 'A') {
+                claimVip();
+            }
+        });
     </script>
 </body>
 </html>
