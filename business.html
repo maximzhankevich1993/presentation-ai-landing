@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Бизнесу — Презентатор ИИ</title>
-    <meta name="description" content="Коммерческие предложения, отчёты, презентации для клиентов с интеграциями и комплаенсом.">
+    <title>Бизнесу — Презентатор ИИ: презентации для компаний</title>
+    <meta name="description" content="Коммерческие предложения, отчёты, презентации для клиентов с бренд-китом, CRM-интеграциями и комплаенсом. Попробуйте бесплатно.">
+    <meta name="keywords" content="презентации для бизнеса, коммерческие предложения, бренд-кит, CRM интеграция, презентации для компаний">
+    <meta property="og:title" content="Бизнесу — Презентатор ИИ">
+    <meta property="og:description" content="Создавайте презентации для клиентов за 1 минуту с бренд-китом и интеграциями.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,29 +15,33 @@
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --bg: #121212; --card: #1A1A1A; --hover: #282828; --text: #FFFFFF; --subtext: #B3B3B3; --green: #1DB954; }
+        :root { --bg: #121212; --card: #1A1A1A; --hover: #282828; --text: #FFFFFF; --subtext: #B3B3B3; --green: #1DB954; --green-hover: #1ED760; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
         .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
         
         .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(18,18,18,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
         .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 48px; max-width: 720px; margin: 0 auto; padding: 0 20px; }
-        .nav-logo { font-weight: 700; font-size: 17px; color: var(--text); cursor: pointer; }
-        .btn { padding: 8px 18px; border-radius: 100px; font-weight: 700; font-size: 13px; cursor: pointer; border: none; font-family: inherit; display: inline-block; }
+        .nav-logo { font-weight: 700; font-size: 17px; color: var(--text); text-decoration: none; cursor: pointer; }
+        .btn { padding: 8px 18px; border-radius: 100px; font-weight: 700; font-size: 13px; cursor: pointer; border: none; font-family: inherit; display: inline-block; text-decoration: none; transition: all 0.2s; }
         .btn-green { background: var(--green); color: #000; }
+        .btn-green:hover { background: var(--green-hover); transform: scale(1.02); }
         .btn-outline { background: transparent; border: 1px solid var(--green); color: var(--green); }
+        .btn-outline:hover { background: rgba(29,185,84,0.1); }
 
         .hero { padding: 100px 0 40px; }
         .hero h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 900; letter-spacing: -1px; margin-bottom: 8px; }
         .hero p { color: var(--subtext); font-size: 16px; margin-bottom: 30px; }
 
         .benefits { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 40px; }
-        .benefit-card { background: var(--card); border-radius: 16px; padding: 24px 18px; }
+        .benefit-card { background: var(--card); border-radius: 16px; padding: 24px 18px; transition: all 0.2s; cursor: pointer; }
+        .benefit-card:hover { background: var(--hover); transform: translateY(-3px); }
         .benefit-icon { font-size: 28px; margin-bottom: 8px; }
         .benefit-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
         .benefit-card p { font-size: 12px; color: var(--subtext); }
 
         .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 40px; }
-        .price-card { background: var(--card); border-radius: 16px; padding: 24px 16px; text-align: center; }
+        .price-card { background: var(--card); border-radius: 16px; padding: 24px 16px; text-align: center; transition: all 0.2s; cursor: pointer; }
+        .price-card:hover { transform: translateY(-3px); }
         .price-card.featured { background: var(--green); color: #000; }
         .price-card.featured .price, .price-card.featured .name { color: #000; }
         .name { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
@@ -47,17 +54,27 @@
         .price-card.featured ul li { color: #000; }
         .price-card.featured ul li::before { color: #000; }
 
-        .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 18px 0; text-align: center; }
-        .footer span { color: var(--subtext); font-size: 12px; cursor: pointer; }
+        .cta { text-align: center; padding: 30px 0 40px; margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); }
+        .cta h3 { font-size: 22px; font-weight: 800; margin-bottom: 16px; }
+        .cta-button { display: inline-block; padding: 14px 32px; background: var(--green); color: #000; text-decoration: none; font-weight: 700; border-radius: 100px; font-size: 16px; transition: all 0.2s; }
+        .cta-button:hover { background: var(--green-hover); transform: scale(1.03); }
 
-        @media (max-width: 768px) { .benefits, .pricing { grid-template-columns: 1fr; } }
+        .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 18px 0; text-align: center; }
+        .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 8px; }
+        .footer-links a, .footer-links span { color: var(--subtext); font-size: 12px; cursor: pointer; text-decoration: none; transition: color 0.2s; }
+        .footer-links a:hover, .footer-links span:hover { color: var(--text); }
+        .footer p { color: #555; font-size: 11px; margin-top: 8px; }
+
+        @media (max-width: 768px) { 
+            .benefits, .pricing { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-inner">
-            <span class="nav-logo" onclick="window.location.href='https://htmlpreview.github.io/?https://raw.githubusercontent.com/maximzhankevich1993/presentation-ai-landing/main/index.html'">🎨 Презентатор ИИ</span>
-            <span class="btn btn-green" onclick="window.location.href='https://htmlpreview.github.io/?https://raw.githubusercontent.com/maximzhankevich1993/presentation-ai-landing/main/index.html'">← На главную</span>
+            <span class="nav-logo" onclick="goToApp('/')">🎨 Презентатор ИИ</span>
+            <span class="btn btn-green" onclick="goToApp('/')">← На главную</span>
         </div>
     </nav>
 
@@ -68,43 +85,78 @@
         </div>
 
         <div class="benefits">
-            <div class="benefit-card"><div class="benefit-icon">🏷</div><h3>Бренд-кит из логотипа</h3><p>Загрузите логотип — получите цвета и шрифты.</p></div>
-            <div class="benefit-card"><div class="benefit-icon">🔗</div><h3>CRM-интеграции</h3><p>Salesforce, HubSpot, Битрикс24, 1С.</p></div>
-            <div class="benefit-card"><div class="benefit-icon">📄</div><h3>Авто-документы</h3><p>КП, счета-фактуры, отчёты, SOP.</p></div>
-            <div class="benefit-card"><div class="benefit-icon">🔒</div><h3>Комплаенс</h3><p>GDPR, 152-ФЗ, ISO под вашу страну.</p></div>
+            <div class="benefit-card" onclick="goToApp('/')"><div class="benefit-icon">🏷️</div><h3>Бренд-кит из логотипа</h3><p>Загрузите логотип — получите цвета и шрифты.</p></div>
+            <div class="benefit-card" onclick="goToApp('/')"><div class="benefit-icon">🔗</div><h3>CRM-интеграции</h3><p>Salesforce, HubSpot, Битрикс24, 1С.</p></div>
+            <div class="benefit-card" onclick="goToApp('/')"><div class="benefit-icon">📄</div><h3>Авто-документы</h3><p>КП, счета-фактуры, отчёты, SOP.</p></div>
+            <div class="benefit-card" onclick="goToApp('/')"><div class="benefit-icon">🔒</div><h3>Комплаенс</h3><p>GDPR, 152-ФЗ, ISO под вашу страну.</p></div>
         </div>
 
-        <h2 style="text-align:center; margin-bottom:20px; font-size:24px; font-weight:800;">Тарифы</h2>
+        <h2 style="text-align:center; margin-bottom:20px; font-size:24px; font-weight:800;">Тарифы для бизнеса</h2>
         <div class="pricing">
-            <div class="price-card">
+            <div class="price-card" onclick="goToApp('/pricing')">
                 <div class="name">Business</div>
                 <div class="price">$9.99</div>
                 <div class="period">/месяц</div>
-                <ul><li>Бренд-кит</li><li>50 слайдов</li></ul>
-                <span class="btn btn-outline" style="width:100%; text-align:center;" onclick="alert('Скоро будет доступно!')">Выбрать</span>
+                <ul><li>Бренд-кит</li><li>50 слайдов</li><li>Безлимит</li></ul>
+                <span class="btn btn-outline" style="width:100%; text-align:center;">Выбрать</span>
             </div>
-            <div class="price-card featured">
+            <div class="price-card featured" onclick="goToApp('/pricing')">
                 <div class="name">Corporate</div>
                 <div class="price">$49.99</div>
                 <div class="period">/10 чел.</div>
-                <ul><li>White-label</li><li>CRM</li></ul>
-                <span class="btn btn-green" style="width:100%; text-align:center; background:#000; color:var(--green);" onclick="alert('Скоро будет доступно!')">Выбрать</span>
+                <ul><li>White-label</li><li>CRM</li><li>Приоритетная поддержка</li></ul>
+                <span class="btn btn-green" style="width:100%; text-align:center; background:#000; color:var(--green);">Выбрать</span>
             </div>
-            <div class="price-card">
+            <div class="price-card" onclick="window.location.href='mailto:support@prezentator-ai.com'">
                 <div class="name">Enterprise</div>
                 <div class="price">$199</div>
                 <div class="period">/50 чел.</div>
-                <ul><li>On-premise</li><li>SSO</li></ul>
-                <span class="btn btn-outline" style="width:100%; text-align:center;" onclick="window.location.href='mailto:support@prezentator-ai.com'">Связаться</span>
+                <ul><li>On-premise</li><li>SSO</li><li>API доступ</li></ul>
+                <span class="btn btn-outline" style="width:100%; text-align:center;">Связаться</span>
             </div>
+        </div>
+
+        <div class="cta">
+            <h3>Попробуйте бесплатно прямо сейчас</h3>
+            <a href="#" class="cta-button" onclick="goToApp('/'); return false;">🚀 Создать презентацию</a>
         </div>
     </div>
 
     <footer class="footer">
-        <span onclick="window.location.href='https://htmlpreview.github.io/?https://raw.githubusercontent.com/maximzhankevich1993/presentation-ai-landing/main/index.html'">Главная</span> · 
-        <span onclick="window.location.href='https://htmlpreview.github.io/?https://raw.githubusercontent.com/maximzhankevich1993/presentation-ai-landing/main/teacher.html'">Учителям</span> · 
-        <span onclick="window.location.href='https://htmlpreview.github.io/?https://raw.githubusercontent.com/maximzhankevich1993/presentation-ai-landing/main/privacy.html'">Конфиденциальность</span>
-        <p style="color:#555; margin-top:6px;">© 2026 Презентатор ИИ</p>
+        <div class="container">
+            <div class="footer-links">
+                <span onclick="goToApp('/')">Главная</span>
+                <span onclick="goToApp('/teacher')">Учителям</span>
+                <span onclick="goToApp('/compare')">Сравнение</span>
+                <span onclick="goToApp('/privacy')">Конфиденциальность</span>
+                <span onclick="goToApp('/terms')">Условия</span>
+            </div>
+            <p>© 2026 Презентатор ИИ</p>
+        </div>
     </footer>
+
+    <script>
+        // ⚡ ЗДЕСЬ УКАЖИ СВОЙ URL ПОСЛЕ ДЕПЛОЯ ⚡
+        const APP_URL = 'https://your-app-url.onrender.com';
+        
+        function goToApp(path) {
+            window.location.href = APP_URL + path;
+        }
+        
+        // Обработчики для карточек тарифов
+        document.querySelectorAll('.price-card').forEach(function(card) {
+            card.addEventListener('click', function(e) {
+                if (e.target.tagName !== 'SPAN' && e.target.tagName !== 'A') {
+                    goToApp('/pricing');
+                }
+            });
+        });
+        
+        // Обработчик для Enterprise
+        document.querySelector('.price-card:last-child .btn-outline')?.addEventListener('click', function(e) {
+            e.stopPropagation();
+            window.location.href = 'mailto:support@prezentator-ai.com';
+        });
+    </script>
 </body>
 </html>
