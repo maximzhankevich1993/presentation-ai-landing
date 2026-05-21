@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Учителям — Презентатор ИИ</title>
-    <meta name="description" content="Планы уроков по ФГОС, Common Core, Cambridge. Экономия до 10 часов в неделю.">
+    <title>Учителям — планы уроков по ФГОС, Common Core, Cambridge | Презентатор ИИ</title>
+    <meta name="description" content="Планы уроков по стандартам вашей страны (ФГОС, Common Core, Cambridge, IB). Экономия до 10 часов в неделю. Бесплатно 5 планов.">
+    <meta name="keywords" content="план урока, ФГОС, Common Core, Cambridge, конструктор уроков, учителям, генератор планов уроков">
+    <meta property="og:title" content="Учителям — Презентатор ИИ">
+    <meta property="og:description" content="Планы уроков по ФГОС, Common Core, Cambridge. Экономия до 10 часов в неделю.">
+    <meta property="og:type" content="website">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,29 +16,36 @@
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --bg: #121212; --card: #1A1A1A; --hover: #282828; --text: #FFFFFF; --subtext: #B3B3B3; --green: #1DB954; }
+        :root { --bg: #121212; --card: #1A1A1A; --hover: #282828; --text: #FFFFFF; --subtext: #B3B3B3; --green: #1DB954; --green-hover: #1ED760; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
         .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
         
         .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(18,18,18,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
         .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 48px; max-width: 720px; margin: 0 auto; padding: 0 20px; }
-        .nav-logo { font-weight: 700; font-size: 17px; color: var(--text); cursor: pointer; }
-        .btn { padding: 8px 18px; border-radius: 100px; font-weight: 700; font-size: 13px; cursor: pointer; border: none; font-family: inherit; display: inline-block; }
+        .nav-logo { font-weight: 700; font-size: 17px; color: var(--text); text-decoration: none; cursor: pointer; }
+        .btn { padding: 8px 18px; border-radius: 100px; font-weight: 700; font-size: 13px; cursor: pointer; border: none; font-family: inherit; display: inline-block; text-decoration: none; transition: all 0.2s; }
         .btn-green { background: var(--green); color: #000; }
+        .btn-green:hover { background: var(--green-hover); transform: scale(1.02); }
         .btn-outline { background: transparent; border: 1px solid var(--green); color: var(--green); }
+        .btn-outline:hover { background: rgba(29,185,84,0.1); }
 
-        .hero { padding: 100px 0 40px; }
+        .hero { padding: 100px 0 40px; text-align: center; }
         .hero h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 900; letter-spacing: -1px; margin-bottom: 8px; }
         .hero p { color: var(--subtext); font-size: 16px; margin-bottom: 30px; }
 
         .benefits { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 40px; }
-        .benefit-card { background: var(--card); border-radius: 16px; padding: 24px 18px; }
+        .benefit-card { background: var(--card); border-radius: 16px; padding: 24px 18px; transition: all 0.2s; cursor: pointer; }
+        .benefit-card:hover { background: var(--hover); transform: translateY(-3px); }
         .benefit-icon { font-size: 28px; margin-bottom: 8px; }
         .benefit-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
         .benefit-card p { font-size: 12px; color: var(--subtext); }
 
+        .standards { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 40px; }
+        .standard-badge { background: var(--card); padding: 8px 16px; border-radius: 100px; font-size: 12px; font-weight: 500; color: var(--subtext); }
+
         .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 40px; }
-        .price-card { background: var(--card); border-radius: 16px; padding: 24px 16px; text-align: center; }
+        .price-card { background: var(--card); border-radius: 16px; padding: 24px 16px; text-align: center; transition: all 0.2s; cursor: pointer; }
+        .price-card:hover { transform: translateY(-3px); }
         .price-card.featured { background: var(--green); color: #000; }
         .price-card.featured .price, .price-card.featured .name { color: #000; }
         .name { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
@@ -47,17 +58,27 @@
         .price-card.featured ul li { color: #000; }
         .price-card.featured ul li::before { color: #000; }
 
-        .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 18px 0; text-align: center; }
-        .footer span { color: var(--subtext); font-size: 12px; cursor: pointer; }
+        .cta { text-align: center; padding: 30px 0; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 20px; }
+        .cta h2 { font-size: 24px; font-weight: 800; margin-bottom: 16px; }
+        .cta-button { display: inline-block; padding: 14px 32px; background: var(--green); color: #000; text-decoration: none; font-weight: 700; border-radius: 100px; font-size: 16px; transition: all 0.2s; }
+        .cta-button:hover { background: var(--green-hover); transform: scale(1.03); }
 
-        @media (max-width: 768px) { .benefits, .pricing { grid-template-columns: 1fr; } }
+        .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 18px 0; text-align: center; }
+        .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 8px; }
+        .footer-links a, .footer-links span { color: var(--subtext); font-size: 12px; cursor: pointer; text-decoration: none; transition: color 0.2s; }
+        .footer-links a:hover, .footer-links span:hover { color: var(--text); }
+        .footer p { color: #555; font-size: 11px; margin-top: 8px; }
+
+        @media (max-width: 768px) { 
+            .benefits, .pricing { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-inner">
-            <span class="nav-logo" onclick="window.location.href='https://htmlpreview.github.io/?https://raw.githubusercontent.com/maximzhankevich1993/presentation-ai-landing/main/index.html'">🎨 Презентатор ИИ</span>
-            <span class="btn btn-green" onclick="window.location.href='https://htmlpreview.github.io/?https://raw.githubusercontent.com/maximzhankevich1993/presentation-ai-landing/main/index.html'">← На главную</span>
+            <span class="nav-logo" onclick="goToApp('/')">🎨 Презентатор ИИ</span>
+            <span class="btn btn-green" onclick="goToApp('/')">← На главную</span>
         </div>
     </nav>
 
@@ -65,46 +86,92 @@
         <div class="hero">
             <h1>🏫 Учителям</h1>
             <p>Планы уроков по стандартам вашей страны. Экономия до 10 часов в неделю.</p>
+            <div class="price-badge" style="margin-top: 16px;">
+                <span style="background: var(--green); color: #000; padding: 8px 24px; border-radius: 100px; font-weight: 700; font-size: 14px;">🎁 Бесплатно 5 планов уроков</span>
+            </div>
         </div>
 
         <div class="benefits">
-            <div class="benefit-card"><div class="benefit-icon">📋</div><h3>Авто-план урока</h3><p>Введите тему — получите готовый план со структурой и целями.</p></div>
-            <div class="benefit-card"><div class="benefit-icon">📝</div><h3>Генератор тестов</h3><p>Из презентации создаётся тест с вариантами ответов.</p></div>
-            <div class="benefit-card"><div class="benefit-icon">🌍</div><h3>10+ стандартов</h3><p>ФГОС, Common Core, Cambridge, IB и другие.</p></div>
-            <div class="benefit-card"><div class="benefit-icon">🔗</div><h3>Интеграции</h3><p>Google Classroom, МЭШ, Moodle и другие.</p></div>
+            <div class="benefit-card" onclick="goToApp('/lesson-planner')"><div class="benefit-icon">📋</div><h3>Авто-план урока</h3><p>Введите тему — получите готовый план со структурой и целями.</p></div>
+            <div class="benefit-card" onclick="goToApp('/quiz')"><div class="benefit-icon">📝</div><h3>Генератор тестов</h3><p>Из презентации создаётся тест с вариантами ответов.</p></div>
+            <div class="benefit-card" onclick="goToApp('/lesson-planner')"><div class="benefit-icon">🌍</div><h3>10+ стандартов</h3><p>ФГОС, Common Core, Cambridge, IB и другие.</p></div>
+            <div class="benefit-card" onclick="goToApp('/')"><div class="benefit-icon">🔗</div><h3>Интеграции</h3><p>Google Classroom, МЭШ, Moodle и другие.</p></div>
         </div>
 
-        <h2 style="text-align:center; margin-bottom:20px; font-size:24px; font-weight:800;">Тарифы</h2>
+        <div class="standards">
+            <span class="standard-badge">🇷🇺 ФГОС</span>
+            <span class="standard-badge">🇺🇸 Common Core</span>
+            <span class="standard-badge">🇬🇧 Cambridge</span>
+            <span class="standard-badge">🌍 IB</span>
+            <span class="standard-badge">🇬🇧 National Curriculum</span>
+            <span class="standard-badge">🇦🇺 Australian</span>
+            <span class="standard-badge">🇮🇳 CBSE</span>
+            <span class="standard-badge">🇪🇺 European Framework</span>
+        </div>
+
+        <h2 style="text-align:center; margin-bottom:20px; font-size:24px; font-weight:800;">Тарифы для учителей</h2>
         <div class="pricing">
-            <div class="price-card">
+            <div class="price-card" onclick="goToApp('/pricing')">
                 <div class="name">Бесплатный</div>
                 <div class="price">$0</div>
                 <div class="period">навсегда</div>
-                <ul><li>5 планов/мес</li><li>3 теста/мес</li></ul>
-                <span class="btn btn-outline" style="width:100%; text-align:center;" onclick="alert('Скоро будет доступно!')">Начать</span>
+                <ul><li>5 планов уроков</li><li>3 теста</li><li>5 презентаций</li></ul>
+                <span class="btn btn-outline" style="width:100%; text-align:center;">Начать</span>
             </div>
-            <div class="price-card featured">
+            <div class="price-card featured" onclick="goToApp('/pricing')">
                 <div class="name">Teacher Pro</div>
                 <div class="price">$4.99</div>
                 <div class="period">/месяц</div>
-                <ul><li>Безлимит планов</li><li>Все стандарты</li></ul>
-                <span class="btn btn-green" style="width:100%; text-align:center; background:#000; color:var(--green);" onclick="alert('Скоро будет доступно!')">Выбрать</span>
+                <ul><li>Безлимит планов</li><li>Все стандарты</li><li>Приоритетная поддержка</li></ul>
+                <span class="btn btn-green" style="width:100%; text-align:center; background:#000; color:var(--green);">Выбрать</span>
             </div>
-            <div class="price-card">
+            <div class="price-card" onclick="goToApp('/pricing')">
                 <div class="name">Школьный</div>
                 <div class="price">$29.99</div>
                 <div class="period">/10 учителей</div>
-                <ul><li>Всё из Pro</li><li>Админ-панель</li></ul>
-                <span class="btn btn-outline" style="width:100%; text-align:center;" onclick="alert('Скоро будет доступно!')">Выбрать</span>
+                <ul><li>Всё из Pro</li><li>Админ-панель</li><li>Общая статистика</li></ul>
+                <span class="btn btn-outline" style="width:100%; text-align:center;">Выбрать</span>
             </div>
+        </div>
+
+        <div class="cta">
+            <h2>Начните экономить время уже сегодня</h2>
+            <a href="#" class="cta-button" onclick="goToApp('/'); return false;">🚀 Создать план урока</a>
         </div>
     </div>
 
     <footer class="footer">
-        <span onclick="window.location.href='https://htmlpreview.github.io/?https://raw.githubusercontent.com/maximzhankevich1993/presentation-ai-landing/main/index.html'">Главная</span> · 
-        <span onclick="window.location.href='https://htmlpreview.github.io/?https://raw.githubusercontent.com/maximzhankevich1993/presentation-ai-landing/main/business.html'">Бизнесу</span> · 
-        <span onclick="window.location.href='https://htmlpreview.github.io/?https://raw.githubusercontent.com/maximzhankevich1993/presentation-ai-landing/main/privacy.html'">Конфиденциальность</span>
-        <p style="color:#555; margin-top:6px;">© 2026 Презентатор ИИ</p>
+        <div class="container">
+            <div class="footer-links">
+                <span onclick="goToApp('/')">Главная</span>
+                <span onclick="goToApp('/business')">Бизнесу</span>
+                <span onclick="goToApp('/student')">Студентам</span>
+                <span onclick="goToApp('/compare')">Сравнение</span>
+                <span onclick="goToApp('/pitch-deck')">Питч-дек</span>
+                <span onclick="goToApp('/privacy')">Конфиденциальность</span>
+                <span onclick="goToApp('/terms')">Условия</span>
+                <span onclick="goToApp('/cookie')">Cookie</span>
+            </div>
+            <p>© 2026 Презентатор ИИ</p>
+        </div>
     </footer>
+
+    <script>
+        // ⚡ ЗДЕСЬ УКАЖИ СВОЙ URL ПОСЛЕ ДЕПЛОЯ ⚡
+        const APP_URL = 'https://your-app-url.onrender.com';
+        
+        function goToApp(path) {
+            window.location.href = APP_URL + path;
+        }
+        
+        // Обработчики для карточек тарифов
+        document.querySelectorAll('.price-card, .benefit-card').forEach(function(card) {
+            card.addEventListener('click', function(e) {
+                if (e.target.tagName !== 'SPAN' && e.target.tagName !== 'A') {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
