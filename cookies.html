@@ -3,39 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cookie — Презентатор ИИ</title>
+    <title>Политика Cookie — Презентатор ИИ</title>
+    <meta name="description" content="Политика использования cookie-файлов в сервисе Презентатор ИИ. Мы используем только необходимые cookie для работы сервиса.">
+    <meta name="robots" content="noindex, follow">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --bg: #121212; --card: #1A1A1A; --text: #FFFFFF; --subtext: #B3B3B3; --green: #1DB954; }
+        :root { --bg: #121212; --card: #1A1A1A; --hover: #282828; --text: #FFFFFF; --subtext: #B3B3B3; --green: #1DB954; --green-hover: #1ED760; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; line-height: 1.6; }
         .container { max-width: 700px; margin: 0 auto; padding: 80px 20px 40px; }
         h1 { font-size: 28px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 8px; }
         h2 { font-size: 18px; font-weight: 700; margin: 24px 0 8px; color: var(--green); }
         p, li { font-size: 14px; color: var(--subtext); margin-bottom: 8px; }
+        .cookie-list { background: var(--card); border-radius: 16px; padding: 16px 20px; margin: 16px 0; }
+        .cookie-list p { margin-bottom: 4px; }
+        .badge { display: inline-block; background: rgba(29,185,84,0.15); color: var(--green); font-size: 11px; padding: 2px 8px; border-radius: 20px; margin-left: 8px; }
         .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 16px 0; text-align: center; margin-top: 40px; }
-        .footer a { color: var(--subtext); font-size: 12px; }
+        .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 8px; }
+        .footer-links a, .footer-links span { color: var(--subtext); font-size: 12px; text-decoration: none; cursor: pointer; transition: color 0.2s; }
+        .footer-links a:hover, .footer-links span:hover { color: var(--text); }
+        .footer p { color: #555; font-size: 11px; margin-top: 8px; }
+        .btn { display: inline-block; padding: 8px 20px; background: var(--green); color: #000; text-decoration: none; border-radius: 100px; font-weight: 600; font-size: 13px; transition: all 0.2s; }
+        .btn:hover { background: var(--green-hover); transform: scale(1.02); }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Политика Cookie</h1>
-        <p style="color:var(--subtext); font-size:12px;">Последнее обновление: 2026</p>
-        <h2>Необходимые cookie</h2>
-        <p>session_token — токен сессии (удаляется при выходе).</p>
-        <p>theme_preference — тема оформления.</p>
-        <p>language — выбранный язык.</p>
-        <h2>Мы НЕ используем</h2>
-        <p>❌ Отслеживающие cookie</p>
-        <p>❌ Рекламные cookie</p>
-        <p>❌ Cookie третьих лиц</p>
-
+        <h1>🍪 Политика Cookie</h1>
+        <p style="color:var(--subtext); font-size:12px;">Последнее обновление: 21 мая 2026 года</p>
+        
+        <p>Презентатор ИИ использует cookie-файлы для обеспечения работы сервиса. Мы ценим вашу конфиденциальность и используем только необходимые cookie.</p>
+        
+        <h2>✅ Необходимые cookie</h2>
+        <div class="cookie-list">
+            <p><strong>session_token</strong> <span class="badge">обязательный</span></p>
+            <p>— Токен сессии для авторизации. Удаляется при выходе из аккаунта.</p>
+        </div>
+        <div class="cookie-list">
+            <p><strong>theme_preference</strong> <span class="badge">обязательный</span></p>
+            <p>— Сохраняет выбранную тему оформления (светлая/тёмная).</p>
+        </div>
+        <div class="cookie-list">
+            <p><strong>language</strong> <span class="badge">обязательный</span></p>
+            <p>— Запоминает выбранный язык интерфейса.</p>
+        </div>
+        
+        <h2>❌ Мы НЕ используем</h2>
+        <div class="cookie-list">
+            <p>❌ Отслеживающие cookie (Google Analytics, и т.д.)</p>
+            <p>❌ Рекламные cookie</p>
+            <p>❌ Cookie третьих лиц</p>
+            <p>❌ Пиксели отслеживания</p>
+        </div>
+        
+        <h2>🔒 Ваша конфиденциальность</h2>
+        <p>Все данные хранятся на защищённых серверах в соответствии с GDPR и 152-ФЗ. Вы можете удалить cookie через настройки браузера в любой момент.</p>
+        
+        <div style="text-align: center; margin: 40px 0 20px;">
+            <a href="#" class="btn" onclick="goToApp('/'); return false;">← Вернуться на главную</a>
+        </div>
+        
         <div class="footer">
-            <a href="/">← На главную</a>
-            <p style="color:#555; margin-top:6px;">© 2026 Презентатор ИИ</p>
+            <div class="footer-links">
+                <span onclick="goToApp('/')">Главная</span>
+                <span onclick="goToApp('/teacher')">Учителям</span>
+                <span onclick="goToApp('/business')">Бизнесу</span>
+                <span onclick="goToApp('/compare')">Сравнение</span>
+                <span onclick="goToApp('/privacy')">Конфиденциальность</span>
+                <span onclick="goToApp('/terms')">Условия</span>
+            </div>
+            <p>© 2026 Презентатор ИИ</p>
         </div>
     </div>
+    
+    <script>
+        // ⚡ ЗДЕСЬ УКАЖИ СВОЙ URL ПОСЛЕ ДЕПЛОЯ ⚡
+        const APP_URL = 'https://your-app-url.onrender.com';
+        
+        function goToApp(path) {
+            window.location.href = APP_URL + path;
+        }
+    </script>
 </body>
 </html>
