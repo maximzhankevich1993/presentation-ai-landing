@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Студентам — Презентатор ИИ</title>
-    <meta name="description" content="Презентация к диплому с ГОСТом и авто-цитатами за 1 минуту. Бесплатно.">
+    <title>Студентам — презентация к диплому с ГОСТом и ИИ | Презентатор ИИ</title>
+    <meta name="description" content="Создайте презентацию к диплому с оформлением по ГОСТ и авто-цитатами за 1 минуту. Бесплатно 5 презентаций для студентов.">
+    <meta name="keywords" content="презентация к диплому, ГОСТ презентация, защита диплома, презентация для студента, ИИ для студентов">
+    <meta property="og:title" content="Студентам — Презентатор ИИ">
+    <meta property="og:description" content="Презентация к диплому с ГОСТом и авто-цитатами за 1 минуту. Бесплатно 5 презентаций.">
+    <meta property="og:type" content="website">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,31 +16,41 @@
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --bg: #121212; --card: #1A1A1A; --hover: #282828; --text: #FFFFFF; --subtext: #B3B3B3; --green: #1DB954; }
+        :root { --bg: #121212; --card: #1A1A1A; --hover: #282828; --text: #FFFFFF; --subtext: #B3B3B3; --green: #1DB954; --green-hover: #1ED760; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
         .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
         
         .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(18,18,18,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
         .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 48px; max-width: 720px; margin: 0 auto; padding: 0 20px; }
-        .nav-logo { font-weight: 700; font-size: 17px; color: var(--text); cursor: pointer; }
-        .btn { padding: 8px 18px; border-radius: 100px; font-weight: 700; font-size: 13px; cursor: pointer; border: none; font-family: inherit; display: inline-block; }
+        .nav-logo { font-weight: 700; font-size: 17px; color: var(--text); text-decoration: none; cursor: pointer; }
+        .btn { padding: 8px 18px; border-radius: 100px; font-weight: 700; font-size: 13px; cursor: pointer; border: none; font-family: inherit; display: inline-block; text-decoration: none; transition: all 0.2s; }
         .btn-green { background: var(--green); color: #000; }
+        .btn-green:hover { background: var(--green-hover); transform: scale(1.02); }
 
-        .hero { padding: 100px 0 40px; }
+        .hero { padding: 100px 0 40px; text-align: center; }
         .hero h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 900; letter-spacing: -1px; margin-bottom: 8px; }
         .hero p { color: var(--subtext); font-size: 16px; margin-bottom: 24px; }
 
         .features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 40px; }
-        .feature-card { background: var(--card); border-radius: 16px; padding: 24px 18px; }
+        .feature-card { background: var(--card); border-radius: 16px; padding: 24px 18px; transition: all 0.2s; cursor: pointer; }
+        .feature-card:hover { background: var(--hover); transform: translateY(-3px); }
         .feature-icon { font-size: 28px; margin-bottom: 8px; }
         .feature-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
         .feature-card p { font-size: 12px; color: var(--subtext); }
 
-        .cta { text-align: center; padding: 40px 0; }
+        .price-badge { text-align: center; margin-bottom: 30px; }
+        .price-badge span { background: var(--green); color: #000; padding: 8px 24px; border-radius: 100px; font-weight: 700; font-size: 14px; }
+
+        .cta { text-align: center; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 20px; }
         .cta h2 { font-size: 24px; font-weight: 800; margin-bottom: 16px; }
+        .cta-button { display: inline-block; padding: 14px 32px; background: var(--green); color: #000; text-decoration: none; font-weight: 700; border-radius: 100px; font-size: 16px; transition: all 0.2s; }
+        .cta-button:hover { background: var(--green-hover); transform: scale(1.03); }
 
         .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 18px 0; text-align: center; }
-        .footer span { color: var(--subtext); font-size: 12px; cursor: pointer; }
+        .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 8px; }
+        .footer-links a, .footer-links span { color: var(--subtext); font-size: 12px; cursor: pointer; text-decoration: none; transition: color 0.2s; }
+        .footer-links a:hover, .footer-links span:hover { color: var(--text); }
+        .footer p { color: #555; font-size: 11px; margin-top: 8px; }
 
         @media (max-width: 768px) { .features { grid-template-columns: 1fr; } }
     </style>
@@ -44,35 +58,66 @@
 <body>
     <nav class="navbar">
         <div class="nav-inner">
-            <span class="nav-logo" onclick="window.location.href='https://htmlpreview.github.io/?https://raw.githubusercontent.com/maximzhankevich1993/presentation-ai-landing/main/index.html'">🎨 Презентатор ИИ</span>
-            <span class="btn btn-green" onclick="window.location.href='https://htmlpreview.github.io/?https://raw.githubusercontent.com/maximzhankevich1993/presentation-ai-landing/main/index.html'">← На главную</span>
+            <span class="nav-logo" onclick="goToApp('/')">🎨 Презентатор ИИ</span>
+            <span class="btn btn-green" onclick="goToApp('/')">← На главную</span>
         </div>
     </nav>
 
     <div class="container">
         <div class="hero">
             <h1>🎓 Студентам</h1>
-            <p>Презентация к диплому с ГОСТом и авто-цитатами за 1 минуту. Бесплатно 5 презентаций.</p>
+            <p>Презентация к диплому с оформлением по ГОСТ и авто-цитатами за 1 минуту</p>
+            <div class="price-badge">
+                <span>🎁 Бесплатно 5 презентаций</span>
+            </div>
         </div>
 
-        <div class="features">
-            <div class="feature-card"><div class="feature-icon">📚</div><h3>Авто-ГОСТ</h3><p>Цитаты и источники оформляются по ГОСТ Р 7.0.5 автоматически.</p></div>
-            <div class="feature-card"><div class="feature-icon">📝</div><h3>Структура диплома</h3><p>Титульный лист → актуальность → основная часть → выводы.</p></div>
-            <div class="feature-card"><div class="feature-icon">⏱</div><h3>Экономия времени</h3><p>Вместо 3-4 часов — 1 минута на создание презентации.</p></div>
-            <div class="feature-card"><div class="feature-icon">🎤</div><h3>Речь для защиты</h3><p>AI сгенерирует текст выступления по слайдам.</p></div>
+        <div class="features" onclick="goToApp('/')">
+            <div class="feature-card"><div class="feature-icon">📚</div><h3>Авто-ГОСТ</h3><p>Цитаты и источники оформляются по ГОСТ Р 7.0.5-2008 автоматически.</p></div>
+            <div class="feature-card"><div class="feature-icon">📝</div><h3>Структура диплома</h3><p>Титульный лист → актуальность → обзор литературы → методология → результаты → выводы.</p></div>
+            <div class="feature-card"><div class="feature-icon">⏱️</div><h3>Экономия времени</h3><p>Вместо 3-4 часов работы — 1 минута на создание готовой презентации.</p></div>
+            <div class="feature-card"><div class="feature-icon">🎤</div><h3>Речь для защиты</h3><p>ИИ сгенерирует текст выступления по слайдам для успешной защиты.</p></div>
+            <div class="feature-card"><div class="feature-icon">📖</div><h3>Библиография</h3><p>Автоматическое создание списка литературы в нужном формате.</p></div>
+            <div class="feature-card"><div class="feature-icon">📊</div><h3>Графики и диаграммы</h3><p>Автоматическая визуализация данных для диплома.</p></div>
         </div>
 
         <div class="cta">
             <h2>Создайте презентацию к диплому</h2>
-            <span class="btn btn-green" style="padding:12px 28px; font-size:14px;" onclick="window.location.href='https://htmlpreview.github.io/?https://raw.githubusercontent.com/maximzhankevich1993/presentation-ai-landing/main/index.html'">✨ Создать бесплатно</span>
+            <a href="#" class="cta-button" onclick="goToApp('/'); return false;">✨ Создать бесплатно</a>
         </div>
     </div>
 
     <footer class="footer">
-        <span onclick="window.location.href='https://htmlpreview.github.io/?https://raw.githubusercontent.com/maximzhankevich1993/presentation-ai-landing/main/index.html'">Главная</span> · 
-        <span onclick="window.location.href='https://htmlpreview.github.io/?https://raw.githubusercontent.com/maximzhankevich1993/presentation-ai-landing/main/teacher.html'">Учителям</span> · 
-        <span onclick="window.location.href='https://htmlpreview.github.io/?https://raw.githubusercontent.com/maximzhankevich1993/presentation-ai-landing/main/business.html'">Бизнесу</span>
-        <p style="color:#555; margin-top:6px;">© 2026 Презентатор ИИ</p>
+        <div class="container">
+            <div class="footer-links">
+                <span onclick="goToApp('/')">Главная</span>
+                <span onclick="goToApp('/teacher')">Учителям</span>
+                <span onclick="goToApp('/business')">Бизнесу</span>
+                <span onclick="goToApp('/compare')">Сравнение</span>
+                <span onclick="goToApp('/pitch-deck')">Питч-дек</span>
+                <span onclick="goToApp('/privacy')">Конфиденциальность</span>
+                <span onclick="goToApp('/terms')">Условия</span>
+            </div>
+            <p>© 2026 Презентатор ИИ</p>
+        </div>
     </footer>
+
+    <script>
+        // ⚡ ЗДЕСЬ УКАЖИ СВОЙ URL ПОСЛЕ ДЕПЛОЯ ⚡
+        const APP_URL = 'https://your-app-url.onrender.com';
+        
+        function goToApp(path) {
+            window.location.href = APP_URL + path;
+        }
+        
+        // Обработчики для всех кликабельных элементов
+        document.querySelectorAll('.feature-card, .nav-logo, .btn-green, .cta-button').forEach(function(el) {
+            el.addEventListener('click', function(e) {
+                if (e.target.tagName !== 'A' && e.target.tagName !== 'SPAN') {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
