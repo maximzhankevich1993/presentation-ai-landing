@@ -154,24 +154,24 @@
                     <button class="carousel-btn prev" id="prevBtn">←</button>
                     <div class="carousel" id="pricingCarousel">
                         <div class="price-card" data-href="/pricing">
-                            <div class="name">Бесплатный</div>
-                            <div class="price" id="freePrice">0</div>
-                            <div class="period">навсегда</div>
-                            <ul><li>5 планов уроков</li><li>3 теста</li><li>5 презентаций</li></ul>
-                            <span class="btn btn-outline" style="width:100%;">Начать</span>
+                            <div class="name">Учитель</div>
+                            <div class="price" id="teacherPrice">199 ₽</div>
+                            <div class="period">/месяц</div>
+                            <ul><li>Безлимит планов уроков</li><li>Все стандарты</li><li>Генератор тестов</li></ul>
+                            <span class="btn btn-outline" style="width:100%;">Выбрать</span>
                         </div>
                         <div class="price-card featured" data-href="/pricing">
-                            <div class="name">Teacher Pro</div>
-                            <div class="price" id="proPrice">4.99</div>
+                            <div class="name">Школа</div>
+                            <div class="price" id="schoolPrice">499 ₽</div>
                             <div class="period">/месяц</div>
-                            <ul><li>Безлимит планов</li><li>Все стандарты</li><li>Приоритетная поддержка</li></ul>
+                            <ul><li>Всё из тарифа "Учитель"</li><li>10 учителей</li><li>Админ-панель</li></ul>
                             <span class="btn btn-outline" style="width:100%; background:#000; color:var(--green); border:none;">Выбрать</span>
                         </div>
                         <div class="price-card" data-href="/pricing">
-                            <div class="name">Школьный</div>
-                            <div class="price" id="schoolPrice">29.99</div>
-                            <div class="period">/10 учителей</div>
-                            <ul><li>Всё из Pro</li><li>Админ-панель</li><li>Общая статистика</li></ul>
+                            <div class="name">Университет</div>
+                            <div class="price" id="universityPrice">999 ₽</div>
+                            <div class="period">/месяц</div>
+                            <ul><li>Всё из тарифа "Школа"</li><li>50+ учителей</li><li>Приоритетная поддержка</li></ul>
                             <span class="btn btn-outline" style="width:100%;">Выбрать</span>
                         </div>
                     </div>
@@ -233,60 +233,11 @@
             });
         });
         
-        // Автоопределение валюты
-        async function detectCurrencyAndUpdatePrices() {
-            try {
-                const response = await fetch('https://ipapi.co/json/');
-                const data = await response.json();
-                const country = data.country_code;
-                
-                const currencyMap = {
-                    'RU': { symbol: '₽', rate: 95 },
-                    'BY': { symbol: 'Br', rate: 3.25 },
-                    'KZ': { symbol: '₸', rate: 460 },
-                    'UA': { symbol: '₴', rate: 41 },
-                    'GB': { symbol: '£', rate: 0.79 },
-                    'DE': { symbol: '€', rate: 0.92 },
-                    'FR': { symbol: '€', rate: 0.92 },
-                    'IT': { symbol: '€', rate: 0.92 },
-                    'ES': { symbol: '€', rate: 0.92 }
-                };
-                
-                let currencySymbol = '₽';
-                let rate = 1;
-                
-                if (currencyMap[country]) {
-                    currencySymbol = currencyMap[country].symbol;
-                    rate = currencyMap[country].rate;
-                } else {
-                    currencySymbol = '$';
-                    rate = 1;
-                }
-                
-                const convert = (usd) => {
-                    if (usd === 0) return '0 ' + currencySymbol;
-                    const value = usd * rate;
-                    if (country === 'RU') return Math.round(value) + ' ' + currencySymbol;
-                    if (currencySymbol === '€' || currencySymbol === '£') return currencySymbol + value.toFixed(2);
-                    if (currencySymbol === 'Br') return Math.round(value) + ' ' + currencySymbol;
-                    return currencySymbol + value.toFixed(2);
-                };
-                
-                document.getElementById('freePrice').innerHTML = convert(0);
-                document.getElementById('proPrice').innerHTML = convert(4.99);
-                document.getElementById('schoolPrice').innerHTML = convert(29.99);
-                
-                document.getElementById('currencyHint').innerHTML = `Цены в ${currencySymbol} ← →`;
-            } catch(e) {
-                console.log('Ошибка определения валюты');
-                document.getElementById('freePrice').innerHTML = '0 ₽';
-                document.getElementById('proPrice').innerHTML = '4.99 ₽';
-                document.getElementById('schoolPrice').innerHTML = '29.99 ₽';
-                document.getElementById('currencyHint').innerHTML = 'Цены в ₽ ← →';
-            }
-        }
-        
-        detectCurrencyAndUpdatePrices();
+        // Фиксированные цены (как в приложении)
+        document.getElementById('teacherPrice').innerHTML = '199 ₽';
+        document.getElementById('schoolPrice').innerHTML = '499 ₽';
+        document.getElementById('universityPrice').innerHTML = '999 ₽';
+        document.getElementById('currencyHint').innerHTML = 'Цены в ₽ ← →';
     </script>
 </body>
 </html>
