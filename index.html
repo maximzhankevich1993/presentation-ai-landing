@@ -25,6 +25,7 @@
             --subtext: #B3B3B3;
             --green: #1DB954;
             --green-hover: #1ED760;
+            --border: #2A2A2A;
         }
         body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
         
@@ -75,15 +76,45 @@
         .service-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
         .service-card p { font-size: 12px; color: var(--subtext); line-height: 1.4; }
 
+        /* Слайдер */
         .pricing { padding: 30px 0 70px; }
         .section-title { text-align: center; font-size: 30px; font-weight: 900; margin-bottom: 8px; letter-spacing: -1px; }
         .section-sub { text-align: center; color: var(--subtext); margin-bottom: 32px; font-size: 14px; }
-        .carousel { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 8px 0 20px; scrollbar-width: none; }
+        
+        .carousel-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .carousel {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding: 20px 0 30px;
+            flex: 1;
+            scrollbar-width: none;
+        }
         .carousel::-webkit-scrollbar { display: none; }
-        .pricing-card { flex: 0 0 255px; scroll-snap-align: start; background: var(--card); border-radius: 20px; padding: 28px 20px; text-align: center; transition: all 0.3s; position: relative; cursor: pointer; }
+        .pricing-card {
+            flex: 0 0 280px;
+            scroll-snap-align: start;
+            cursor: pointer;
+            background: var(--card);
+            border-radius: 20px;
+            padding: 28px 20px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
         .pricing-card:hover { background: var(--hover); transform: translateY(-4px); }
         .pricing-card.featured { background: var(--green); color: #000; }
-        .pricing-card.featured .pricing-name, .pricing-card.featured .pricing-price, .pricing-card.featured .pricing-period, .pricing-card.featured li { color: #000; }
+        .pricing-card.featured .pricing-name, 
+        .pricing-card.featured .pricing-price, 
+        .pricing-card.featured .pricing-period, 
+        .pricing-card.featured li { color: #000; }
         .pricing-card.featured .btn { background: #000; color: var(--green); }
         .pricing-card.vip { background: #FFD60A; color: #000; }
         .pricing-card.vip .btn { background: #000; color: #FFD60A; }
@@ -94,8 +125,25 @@
         .pricing-features { list-style: none; text-align: left; margin-bottom: 20px; }
         .pricing-features li { padding: 5px 0; font-size: 13px; color: var(--subtext); }
         .pricing-features li::before { content: '✓ '; color: var(--green); font-weight: 700; }
-        .pricing-card.featured .pricing-features li, .pricing-card.vip .pricing-features li { color: #000; }
-        .pricing-card.featured .pricing-features li::before, .pricing-card.vip .pricing-features li::before { color: #000; }
+        .pricing-card.featured .pricing-features li, 
+        .pricing-card.vip .pricing-features li { color: #000; }
+        .pricing-card.featured .pricing-features li::before, 
+        .pricing-card.vip .pricing-features li::before { color: #000; }
+
+        .carousel-btn {
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-size: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        .carousel-btn:hover { background: var(--hover); transform: scale(1.05); }
+        @media (max-width: 768px) { .carousel-btn { display: none; } }
 
         .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 20px 0; text-align: center; margin-top: 20px; }
         .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 8px; }
@@ -164,41 +212,45 @@
         </div>
     </div>
 
-    <section id="pricing" class="pricing">
+    <section class="pricing">
         <div class="container">
             <h2 class="section-title">Тарифы</h2>
             <p class="section-sub" id="currencyHint">Листайте ← →</p>
-            <div class="carousel">
-                <div class="pricing-card vip" onclick="claimVip()">
-                    <div class="pricing-badge" style="background:#FF3B30;">🔥 VIP</div>
-                    <div class="pricing-name">Первые 50</div>
-                    <div class="pricing-price" id="vipPrice">0₽</div>
-                    <div class="pricing-period">навсегда</div>
-                    <ul class="pricing-features"><li>Пожизненный Premium</li><li>Все 30+ фишек</li><li>Безлимит</li></ul>
-                    <span class="btn" style="width:100%; background:#000; color:#FFD60A; font-weight:700;">🔥 Занять место</span>
+            <div class="carousel-wrapper">
+                <button class="carousel-btn prev" id="prevBtn">←</button>
+                <div class="carousel" id="pricingCarousel">
+                    <div class="pricing-card vip" data-href="/vip">
+                        <div class="pricing-badge" style="background:#FF3B30;">🔥 VIP</div>
+                        <div class="pricing-name">Первые 50</div>
+                        <div class="pricing-price" id="vipPrice">0₽</div>
+                        <div class="pricing-period">навсегда</div>
+                        <ul class="pricing-features"><li>Пожизненный Premium</li><li>Все 30+ фишек</li><li>Безлимит</li></ul>
+                        <span class="btn" style="width:100%; background:#000; color:#FFD60A;">🔥 Занять место</span>
+                    </div>
+                    <div class="pricing-card" data-href="/">
+                        <div class="pricing-name">Бесплатный</div>
+                        <div class="pricing-price" id="freePrice">0₽</div>
+                        <div class="pricing-period">навсегда</div>
+                        <ul class="pricing-features"><li>5 генераций/мес</li><li>До 10 слайдов</li><li>Авто-картинки</li></ul>
+                        <span class="btn btn-outline" style="width:100%">Начать</span>
+                    </div>
+                    <div class="pricing-card featured" data-href="/">
+                        <div class="pricing-badge" style="background:#000;">ПОПУЛЯРНЫЙ</div>
+                        <div class="pricing-name">Pro</div>
+                        <div class="pricing-price" id="proPrice">$4.99</div>
+                        <div class="pricing-period">/месяц</div>
+                        <ul class="pricing-features"><li>Безлимит</li><li>50 слайдов</li><li>Все фишки</li></ul>
+                        <span class="btn" style="width:100%; background:#000; color:var(--green);">Выбрать</span>
+                    </div>
+                    <div class="pricing-card" data-href="/">
+                        <div class="pricing-name">Год</div>
+                        <div class="pricing-price" id="yearPrice">$49</div>
+                        <div class="pricing-period">/год</div>
+                        <ul class="pricing-features"><li>Всё из Pro</li><li>Экономия 17%</li></ul>
+                        <span class="btn btn-outline" style="width:100%">Выбрать</span>
+                    </div>
                 </div>
-                <div class="pricing-card" onclick="goToApp('/')">
-                    <div class="pricing-name">Бесплатный</div>
-                    <div class="pricing-price" id="freePrice">0₽</div>
-                    <div class="pricing-period">навсегда</div>
-                    <ul class="pricing-features"><li>5 генераций/мес</li><li>До 10 слайдов</li><li>Авто-картинки</li></ul>
-                    <span class="btn btn-outline" style="width:100%">Начать</span>
-                </div>
-                <div class="pricing-card featured" onclick="goToApp('/')">
-                    <div class="pricing-badge" style="background:#000;">ПОПУЛЯРНЫЙ</div>
-                    <div class="pricing-name">Pro</div>
-                    <div class="pricing-price" id="proPrice">$4.99</div>
-                    <div class="pricing-period">/месяц</div>
-                    <ul class="pricing-features"><li>Безлимит</li><li>50 слайдов</li><li>Все фишки</li></ul>
-                    <span class="btn" style="width:100%; background:#000; color:var(--green);">Выбрать</span>
-                </div>
-                <div class="pricing-card" onclick="goToApp('/')">
-                    <div class="pricing-name">Год</div>
-                    <div class="pricing-price" id="yearPrice">$49</div>
-                    <div class="pricing-period">/год</div>
-                    <ul class="pricing-features"><li>Всё из Pro</li><li>Экономия 17%</li></ul>
-                    <span class="btn btn-outline" style="width:100%">Выбрать</span>
-                </div>
+                <button class="carousel-btn next" id="nextBtn">→</button>
             </div>
         </div>
     </section>
@@ -288,6 +340,30 @@
             }, 4500);
         }
         
+        // Кнопки слайдера
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const carousel = document.getElementById('pricingCarousel');
+        
+        if (prevBtn && nextBtn && carousel) {
+            prevBtn.addEventListener('click', () => {
+                carousel.scrollBy({ left: -300, behavior: 'smooth' });
+            });
+            nextBtn.addEventListener('click', () => {
+                carousel.scrollBy({ left: 300, behavior: 'smooth' });
+            });
+        }
+        
+        // Клик по карточке (ведёт в приложение)
+        document.querySelectorAll('.pricing-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (e.target.tagName === 'SPAN' || e.target.tagName === 'BUTTON') return;
+                const href = card.getAttribute('data-href');
+                if (href) goToApp(href);
+            });
+        });
+        
+        // Автоопределение валюты
         async function detectCurrencyAndUpdatePrices() {
             try {
                 const response = await fetch('https://ipapi.co/json/');
