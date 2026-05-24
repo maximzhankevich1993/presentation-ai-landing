@@ -45,7 +45,6 @@
         .standard-badge { background: var(--card); padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 500; color: var(--subtext); border: 1px solid var(--border); transition: all 0.2s; }
         .standard-badge:hover { border-color: var(--green); color: var(--green); }
 
-        /* Слайдер */
         .pricing-section { padding: 40px 0 60px; background: linear-gradient(180deg, transparent 0%, rgba(29,185,84,0.03) 100%); }
         .section-title { text-align: center; font-size: 36px; font-weight: 900; margin-bottom: 12px; letter-spacing: -1px; background: linear-gradient(135deg, #fff 0%, #1DB954 100%); background-clip: text; -webkit-background-clip: text; color: transparent; }
         .section-sub { text-align: center; color: var(--subtext); margin-bottom: 40px; font-size: 15px; }
@@ -149,27 +148,27 @@
         <div class="pricing-section">
             <div class="container">
                 <h2 class="section-title">Тарифы для учителей</h2>
-                <p class="section-sub" id="currencyHint">Листайте ← →</p>
+                <p class="section-sub" id="currencyHint">Загрузка цен...</p>
                 <div class="carousel-wrapper">
                     <button class="carousel-btn prev" id="prevBtn">←</button>
                     <div class="carousel" id="pricingCarousel">
                         <div class="price-card" data-href="/pricing">
                             <div class="name">Учитель</div>
-                            <div class="price" id="teacherPrice">199 ₽</div>
+                            <div class="price" id="teacherPrice">...</div>
                             <div class="period">/месяц</div>
                             <ul><li>Безлимит планов уроков</li><li>Все стандарты</li><li>Генератор тестов</li></ul>
                             <span class="btn btn-outline" style="width:100%;">Выбрать</span>
                         </div>
                         <div class="price-card featured" data-href="/pricing">
                             <div class="name">Школа</div>
-                            <div class="price" id="schoolPrice">499 ₽</div>
+                            <div class="price" id="schoolPrice">...</div>
                             <div class="period">/месяц</div>
                             <ul><li>Всё из тарифа "Учитель"</li><li>10 учителей</li><li>Админ-панель</li></ul>
                             <span class="btn btn-outline" style="width:100%; background:#000; color:var(--green); border:none;">Выбрать</span>
                         </div>
                         <div class="price-card" data-href="/pricing">
                             <div class="name">Университет</div>
-                            <div class="price" id="universityPrice">999 ₽</div>
+                            <div class="price" id="universityPrice">...</div>
                             <div class="period">/месяц</div>
                             <ul><li>Всё из тарифа "Школа"</li><li>50+ учителей</li><li>Приоритетная поддержка</li></ul>
                             <span class="btn btn-outline" style="width:100%;">Выбрать</span>
@@ -203,9 +202,71 @@
     </footer>
 
     <script>
-        // URL приложения
+        // ========== НАСТРОЙКИ ==========
         const APP_URL = 'https://flourishing-nougat-5a5d64.netlify.app';
         
+        // Базовые цены в RUB
+        const PRICES_RUB = {
+            teacher: 199,
+            school: 499,
+            university: 999
+        };
+
+        // ========== ОПРЕДЕЛЕНИЕ ВАЛЮТЫ ПО IP ==========
+        async function detectCurrency() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                const country = data.country_code;
+                
+                // Страны СНГ — оставляем RUB
+                const cisCountries = ['RU', 'BY', 'KZ', 'AM', 'KG', 'UZ', 'TJ', 'AZ', 'MD'];
+                if (cisCountries.includes(country)) {
+                    return { currency: 'RUB', symbol: '₽', rate: 1 };
+                }
+                
+                // США — USD
+                if (country === 'US') {
+                    return { currency: 'USD', symbol: '$', rate: 0.01 };
+                }
+                
+                // Еврозона и Европа — EUR
+                const euCountries = ['DE', 'FR', 'IT', 'ES', 'NL', 'BE', 'AT', 'PT', 'GR', 'FI', 'IE', 'SK', 'SI', 'LT', 'LV', 'EE', 'LU', 'CY', 'MT', 'GB', 'PL', 'CZ', 'HU', 'RO', 'BG', 'SE', 'DK', 'HR', 'NO', 'CH'];
+                if (euCountries.includes(country)) {
+                    return { currency: 'EUR', symbol: '€', rate: 0.0095 };
+                }
+                
+                // Весь остальной мир — USD
+                return { currency: 'USD', symbol: '$', rate: 0.01 };
+            } catch (error) {
+                console.error('Ошибка определения страны:', error);
+                return { currency: 'RUB', symbol: '₽', rate: 1 };
+            }
+        }
+
+        // ========== ФОРМАТИРОВАНИЕ ЦЕН ==========
+        function formatPrice(amount, currency) {
+            if (currency === 'RUB') {
+                return Math.round(amount) + ' ₽';
+            } else if (currency === 'USD') {
+                return '$' + amount.toFixed(2);
+            } else if (currency === 'EUR') {
+                return '€' + amount.toFixed(2);
+            }
+            return amount + ' ' + currency;
+        }
+
+        // ========== ОБНОВЛЕНИЕ ЦЕН НА СТРАНИЦЕ ==========
+        async function updatePrices() {
+            const { currency, symbol, rate } = await detectCurrency();
+            
+            document.getElementById('teacherPrice').textContent = formatPrice(PRICES_RUB.teacher * rate, currency);
+            document.getElementById('schoolPrice').textContent = formatPrice(PRICES_RUB.school * rate, currency);
+            document.getElementById('universityPrice').textContent = formatPrice(PRICES_RUB.university * rate, currency);
+            document.getElementById('currencyHint').textContent = 'Цены в ' + currency + ' ← →';
+        }
+
+        // ========== НАВИГАЦИЯ ==========
         function goToPage(path) {
             window.location.href = path;
         }
@@ -214,7 +275,7 @@
             window.location.href = APP_URL + path;
         }
         
-        // Кнопки слайдера
+        // ========== КНОПКИ СЛАЙДЕРА ==========
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const carousel = document.getElementById('pricingCarousel');
@@ -224,7 +285,7 @@
             nextBtn.addEventListener('click', () => carousel.scrollBy({ left: 320, behavior: 'smooth' }));
         }
         
-        // Клик по карточке
+        // ========== КЛИК ПО КАРТОЧКЕ ==========
         document.querySelectorAll('.price-card').forEach(card => {
             card.addEventListener('click', (e) => {
                 if (e.target.tagName === 'SPAN' || e.target.tagName === 'BUTTON') return;
@@ -232,12 +293,9 @@
                 if (href) goToApp(href);
             });
         });
-        
-        // Фиксированные цены (как в приложении)
-        document.getElementById('teacherPrice').innerHTML = '199 ₽';
-        document.getElementById('schoolPrice').innerHTML = '499 ₽';
-        document.getElementById('universityPrice').innerHTML = '999 ₽';
-        document.getElementById('currencyHint').innerHTML = 'Цены в ₽ ← →';
+
+        // ========== ЗАПУСК ПРИ ЗАГРУЗКЕ ==========
+        updatePrices();
     </script>
 </body>
 </html>
