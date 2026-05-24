@@ -17,18 +17,19 @@
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --bg: #121212; --card: #1A1A1A; --hover: #282828; --text: #FFFFFF; --subtext: #B3B3B3; --green: #1DB954; --green-hover: #1ED760; }
+        :root { --bg: #121212; --card: #1A1A1A; --hover: #282828; --text: #FFFFFF; --subtext: #B3B3B3; --green: #1DB954; --green-hover: #1ED760; --border: #2A2A2A; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
-        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         
         .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(18,18,18,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
-        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 48px; max-width: 900px; margin: 0 auto; padding: 0 20px; }
-        .nav-logo { font-weight: 700; font-size: 17px; color: var(--text); text-decoration: none; }
-        .btn-green { padding: 8px 18px; border-radius: 100px; font-weight: 700; font-size: 13px; text-decoration: none; display: inline-block; font-family: inherit; background: var(--green); color: #000; transition: all 0.2s; }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 56px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .nav-logo { font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; cursor: pointer; }
+        .nav-logo:hover { color: var(--green); }
+        .btn-green { padding: 8px 18px; border-radius: 100px; font-weight: 600; font-size: 13px; text-decoration: none; display: inline-block; font-family: inherit; background: var(--green); color: #000; transition: all 0.2s; cursor: pointer; }
         .btn-green:hover { background: var(--green-hover); transform: scale(1.02); }
 
         .hero { padding: 100px 0 30px; text-align: center; }
-        .hero h1 { font-size: clamp(28px, 5vw, 40px); font-weight: 900; letter-spacing: -1px; margin-bottom: 8px; }
+        .hero h1 { font-size: clamp(28px, 5vw, 40px); font-weight: 900; letter-spacing: -1px; margin-bottom: 8px; background: linear-gradient(135deg, #fff 0%, #1DB954 100%); background-clip: text; -webkit-background-clip: text; color: transparent; }
         .hero p { color: var(--subtext); font-size: 15px; }
 
         .table-wrap { overflow-x: auto; margin-bottom: 30px; }
@@ -44,7 +45,7 @@
         .verdict { text-align: center; padding: 30px 0; }
         .verdict h2 { font-size: 24px; font-weight: 800; margin-bottom: 16px; }
         .verdict-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 30px; }
-        .verdict-card { background: var(--card); border-radius: 16px; padding: 20px 14px; transition: all 0.2s; }
+        .verdict-card { background: var(--card); border-radius: 16px; padding: 20px 14px; transition: all 0.2s; cursor: pointer; }
         .verdict-card:hover { background: var(--hover); transform: translateY(-3px); }
         .verdict-card .icon { font-size: 28px; margin-bottom: 6px; }
         .verdict-card h3 { font-size: 14px; font-weight: 700; }
@@ -52,14 +53,14 @@
 
         .cta { text-align: center; padding: 30px 0 40px; }
         .cta h3 { font-size: 22px; font-weight: 800; margin-bottom: 16px; }
-        .cta-button { display: inline-block; padding: 14px 32px; background: var(--green); color: #000; text-decoration: none; font-weight: 700; border-radius: 100px; font-size: 16px; transition: all 0.2s; }
+        .cta-button { display: inline-block; padding: 14px 32px; background: var(--green); color: #000; text-decoration: none; font-weight: 700; border-radius: 100px; font-size: 16px; transition: all 0.2s; cursor: pointer; }
         .cta-button:hover { background: var(--green-hover); transform: scale(1.03); }
 
-        .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 16px 0; text-align: center; }
-        .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 8px; }
-        .footer-links a { color: var(--subtext); text-decoration: none; font-size: 12px; transition: color 0.2s; }
-        .footer-links a:hover { color: var(--text); }
-        .footer p { color: #555; font-size: 11px; }
+        .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 30px 0 20px; text-align: center; margin-top: 20px; }
+        .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 20px; }
+        .footer-links span { color: var(--subtext); font-size: 13px; cursor: pointer; transition: color 0.2s; }
+        .footer-links span:hover { color: var(--text); }
+        .footer p { color: #555; font-size: 12px; }
 
         @media (max-width: 768px) { 
             .verdict-grid { grid-template-columns: 1fr; }
@@ -71,8 +72,8 @@
 <body>
     <nav class="navbar">
         <div class="nav-inner">
-            <a href="/" class="nav-logo">🎨 Презентатор ИИ</a>
-            <a href="/" class="btn-green">← На главную</a>
+            <span class="nav-logo" onclick="goToPage('/')">🎨 Презентатор ИИ</span>
+            <span class="btn-green" onclick="goToPage('/')">← На главную</span>
         </div>
     </nav>
 
@@ -83,7 +84,7 @@
         </div>
 
         <div class="table-wrap">
-            <table>
+            <tr>
                 <thead>
                     <tr><th>Функция</th><th>Gamma</th><th>Beautiful.ai</th><th>Canva</th><th class="our">Презентатор ИИ</th></tr>
                 </thead>
@@ -104,51 +105,88 @@
         <div class="verdict">
             <h2>Почему выбирают нас</h2>
             <div class="verdict-grid">
-                <div class="verdict-card"><div class="icon">💰</div><h3>В 3 раза дешевле</h3><p>Лучшая цена при большем функционале</p></div>
-                <div class="verdict-card"><div class="icon">🎨</div><h3>Уникальный дизайн</h3><p>Анти-шаблоны, Story Mode</p></div>
-                <div class="verdict-card"><div class="icon">🌍</div><h3>Локальные стандарты</h3><p>Автоопределение страны</p></div>
-                <div class="verdict-card"><div class="icon">📖</div><h3>ГОСТ и цитаты</h3><p>Автоматическое оформление</p></div>
-                <div class="verdict-card"><div class="icon">⚡</div><h3>1 минута</h3><p>Быстрее конкурентов</p></div>
-                <div class="verdict-card"><div class="icon">💎</div><h3>VIP навсегда</h3><p>Первые 50 мест</p></div>
+                <div class="verdict-card" onclick="goToApp('/')"><div class="icon">💰</div><h3>В 3 раза дешевле</h3><p>Лучшая цена при большем функционале</p></div>
+                <div class="verdict-card" onclick="goToApp('/')"><div class="icon">🎨</div><h3>Уникальный дизайн</h3><p>Анти-шаблоны, Story Mode</p></div>
+                <div class="verdict-card" onclick="goToApp('/')"><div class="icon">🌍</div><h3>Локальные стандарты</h3><p>Автоопределение страны</p></div>
+                <div class="verdict-card" onclick="goToApp('/')"><div class="icon">📖</div><h3>ГОСТ и цитаты</h3><p>Автоматическое оформление</p></div>
+                <div class="verdict-card" onclick="goToApp('/')"><div class="icon">⚡</div><h3>1 минута</h3><p>Быстрее конкурентов</p></div>
+                <div class="verdict-card" onclick="goToApp('/')"><div class="icon">💎</div><h3>VIP навсегда</h3><p>Первые 50 мест</p></div>
             </div>
         </div>
 
         <div class="cta">
             <h3>Готовы попробовать?</h3>
-            <a href="/" class="cta-button">🚀 Создать презентацию бесплатно</a>
+            <span class="cta-button" onclick="goToApp('/')">🚀 Создать презентацию бесплатно</span>
         </div>
     </div>
 
     <footer class="footer">
         <div class="container">
             <div class="footer-links">
-                <a href="/">Главная</a>
-                <a href="/teacher">Учителям</a>
-                <a href="/business">Бизнесу</a>
-                <a href="/compare">Сравнение</a>
-                <a href="/privacy">Конфиденциальность</a>
-                <a href="/terms">Условия</a>
+                <span onclick="goToPage('/')">Главная</span>
+                <span onclick="goToPage('/teacher.html')">Учителям</span>
+                <span onclick="goToPage('/business.html')">Бизнесу</span>
+                <span onclick="goToPage('/compare.html')">Сравнение</span>
+                <span onclick="goToPage('/privacy.html')">Конфиденциальность</span>
+                <span onclick="goToPage('/terms.html')">Условия</span>
             </div>
             <p>© 2026 Презентатор ИИ</p>
         </div>
     </footer>
 
     <script>
-        // ⚡ ЗДЕСЬ УКАЖИ СВОЙ URL ПОСЛЕ ДЕПЛОЯ ⚡
-        const APP_URL = 'https://your-app-url.onrender.com';
+        // ⚡ URL ПРИЛОЖЕНИЯ ⚡
+        const APP_URL = 'https://flourishing-nougat-5a5d64.netlify.app';
         
-        // Перенаправление всех внутренних ссылок в приложение
-        document.querySelectorAll('.footer-links a, .nav-logo, .cta-button').forEach(function(link) {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                let path = link.getAttribute('href');
-                if (path === '/') {
-                    window.location.href = APP_URL;
-                } else {
-                    window.location.href = APP_URL + path;
+        // Переход на страницу лендинга (остаётся на том же сайте)
+        function goToPage(path) {
+            window.location.href = path;
+        }
+        
+        // Переход в приложение
+        function goToApp(path) {
+            window.location.href = APP_URL + path;
+        }
+        
+        // Автоопределение валюты для цен в таблице
+        async function detectCurrencyAndUpdatePrice() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                const country = data.country_code;
+                
+                const currencyMap = {
+                    'RU': { symbol: '₽', rate: 95 },
+                    'BY': { symbol: 'Br', rate: 3.25 },
+                    'KZ': { symbol: '₸', rate: 460 },
+                    'UA': { symbol: '₴', rate: 41 },
+                    'GB': { symbol: '£', rate: 0.79 },
+                    'DE': { symbol: '€', rate: 0.92 },
+                    'FR': { symbol: '€', rate: 0.92 },
+                    'IT': { symbol: '€', rate: 0.92 },
+                    'ES': { symbol: '€', rate: 0.92 }
+                };
+                
+                if (currencyMap[country]) {
+                    const currency = currencyMap[country];
+                    const convert = (usd) => {
+                        const value = usd * currency.rate;
+                        if (country === 'RU') return Math.round(value) + ' ' + currency.symbol;
+                        if (currency.symbol === '€' || currency.symbol === '£') return currency.symbol + value.toFixed(2);
+                        return currency.symbol + value.toFixed(2);
+                    };
+                    
+                    const priceCell = document.querySelector('.our td:first-child');
+                    if (priceCell) {
+                        priceCell.innerHTML = '<strong style="color:var(--green)">' + convert(4.99) + '</strong>';
+                    }
                 }
-            });
-        });
+            } catch(e) {
+                console.log('Ошибка определения валюты');
+            }
+        }
+        
+        detectCurrencyAndUpdatePrice();
     </script>
 </body>
 </html>
