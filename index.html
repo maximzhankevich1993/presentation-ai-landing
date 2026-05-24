@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Презентатор ИИ — создай презентацию за 1 минуту</title>
-    <meta name="description" content="Создавай профессиональные презентации с ИИ. Бесплатно 5 презентаций. Первые 50 — Premium навсегда.">
+    <meta name="description" content="Создавай профессиональные презентации с ИИ. Бесплатно 5 презентаций в месяц. Первые 50 — Premium навсегда.">
     <meta property="og:title" content="Презентатор ИИ — создай презентацию за 1 минуту">
     <meta property="og:description" content="ИИ напишет текст, подберёт картинки и оформит слайды. Попробуй бесплатно!">
     <meta property="og:image" content="/og-image.png">
@@ -32,9 +32,9 @@
 
         .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(18,18,18,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
         .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 48px; max-width: 900px; margin: 0 auto; padding: 0 20px; }
-        .nav-logo { font-weight: 700; font-size: 17px; color: var(--text); text-decoration: none; }
+        .nav-logo { font-weight: 700; font-size: 17px; color: var(--text); text-decoration: none; cursor: pointer; }
         .nav-links { display: flex; gap: 16px; align-items: center; }
-        .nav-link { color: var(--subtext); text-decoration: none; font-size: 14px; font-weight: 600; transition: color 0.2s; }
+        .nav-link { color: var(--subtext); text-decoration: none; font-size: 14px; font-weight: 600; transition: color 0.2s; cursor: pointer; }
         .nav-link:hover { color: var(--text); }
         .btn { padding: 8px 20px; border-radius: 100px; font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.2s; border: none; text-decoration: none; display: inline-block; font-family: inherit; text-transform: uppercase; letter-spacing: 0.5px; }
         .btn-green { background: var(--green); color: #000; }
@@ -92,8 +92,8 @@
 
         .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 20px 0; text-align: center; }
         .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 8px; }
-        .footer-links a { color: var(--subtext); text-decoration: none; font-size: 12px; }
-        .footer-links a:hover { color: var(--text); }
+        .footer-links span { color: var(--subtext); font-size: 12px; cursor: pointer; transition: color 0.2s; }
+        .footer-links span:hover { color: var(--text); }
         .footer p { color: #555; font-size: 11px; }
 
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; backdrop-filter: blur(8px); }
@@ -114,10 +114,11 @@
 
     <nav class="navbar">
         <div class="nav-inner">
-            <a href="/" class="nav-logo">🎨 Презентатор ИИ</a>
+            <span class="nav-logo" onclick="goToPage('/')">🎨 Презентатор ИИ</span>
             <div class="nav-links">
-                <a href="#pricing" class="nav-link">Тарифы</a>
-                <a href="#" class="btn btn-outline" onclick="goToApp()">Войти</a>
+                <span class="nav-link" onclick="goToPage('/#pricing')">Тарифы</span>
+                <span class="btn btn-outline" onclick="goToApp('/login')">Войти</span>
+                <span class="btn btn-green" onclick="goToApp('/register')">Создать</span>
             </div>
         </div>
     </nav>
@@ -144,9 +145,9 @@
 
     <div class="container">
         <div class="features">
-            <div class="feature-card" onclick="goToApp()"><div class="feature-icon">🎨</div><h3>30+ фишек</h3><p>Анти-шаблоны, Story Mode, бренд-кит</p></div>
-            <div class="feature-card" onclick="goToApp()"><div class="feature-icon">⚡</div><h3>1 минута</h3><p>Введите тему — получите презентацию</p></div>
-            <div class="feature-card" onclick="goToApp()"><div class="feature-icon">💎</div><h3>от $4.99/мес</h3><p>Самая низкая цена на рынке</p></div>
+            <div class="feature-card" onclick="goToApp('/')"><div class="feature-icon">🎨</div><h3>30+ фишек</h3><p>Анти-шаблоны, Story Mode, бренд-кит</p></div>
+            <div class="feature-card" onclick="goToApp('/')"><div class="feature-icon">⚡</div><h3>1 минута</h3><p>Введите тему — получите презентацию</p></div>
+            <div class="feature-card" onclick="goToApp('/')"><div class="feature-icon">💎</div><h3>от $4.99/мес</h3><p>Самая низкая цена на рынке</p></div>
         </div>
     </div>
 
@@ -161,29 +162,29 @@
                     <div class="pricing-price">0₽</div>
                     <div class="pricing-period">навсегда</div>
                     <ul class="pricing-features"><li>Пожизненный Premium</li><li>Все 30+ фишек</li><li>Безлимит</li></ul>
-                    <a href="#" class="btn" style="width:100%; background:#000; color:#FFD60A; font-weight:700;">🔥 Занять место</a>
+                    <span class="btn" style="width:100%; background:#000; color:#FFD60A; font-weight:700;">🔥 Занять место</span>
                 </div>
-                <div class="pricing-card" onclick="goToApp()">
+                <div class="pricing-card" onclick="goToApp('/')">
                     <div class="pricing-name">Бесплатный</div>
                     <div class="pricing-price">$0</div>
                     <div class="pricing-period">навсегда</div>
-                    <ul class="pricing-features"><li>5 презентаций</li><li>До 10 слайдов</li><li>Авто-картинки</li></ul>
-                    <a href="#" class="btn btn-outline" style="width:100%">Начать</a>
+                    <ul class="pricing-features"><li>5 генераций/мес</li><li>До 10 слайдов</li><li>Авто-картинки</li></ul>
+                    <span class="btn btn-outline" style="width:100%">Начать</span>
                 </div>
-                <div class="pricing-card featured" onclick="goToApp()">
+                <div class="pricing-card featured" onclick="goToApp('/pricing')">
                     <div class="pricing-badge" style="background:#000;">ПОПУЛЯРНЫЙ</div>
                     <div class="pricing-name">Pro</div>
                     <div class="pricing-price">$4.99</div>
                     <div class="pricing-period">/месяц</div>
                     <ul class="pricing-features"><li>Безлимит</li><li>50 слайдов</li><li>Все фишки</li></ul>
-                    <a href="#" class="btn" style="width:100%; background:#000; color:var(--green);">Выбрать</a>
+                    <span class="btn" style="width:100%; background:#000; color:var(--green);">Выбрать</span>
                 </div>
-                <div class="pricing-card" onclick="goToApp()">
+                <div class="pricing-card" onclick="goToApp('/pricing')">
                     <div class="pricing-name">Год</div>
                     <div class="pricing-price">$49</div>
                     <div class="pricing-period">/год</div>
                     <ul class="pricing-features"><li>Всё из Pro</li><li>Экономия 17%</li></ul>
-                    <a href="#" class="btn btn-outline" style="width:100%">Выбрать</a>
+                    <span class="btn btn-outline" style="width:100%">Выбрать</span>
                 </div>
             </div>
         </div>
@@ -192,12 +193,14 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-links">
-                <a href="/compare">Сравнение</a>
-                <a href="/teacher">Учителям</a>
-                <a href="/business">Бизнесу</a>
-                <a href="/student">Студентам</a>
-                <a href="/privacy">Конфиденциальность</a>
-                <a href="/terms">Условия</a>
+                <span onclick="goToPage('/compare.html')">Сравнение</span>
+                <span onclick="goToPage('/teacher.html')">Учителям</span>
+                <span onclick="goToPage('/business.html')">Бизнесу</span>
+                <span onclick="goToPage('/student.html')">Студентам</span>
+                <span onclick="goToPage('/pitch-deck.html')">Питч-дек</span>
+                <span onclick="goToPage('/privacy.html')">Конфиденциальность</span>
+                <span onclick="goToPage('/terms.html')">Условия</span>
+                <span onclick="goToPage('/cookie.html')">Cookie</span>
             </div>
             <p>© 2026 Презентатор ИИ</p>
         </div>
@@ -214,11 +217,17 @@
     </div>
 
     <script>
-        // ⚡ ЗДЕСЬ УКАЖИ СВОЙ URL ПОСЛЕ ДЕПЛОЯ ⚡
-        const APP_URL = 'https://your-app-url.onrender.com'; // ← ИЗМЕНИ НА СВОЙ!
+        // ⚡ ЗДЕСЬ УКАЖИ СВОЙ URL ПРИЛОЖЕНИЯ ⚡
+        const APP_URL = 'https://flourishing-nougat-5a5d64.netlify.app';
         
-        function goToApp() {
-            window.location.href = APP_URL;
+        // Переход на страницу лендинга (остаётся на том же сайте)
+        function goToPage(path) {
+            window.location.href = path;
+        }
+        
+        // Переход в приложение
+        function goToApp(path) {
+            window.location.href = APP_URL + path;
         }
         
         function setTopic(topic) {
@@ -260,7 +269,6 @@
                 }
             }, 1200);
             
-            // После генерации переходим в приложение
             setTimeout(function() {
                 clearInterval(progressInterval);
                 clearInterval(textInterval);
@@ -269,21 +277,49 @@
             }, 4500);
         }
         
-        // Добавляем обработчики для всех кнопок "Выбрать" и "Начать"
-        document.querySelectorAll('.pricing-card .btn, .feature-card').forEach(function(el) {
-            el.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                goToApp();
-            });
-        });
-        
-        // VIP карточка
-        document.querySelector('.pricing-card.vip').addEventListener('click', function(e) {
-            if (e.target.tagName !== 'A') {
-                claimVip();
+        // Автоопределение валюты
+        async function detectCurrencyAndUpdatePrices() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                const country = data.country_code;
+                
+                const currencyMap = {
+                    'RU': { symbol: '₽', rate: 95 },
+                    'BY': { symbol: 'Br', rate: 3.25 },
+                    'KZ': { symbol: '₸', rate: 460 },
+                    'UA': { symbol: '₴', rate: 41 },
+                    'GB': { symbol: '£', rate: 0.79 },
+                    'DE': { symbol: '€', rate: 0.92 },
+                    'FR': { symbol: '€', rate: 0.92 },
+                    'IT': { symbol: '€', rate: 0.92 },
+                    'ES': { symbol: '€', rate: 0.92 }
+                };
+                
+                if (currencyMap[country]) {
+                    const currency = currencyMap[country];
+                    const convert = (usd) => {
+                        if (usd === 0) return '0' + currency.symbol;
+                        const value = usd * currency.rate;
+                        if (country === 'RU') return Math.round(value) + ' ' + currency.symbol;
+                        if (currency.symbol === '€' || currency.symbol === '£') return currency.symbol + value.toFixed(2);
+                        return currency.symbol + value.toFixed(2);
+                    };
+                    
+                    // Обновляем цены
+                    const proPrice = document.querySelector('.pricing-card.featured .pricing-price');
+                    const yearPrice = document.querySelector('.pricing-card:last-child .pricing-price');
+                    if (proPrice) proPrice.textContent = convert(4.99);
+                    if (yearPrice) yearPrice.textContent = convert(49);
+                    
+                    document.querySelector('.section-sub').innerHTML = `Цены в ${currency.symbol} ← →`;
+                }
+            } catch(e) {
+                console.log('Ошибка определения валюты');
             }
-        });
+        }
+        
+        detectCurrencyAndUpdatePrices();
     </script>
 </body>
 </html>
