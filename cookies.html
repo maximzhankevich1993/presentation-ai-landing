@@ -23,10 +23,10 @@
         .badge { display: inline-block; background: rgba(29,185,84,0.15); color: var(--green); font-size: 11px; padding: 2px 8px; border-radius: 20px; margin-left: 8px; }
         .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 16px 0; text-align: center; margin-top: 40px; }
         .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 8px; }
-        .footer-links a, .footer-links span { color: var(--subtext); font-size: 12px; text-decoration: none; cursor: pointer; transition: color 0.2s; }
-        .footer-links a:hover, .footer-links span:hover { color: var(--text); }
+        .footer-links span { color: var(--subtext); font-size: 12px; cursor: pointer; transition: color 0.2s; }
+        .footer-links span:hover { color: var(--text); }
         .footer p { color: #555; font-size: 11px; margin-top: 8px; }
-        .btn { display: inline-block; padding: 8px 20px; background: var(--green); color: #000; text-decoration: none; border-radius: 100px; font-weight: 600; font-size: 13px; transition: all 0.2s; }
+        .btn { display: inline-block; padding: 8px 20px; background: var(--green); color: #000; text-decoration: none; border-radius: 100px; font-weight: 600; font-size: 13px; transition: all 0.2s; cursor: pointer; border: none; font-family: inherit; }
         .btn:hover { background: var(--green-hover); transform: scale(1.02); }
     </style>
 </head>
@@ -53,35 +53,40 @@
         
         <h2>❌ Мы НЕ используем</h2>
         <div class="cookie-list">
-            <p>❌ Отслеживающие cookie (Google Analytics, и т.д.)</p>
+            <p>❌ Отслеживающие cookie</p>
             <p>❌ Рекламные cookie</p>
             <p>❌ Cookie третьих лиц</p>
             <p>❌ Пиксели отслеживания</p>
         </div>
         
         <h2>🔒 Ваша конфиденциальность</h2>
-        <p>Все данные хранятся на защищённых серверах в соответствии с GDPR и 152-ФЗ. Вы можете удалить cookie через настройки браузера в любой момент.</p>
+        <p>Все данные хранятся на защищённых серверах. Вы можете удалить cookie через настройки браузера в любой момент.</p>
         
         <div style="text-align: center; margin: 40px 0 20px;">
-            <a href="#" class="btn" onclick="goToApp('/'); return false;">← Вернуться на главную</a>
+            <span class="btn" onclick="goToPage('/')">← Вернуться на главную</span>
         </div>
         
         <div class="footer">
             <div class="footer-links">
-                <span onclick="goToApp('/')">Главная</span>
-                <span onclick="goToApp('/teacher')">Учителям</span>
-                <span onclick="goToApp('/business')">Бизнесу</span>
-                <span onclick="goToApp('/compare')">Сравнение</span>
-                <span onclick="goToApp('/privacy')">Конфиденциальность</span>
-                <span onclick="goToApp('/terms')">Условия</span>
+                <span onclick="goToPage('/')">Главная</span>
+                <span onclick="goToPage('/teacher.html')">Учителям</span>
+                <span onclick="goToPage('/business.html')">Бизнесу</span>
+                <span onclick="goToPage('/student.html')">Студентам</span>
+                <span onclick="goToPage('/compare.html')">Сравнение</span>
+                <span onclick="goToPage('/pitch-deck.html')">Питч-дек</span>
+                <span onclick="goToPage('/privacy.html')">Конфиденциальность</span>
+                <span onclick="goToPage('/terms.html')">Условия</span>
             </div>
             <p>© 2026 Презентатор ИИ</p>
         </div>
     </div>
     
     <script>
-        // ⚡ ЗДЕСЬ УКАЖИ СВОЙ URL ПОСЛЕ ДЕПЛОЯ ⚡
-        const APP_URL = 'https://your-app-url.onrender.com';
+        const APP_URL = 'https://flourishing-nougat-5a5d64.netlify.app';
+        
+        function goToPage(path) {
+            window.location.href = path;
+        }
         
         function goToApp(path) {
             window.location.href = APP_URL + path;
