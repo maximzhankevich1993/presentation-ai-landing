@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Бизнесу — Презентатор ИИ: презентации для компаний</title>
-    <meta name="description" content="Коммерческие предложения, отчёты, презентации для клиентов с бренд-китом, CRM-интеграциями и комплаенсом. Попробуйте бесплатно.">
-    <meta name="keywords" content="презентации для бизнеса, коммерческие предложения, бренд-кит, CRM интеграция, презентации для компаний">
+    <meta name="description" content="Коммерческие предложения, отчёты, презентации для клиентов с бренд-китом и интеграциями. Попробуйте бесплатно.">
+    <meta name="keywords" content="презентации для бизнеса, коммерческие предложения, бренд-кит, интеграции, презентации для компаний">
     <meta property="og:title" content="Бизнесу — Презентатор ИИ">
     <meta property="og:description" content="Создавайте презентации для клиентов за 1 минуту с бренд-китом и интеграциями.">
     
@@ -15,148 +15,282 @@
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --bg: #121212; --card: #1A1A1A; --hover: #282828; --text: #FFFFFF; --subtext: #B3B3B3; --green: #1DB954; --green-hover: #1ED760; }
+        :root { --bg: #121212; --card: #1A1A1A; --hover: #282828; --text: #FFFFFF; --subtext: #B3B3B3; --green: #1DB954; --green-hover: #1ED760; --border: #2A2A2A; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
-        .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         
         .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(18,18,18,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
-        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 48px; max-width: 720px; margin: 0 auto; padding: 0 20px; }
-        .nav-logo { font-weight: 700; font-size: 17px; color: var(--text); text-decoration: none; cursor: pointer; }
-        .btn { padding: 8px 18px; border-radius: 100px; font-weight: 700; font-size: 13px; cursor: pointer; border: none; font-family: inherit; display: inline-block; text-decoration: none; transition: all 0.2s; }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 56px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .nav-logo { font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; cursor: pointer; }
+        .nav-logo:hover { color: var(--green); }
+        .btn { padding: 8px 18px; border-radius: 100px; font-weight: 600; font-size: 13px; cursor: pointer; border: none; font-family: inherit; display: inline-block; text-decoration: none; transition: all 0.2s; }
         .btn-green { background: var(--green); color: #000; }
         .btn-green:hover { background: var(--green-hover); transform: scale(1.02); }
-        .btn-outline { background: transparent; border: 1px solid var(--green); color: var(--green); }
-        .btn-outline:hover { background: rgba(29,185,84,0.1); }
+        .btn-outline { background: transparent; border: 1px solid var(--subtext); color: var(--text); }
+        .btn-outline:hover { border-color: var(--text); background: rgba(255,255,255,0.05); }
 
-        .hero { padding: 100px 0 40px; }
-        .hero h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 900; letter-spacing: -1px; margin-bottom: 8px; }
+        .hero { padding: 100px 0 40px; text-align: center; }
+        .hero h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 900; letter-spacing: -1px; margin-bottom: 8px; background: linear-gradient(135deg, #fff 0%, #1DB954 100%); background-clip: text; -webkit-background-clip: text; color: transparent; }
         .hero p { color: var(--subtext); font-size: 16px; margin-bottom: 30px; }
 
-        .benefits { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 40px; }
-        .benefit-card { background: var(--card); border-radius: 16px; padding: 24px 18px; transition: all 0.2s; cursor: pointer; }
-        .benefit-card:hover { background: var(--hover); transform: translateY(-3px); }
-        .benefit-icon { font-size: 28px; margin-bottom: 8px; }
-        .benefit-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
-        .benefit-card p { font-size: 12px; color: var(--subtext); }
+        .benefits { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 50px; }
+        .benefit-card { background: var(--card); border-radius: 20px; padding: 28px 20px; text-align: center; transition: all 0.25s; cursor: pointer; }
+        .benefit-card:hover { background: var(--hover); transform: translateY(-4px); }
+        .benefit-icon { font-size: 40px; margin-bottom: 12px; }
+        .benefit-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+        .benefit-card p { font-size: 12px; color: var(--subtext); line-height: 1.4; }
 
-        .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 40px; }
-        .price-card { background: var(--card); border-radius: 16px; padding: 24px 16px; text-align: center; transition: all 0.2s; cursor: pointer; }
-        .price-card:hover { transform: translateY(-3px); }
-        .price-card.featured { background: var(--green); color: #000; }
+        .pricing-section { padding: 40px 0 60px; background: linear-gradient(180deg, transparent 0%, rgba(29,185,84,0.03) 100%); }
+        .section-title { text-align: center; font-size: 36px; font-weight: 900; margin-bottom: 12px; letter-spacing: -1px; background: linear-gradient(135deg, #fff 0%, #1DB954 100%); background-clip: text; -webkit-background-clip: text; color: transparent; }
+        .section-sub { text-align: center; color: var(--subtext); margin-bottom: 40px; font-size: 15px; }
+        
+        .carousel-wrapper { position: relative; display: flex; align-items: center; gap: 15px; }
+        .carousel { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 20px 0 30px; flex: 1; scrollbar-width: none; }
+        .carousel::-webkit-scrollbar { display: none; }
+        
+        .price-card {
+            flex: 0 0 300px;
+            scroll-snap-align: start;
+            cursor: pointer;
+            background: linear-gradient(145deg, var(--card) 0%, #141414 100%);
+            border-radius: 28px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.3);
+        }
+        .price-card:hover { transform: translateY(-8px); border-color: rgba(29,185,84,0.2); box-shadow: 0 30px 45px -15px rgba(29,185,84,0.1); }
+        .price-card.featured { background: linear-gradient(145deg, #1DB954 0%, #169C46 100%); border: none; }
         .price-card.featured .price, .price-card.featured .name { color: #000; }
-        .name { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
-        .price { font-size: 32px; font-weight: 900; margin-bottom: 2px; }
-        .period { font-size: 11px; color: var(--subtext); margin-bottom: 12px; }
         .price-card.featured .period { color: #000; }
-        ul { list-style: none; text-align: left; margin-bottom: 14px; }
-        ul li { font-size: 12px; color: var(--subtext); padding: 3px 0; }
-        ul li::before { content: '✓ '; color: var(--green); font-weight: 700; }
+        .price-card.featured .btn-outline { background: #000; color: var(--green); border: none; }
+        
+        .name { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+        .price { font-size: 44px; font-weight: 900; margin-bottom: 4px; }
+        .period { font-size: 12px; color: var(--subtext); margin-bottom: 20px; }
+        ul { list-style: none; text-align: left; margin-bottom: 24px; }
+        ul li { padding: 6px 0; font-size: 13px; color: var(--subtext); display: flex; align-items: center; gap: 8px; }
+        ul li::before { content: '✓'; color: var(--green); font-weight: 700; font-size: 14px; }
         .price-card.featured ul li { color: #000; }
         .price-card.featured ul li::before { color: #000; }
 
-        .cta { text-align: center; padding: 30px 0 40px; margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); }
-        .cta h3 { font-size: 22px; font-weight: 800; margin-bottom: 16px; }
-        .cta-button { display: inline-block; padding: 14px 32px; background: var(--green); color: #000; text-decoration: none; font-weight: 700; border-radius: 100px; font-size: 16px; transition: all 0.2s; }
+        .carousel-btn {
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-size: 24px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        .carousel-btn:hover { background: var(--green); color: #000; transform: scale(1.05); border-color: var(--green); }
+        @media (max-width: 768px) { .carousel-btn { display: none; } }
+
+        .cta { text-align: center; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 20px; }
+        .cta h2 { font-size: 28px; font-weight: 800; margin-bottom: 16px; }
+        .cta-button { display: inline-block; padding: 14px 32px; background: var(--green); color: #000; text-decoration: none; font-weight: 700; border-radius: 100px; font-size: 16px; transition: all 0.2s; cursor: pointer; }
         .cta-button:hover { background: var(--green-hover); transform: scale(1.03); }
 
-        .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 18px 0; text-align: center; }
-        .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 8px; }
-        .footer-links a, .footer-links span { color: var(--subtext); font-size: 12px; cursor: pointer; text-decoration: none; transition: color 0.2s; }
-        .footer-links a:hover, .footer-links span:hover { color: var(--text); }
-        .footer p { color: #555; font-size: 11px; margin-top: 8px; }
+        .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 40px 0 30px; text-align: center; margin-top: 40px; }
+        .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 20px; }
+        .footer-links span { color: var(--subtext); font-size: 13px; cursor: pointer; transition: color 0.2s; }
+        .footer-links span:hover { color: var(--text); }
+        .footer p { color: #555; font-size: 12px; }
 
         @media (max-width: 768px) { 
-            .benefits, .pricing { grid-template-columns: 1fr; }
+            .benefits { grid-template-columns: 1fr; }
+            .price-card { flex: 0 0 85%; }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-inner">
-            <span class="nav-logo" onclick="goToApp('/')">🎨 Презентатор ИИ</span>
-            <span class="btn btn-green" onclick="goToApp('/')">← На главную</span>
+            <span class="nav-logo" onclick="goToPage('/')">🎨 Презентатор ИИ</span>
+            <span class="btn btn-green" onclick="goToPage('/')">← На главную</span>
         </div>
     </nav>
 
     <div class="container">
         <div class="hero">
             <h1>💼 Бизнесу</h1>
-            <p>Коммерческие предложения, отчёты, презентации с интеграциями и комплаенсом.</p>
+            <p>Коммерческие предложения, отчёты, презентации для клиентов с бренд-китом и комплаенсом.</p>
         </div>
 
         <div class="benefits">
-            <div class="benefit-card" onclick="goToApp('/')"><div class="benefit-icon">🏷️</div><h3>Бренд-кит из логотипа</h3><p>Загрузите логотип — получите цвета и шрифты.</p></div>
-            <div class="benefit-card" onclick="goToApp('/')"><div class="benefit-icon">🔗</div><h3>CRM-интеграции</h3><p>Salesforce, HubSpot, Битрикс24, 1С.</p></div>
-            <div class="benefit-card" onclick="goToApp('/')"><div class="benefit-icon">📄</div><h3>Авто-документы</h3><p>КП, счета-фактуры, отчёты, SOP.</p></div>
-            <div class="benefit-card" onclick="goToApp('/')"><div class="benefit-icon">🔒</div><h3>Комплаенс</h3><p>GDPR, 152-ФЗ, ISO под вашу страну.</p></div>
+            <div class="benefit-card" onclick="goToApp('/')"><div class="benefit-icon">🏷️</div><h3>Бренд-кит из логотипа</h3><p>Загрузите логотип — получите цвета и шрифты для ваших презентаций.</p></div>
+            <div class="benefit-card" onclick="goToApp('/')"><div class="benefit-icon">📊</div><h3>Авто-отчёты</h3><p>Финансовые отчёты, КП, счета-фактуры за 1 минуту.</p></div>
+            <div class="benefit-card" onclick="goToApp('/')"><div class="benefit-icon">🎯</div><h3>Питч-деки для стартапов</h3><p>Готовые структуры и гайды для инвесторов.</p></div>
+            <div class="benefit-card" onclick="goToApp('/')"><div class="benefit-icon">🔒</div><h3>Безопасность</h3><p>Данные не используются для обучения моделей.</p></div>
         </div>
 
-        <h2 style="text-align:center; margin-bottom:20px; font-size:24px; font-weight:800;">Тарифы для бизнеса</h2>
-        <div class="pricing">
-            <div class="price-card" onclick="goToApp('/pricing')">
-                <div class="name">Business</div>
-                <div class="price">$9.99</div>
-                <div class="period">/месяц</div>
-                <ul><li>Бренд-кит</li><li>50 слайдов</li><li>Безлимит</li></ul>
-                <span class="btn btn-outline" style="width:100%; text-align:center;">Выбрать</span>
-            </div>
-            <div class="price-card featured" onclick="goToApp('/pricing')">
-                <div class="name">Corporate</div>
-                <div class="price">$49.99</div>
-                <div class="period">/10 чел.</div>
-                <ul><li>White-label</li><li>CRM</li><li>Приоритетная поддержка</li></ul>
-                <span class="btn btn-green" style="width:100%; text-align:center; background:#000; color:var(--green);">Выбрать</span>
-            </div>
-            <div class="price-card" onclick="window.location.href='mailto:support@prezentator-ai.com'">
-                <div class="name">Enterprise</div>
-                <div class="price">$199</div>
-                <div class="period">/50 чел.</div>
-                <ul><li>On-premise</li><li>SSO</li><li>API доступ</li></ul>
-                <span class="btn btn-outline" style="width:100%; text-align:center;">Связаться</span>
+        <div class="pricing-section">
+            <div class="container">
+                <h2 class="section-title">Тарифы для бизнеса</h2>
+                <p class="section-sub" id="currencyHint">Загрузка цен...</p>
+                <div class="carousel-wrapper">
+                    <button class="carousel-btn prev" id="prevBtn">←</button>
+                    <div class="carousel" id="pricingCarousel">
+                        <div class="price-card" data-href="/pricing">
+                            <div class="name">Business</div>
+                            <div class="price" id="businessPrice">...</div>
+                            <div class="period">/месяц</div>
+                            <ul><li>Бренд-кит</li><li>Безлимит презентаций</li><li>Все шаблоны</li></ul>
+                            <span class="btn btn-outline" style="width:100%;">Выбрать</span>
+                        </div>
+                        <div class="price-card featured" data-href="/pricing">
+                            <div class="name">Corporate</div>
+                            <div class="price" id="corporatePrice">...</div>
+                            <div class="period">/месяц</div>
+                            <ul><li>Всё из Business</li><li>10 пользователей</li><li>Приоритетная поддержка</li></ul>
+                            <span class="btn btn-outline" style="width:100%; background:#000; color:var(--green); border:none;">Выбрать</span>
+                        </div>
+                        <div class="price-card" data-href="mailto:support@prezentator-ai.com">
+                            <div class="name">Enterprise</div>
+                            <div class="price" id="enterprisePrice">...</div>
+                            <div class="period">/месяц</div>
+                            <ul><li>Всё из Corporate</li><li>50+ пользователей</li><li>API доступ</li></ul>
+                            <span class="btn btn-outline" style="width:100%;">Связаться</span>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next" id="nextBtn">→</button>
+                </div>
             </div>
         </div>
 
         <div class="cta">
-            <h3>Попробуйте бесплатно прямо сейчас</h3>
-            <a href="#" class="cta-button" onclick="goToApp('/'); return false;">🚀 Создать презентацию</a>
+            <h2>Начните экономить время уже сегодня</h2>
+            <span class="cta-button" onclick="goToApp('/')">🚀 Создать презентацию</span>
         </div>
     </div>
 
     <footer class="footer">
         <div class="container">
             <div class="footer-links">
-                <span onclick="goToApp('/')">Главная</span>
-                <span onclick="goToApp('/teacher')">Учителям</span>
-                <span onclick="goToApp('/compare')">Сравнение</span>
-                <span onclick="goToApp('/privacy')">Конфиденциальность</span>
-                <span onclick="goToApp('/terms')">Условия</span>
+                <span onclick="goToPage('/')">Главная</span>
+                <span onclick="goToPage('/teacher.html')">Учителям</span>
+                <span onclick="goToPage('/student.html')">Студентам</span>
+                <span onclick="goToPage('/compare.html')">Сравнение</span>
+                <span onclick="goToPage('/pitch-deck.html')">Питч-дек</span>
+                <span onclick="goToPage('/privacy.html')">Конфиденциальность</span>
+                <span onclick="goToPage('/terms.html')">Условия</span>
+                <span onclick="goToPage('/cookies.html')">Cookie</span>
             </div>
             <p>© 2026 Презентатор ИИ</p>
         </div>
     </footer>
 
     <script>
-        // ⚡ ЗДЕСЬ УКАЖИ СВОЙ URL ПОСЛЕ ДЕПЛОЯ ⚡
-        const APP_URL = 'https://your-app-url.onrender.com';
+        // ========== НАСТРОЙКИ ==========
+        const APP_URL = 'https://flourishing-nougat-5a5d64.netlify.app';
+        
+        // Базовые цены в RUB
+        const PRICES_RUB = {
+            business: 299,
+            corporate: 999,
+            enterprise: 2999
+        };
+
+        // ========== ОПРЕДЕЛЕНИЕ ВАЛЮТЫ ПО IP ==========
+        async function detectCurrency() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                const country = data.country_code;
+                
+                // Беларусь — BYN
+                if (country === 'BY') {
+                    return { currency: 'BYN', symbol: 'Br', rate: 0.033 };
+                }
+                
+                // Россия и СНГ — RUB
+                const cisCountries = ['RU', 'KZ', 'AM', 'KG', 'UZ', 'TJ', 'AZ', 'MD'];
+                if (cisCountries.includes(country)) {
+                    return { currency: 'RUB', symbol: '₽', rate: 1 };
+                }
+                
+                // США — USD
+                if (country === 'US') {
+                    return { currency: 'USD', symbol: '$', rate: 0.01 };
+                }
+                
+                // Европа — EUR
+                const euCountries = ['DE', 'FR', 'IT', 'ES', 'NL', 'BE', 'AT', 'PT', 'GR', 'FI', 'IE', 'SK', 'SI', 'LT', 'LV', 'EE', 'LU', 'CY', 'MT', 'GB', 'PL', 'CZ', 'HU', 'RO', 'BG', 'SE', 'DK', 'HR', 'NO', 'CH'];
+                if (euCountries.includes(country)) {
+                    return { currency: 'EUR', symbol: '€', rate: 0.0095 };
+                }
+                
+                // Остальной мир — USD
+                return { currency: 'USD', symbol: '$', rate: 0.01 };
+            } catch (error) {
+                console.error('Ошибка определения страны:', error);
+                return { currency: 'RUB', symbol: '₽', rate: 1 };
+            }
+        }
+
+        // ========== ФОРМАТИРОВАНИЕ ЦЕН ==========
+        function formatPrice(amount, currency) {
+            if (currency === 'RUB') {
+                return Math.round(amount) + ' ₽';
+            } else if (currency === 'BYN') {
+                return Math.round(amount) + ' Br';
+            } else if (currency === 'USD') {
+                return '$' + amount.toFixed(2);
+            } else if (currency === 'EUR') {
+                return '€' + amount.toFixed(2);
+            }
+            return amount + ' ' + currency;
+        }
+
+        // ========== ОБНОВЛЕНИЕ ЦЕН НА СТРАНИЦЕ ==========
+        async function updatePrices() {
+            const { currency, symbol, rate } = await detectCurrency();
+            
+            document.getElementById('businessPrice').textContent = formatPrice(PRICES_RUB.business * rate, currency);
+            document.getElementById('corporatePrice').textContent = formatPrice(PRICES_RUB.corporate * rate, currency);
+            document.getElementById('enterprisePrice').textContent = formatPrice(PRICES_RUB.enterprise * rate, currency);
+            document.getElementById('currencyHint').textContent = 'Цены в ' + currency + ' ← →';
+        }
+
+        // ========== НАВИГАЦИЯ ==========
+        function goToPage(path) {
+            window.location.href = path;
+        }
         
         function goToApp(path) {
             window.location.href = APP_URL + path;
         }
         
-        // Обработчики для карточек тарифов
-        document.querySelectorAll('.price-card').forEach(function(card) {
-            card.addEventListener('click', function(e) {
-                if (e.target.tagName !== 'SPAN' && e.target.tagName !== 'A') {
-                    goToApp('/pricing');
+        // ========== КНОПКИ СЛАЙДЕРА ==========
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const carousel = document.getElementById('pricingCarousel');
+        
+        if (prevBtn && nextBtn && carousel) {
+            prevBtn.addEventListener('click', () => carousel.scrollBy({ left: -320, behavior: 'smooth' }));
+            nextBtn.addEventListener('click', () => carousel.scrollBy({ left: 320, behavior: 'smooth' }));
+        }
+        
+        // ========== КЛИК ПО КАРТОЧКЕ ==========
+        document.querySelectorAll('.price-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (e.target.tagName === 'SPAN' || e.target.tagName === 'BUTTON') return;
+                const href = card.getAttribute('data-href');
+                if (href && href.startsWith('mailto:')) {
+                    window.location.href = href;
+                } else if (href) {
+                    goToApp(href);
                 }
             });
         });
-        
-        // Обработчик для Enterprise
-        document.querySelector('.price-card:last-child .btn-outline')?.addEventListener('click', function(e) {
-            e.stopPropagation();
-            window.location.href = 'mailto:support@prezentator-ai.com';
-        });
+
+        // ========== ЗАПУСК ПРИ ЗАГРУЗКЕ ==========
+        updatePrices();
     </script>
 </body>
 </html>
