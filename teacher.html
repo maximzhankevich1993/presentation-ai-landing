@@ -219,8 +219,13 @@
                 const data = await response.json();
                 const country = data.country_code;
                 
-                // Страны СНГ — оставляем RUB
-                const cisCountries = ['RU', 'BY', 'KZ', 'AM', 'KG', 'UZ', 'TJ', 'AZ', 'MD'];
+                // Беларусь — BYN (1 BYN ≈ 30 RUB)
+                if (country === 'BY') {
+                    return { currency: 'BYN', symbol: 'Br', rate: 0.033 };
+                }
+                
+                // Россия и СНГ — RUB
+                const cisCountries = ['RU', 'KZ', 'AM', 'KG', 'UZ', 'TJ', 'AZ', 'MD'];
                 if (cisCountries.includes(country)) {
                     return { currency: 'RUB', symbol: '₽', rate: 1 };
                 }
@@ -230,13 +235,13 @@
                     return { currency: 'USD', symbol: '$', rate: 0.01 };
                 }
                 
-                // Еврозона и Европа — EUR
+                // Европа — EUR
                 const euCountries = ['DE', 'FR', 'IT', 'ES', 'NL', 'BE', 'AT', 'PT', 'GR', 'FI', 'IE', 'SK', 'SI', 'LT', 'LV', 'EE', 'LU', 'CY', 'MT', 'GB', 'PL', 'CZ', 'HU', 'RO', 'BG', 'SE', 'DK', 'HR', 'NO', 'CH'];
                 if (euCountries.includes(country)) {
                     return { currency: 'EUR', symbol: '€', rate: 0.0095 };
                 }
                 
-                // Весь остальной мир — USD
+                // Остальной мир — USD
                 return { currency: 'USD', symbol: '$', rate: 0.01 };
             } catch (error) {
                 console.error('Ошибка определения страны:', error);
@@ -248,6 +253,8 @@
         function formatPrice(amount, currency) {
             if (currency === 'RUB') {
                 return Math.round(amount) + ' ₽';
+            } else if (currency === 'BYN') {
+                return Math.round(amount) + ' Br';
             } else if (currency === 'USD') {
                 return '$' + amount.toFixed(2);
             } else if (currency === 'EUR') {
