@@ -21,12 +21,12 @@
         ul { padding-left: 20px; }
         a { color: var(--green); text-decoration: none; transition: color 0.2s; }
         a:hover { color: var(--green-hover); }
-        .btn { display: inline-block; padding: 8px 20px; background: var(--green); color: #000; text-decoration: none; border-radius: 100px; font-weight: 600; font-size: 13px; transition: all 0.2s; margin-top: 20px; }
+        .btn { display: inline-block; padding: 8px 20px; background: var(--green); color: #000; text-decoration: none; border-radius: 100px; font-weight: 600; font-size: 13px; transition: all 0.2s; margin-top: 20px; cursor: pointer; border: none; font-family: inherit; }
         .btn:hover { background: var(--green-hover); transform: scale(1.02); }
         .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 16px 0; text-align: center; margin-top: 40px; }
         .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 8px; }
-        .footer-links a, .footer-links span { color: var(--subtext); font-size: 12px; cursor: pointer; text-decoration: none; transition: color 0.2s; }
-        .footer-links a:hover, .footer-links span:hover { color: var(--text); }
+        .footer-links span { color: var(--subtext); font-size: 12px; cursor: pointer; transition: color 0.2s; }
+        .footer-links span:hover { color: var(--text); }
         .footer p { color: #555; font-size: 11px; margin-top: 8px; }
     </style>
 </head>
@@ -40,8 +40,8 @@
         <p>1.2. Используя сервис, вы соглашаетесь с условиями настоящего соглашения.</p>
         
         <h2>2. Бесплатный тариф</h2>
-        <p>2.1. Бесплатный тариф включает 5 генераций (презентации, планы уроков, тесты, отчёты в сумме).</p>
-        <p>2.2. Максимальное количество слайдов в презентации — 10.</p>
+        <p>2.1. Бесплатный тариф включает 5 генераций в месяц (презентации, планы уроков, тесты, отчёты).</p>
+        <p>2.2. Максимальное количество слайдов в бесплатной презентации — 10.</p>
         <p>2.3. Бесплатный тариф действует бессрочно.</p>
         
         <h2>3. Premium подписка</h2>
@@ -79,27 +79,30 @@
         <p>Для общих вопросов: <a href="mailto:support@prezentator-ai.com">support@prezentator-ai.com</a></p>
         
         <div style="text-align: center;">
-            <a href="#" class="btn" onclick="goToApp('/'); return false;">← Вернуться на главную</a>
+            <span class="btn" onclick="goToPage('/')">← Вернуться на главную</span>
         </div>
         
         <div class="footer">
             <div class="footer-links">
-                <span onclick="goToApp('/')">Главная</span>
-                <span onclick="goToApp('/teacher')">Учителям</span>
-                <span onclick="goToApp('/business')">Бизнесу</span>
-                <span onclick="goToApp('/student')">Студентам</span>
-                <span onclick="goToApp('/compare')">Сравнение</span>
-                <span onclick="goToApp('/pitch-deck')">Питч-дек</span>
-                <span onclick="goToApp('/privacy')">Конфиденциальность</span>
-                <span onclick="goToApp('/cookie')">Cookie</span>
+                <span onclick="goToPage('/')">Главная</span>
+                <span onclick="goToPage('/teacher.html')">Учителям</span>
+                <span onclick="goToPage('/business.html')">Бизнесу</span>
+                <span onclick="goToPage('/student.html')">Студентам</span>
+                <span onclick="goToPage('/compare.html')">Сравнение</span>
+                <span onclick="goToPage('/pitch-deck.html')">Питч-дек</span>
+                <span onclick="goToPage('/privacy.html')">Конфиденциальность</span>
+                <span onclick="goToPage('/cookies.html')">Cookie</span>
             </div>
             <p>© 2026 Презентатор ИИ</p>
         </div>
     </div>
     
     <script>
-        // ⚡ ЗДЕСЬ УКАЖИ СВОЙ URL ПОСЛЕ ДЕПЛОЯ ⚡
-        const APP_URL = 'https://your-app-url.onrender.com';
+        const APP_URL = 'https://flourishing-nougat-5a5d64.netlify.app';
+        
+        function goToPage(path) {
+            window.location.href = path;
+        }
         
         function goToApp(path) {
             window.location.href = APP_URL + path;
