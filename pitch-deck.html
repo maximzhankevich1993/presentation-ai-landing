@@ -41,13 +41,13 @@
 
         .cta { text-align: center; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 20px; }
         .cta h2 { font-size: 24px; font-weight: 800; margin-bottom: 16px; }
-        .cta-button { display: inline-block; padding: 14px 32px; background: var(--green); color: #000; text-decoration: none; font-weight: 700; border-radius: 100px; font-size: 16px; transition: all 0.2s; }
+        .cta-button { display: inline-block; padding: 14px 32px; background: var(--green); color: #000; text-decoration: none; font-weight: 700; border-radius: 100px; font-size: 16px; transition: all 0.2s; cursor: pointer; }
         .cta-button:hover { background: var(--green-hover); transform: scale(1.03); }
 
         .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 18px 0; text-align: center; }
         .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 8px; }
-        .footer-links a, .footer-links span { color: var(--subtext); font-size: 12px; cursor: pointer; text-decoration: none; transition: color 0.2s; }
-        .footer-links a:hover, .footer-links span:hover { color: var(--text); }
+        .footer-links span { color: var(--subtext); font-size: 12px; cursor: pointer; transition: color 0.2s; }
+        .footer-links span:hover { color: var(--text); }
         .footer p { color: #555; font-size: 11px; margin-top: 8px; }
 
         @media (max-width: 768px) {
@@ -58,8 +58,8 @@
 <body>
     <nav class="navbar">
         <div class="nav-inner">
-            <span class="nav-logo" onclick="goToApp('/')">🎨 Презентатор ИИ</span>
-            <span class="btn btn-green" onclick="goToApp('/')">← На главную</span>
+            <span class="nav-logo" onclick="goToPage('/')">🎨 Презентатор ИИ</span>
+            <span class="btn btn-green" onclick="goToPage('/')">← На главную</span>
         </div>
     </nav>
 
@@ -98,40 +98,36 @@
 
         <div class="cta">
             <h2>Создайте свой питч-дек</h2>
-            <a href="#" class="cta-button" onclick="goToApp('/'); return false;">✨ Создать бесплатно</a>
+            <span class="cta-button" onclick="goToApp('/')">✨ Создать бесплатно</span>
         </div>
     </div>
 
     <footer class="footer">
         <div class="container">
             <div class="footer-links">
-                <span onclick="goToApp('/')">Главная</span>
-                <span onclick="goToApp('/teacher')">Учителям</span>
-                <span onclick="goToApp('/business')">Бизнесу</span>
-                <span onclick="goToApp('/compare')">Сравнение</span>
-                <span onclick="goToApp('/privacy')">Конфиденциальность</span>
-                <span onclick="goToApp('/terms')">Условия</span>
+                <span onclick="goToPage('/')">Главная</span>
+                <span onclick="goToPage('/teacher.html')">Учителям</span>
+                <span onclick="goToPage('/business.html')">Бизнесу</span>
+                <span onclick="goToPage('/student.html')">Студентам</span>
+                <span onclick="goToPage('/compare.html')">Сравнение</span>
+                <span onclick="goToPage('/privacy.html')">Конфиденциальность</span>
+                <span onclick="goToPage('/terms.html')">Условия</span>
+                <span onclick="goToPage('/cookies.html')">Cookie</span>
             </div>
             <p>© 2026 Презентатор ИИ</p>
         </div>
     </footer>
 
     <script>
-        // ⚡ ЗДЕСЬ УКАЖИ СВОЙ URL ПОСЛЕ ДЕПЛОЯ ⚡
-        const APP_URL = 'https://your-app-url.onrender.com';
+        const APP_URL = 'https://presentation-ai-app.h6pbsvx5dg.workers.dev';
+        
+        function goToPage(path) {
+            window.location.href = path;
+        }
         
         function goToApp(path) {
             window.location.href = APP_URL + path;
         }
-        
-        // Обработчики для всех кликабельных элементов
-        document.querySelectorAll('.nav-logo, .btn-green, .cta-button').forEach(function(el) {
-            el.addEventListener('click', function(e) {
-                if (e.target.tagName !== 'A') {
-                    e.preventDefault();
-                }
-            });
-        });
     </script>
 </body>
 </html>
