@@ -202,97 +202,58 @@
     </footer>
 
     <script>
-        // ========== НАСТРОЙКИ ==========
-        const APP_URL = 'https://presentation-ai-app.h6pbsvx5dg.workers.dev';
+        const APP_URL = 'https://app.prezentator-ai.com';
         
-        // Базовые цены в RUB
         const PRICES_RUB = {
             teacher: 199,
             school: 499,
             university: 999
         };
 
-        // ========== ОПРЕДЕЛЕНИЕ ВАЛЮТЫ ПО IP ==========
         async function detectCurrency() {
             try {
                 const response = await fetch('https://ipapi.co/json/');
                 const data = await response.json();
                 const country = data.country_code;
                 
-                // Беларусь — BYN (1 BYN ≈ 30 RUB)
-                if (country === 'BY') {
-                    return { currency: 'BYN', symbol: 'Br', rate: 0.033 };
-                }
-                
-                // Россия и СНГ — RUB
+                if (country === 'BY') return { currency: 'BYN', symbol: 'Br', rate: 0.033 };
                 const cisCountries = ['RU', 'KZ', 'AM', 'KG', 'UZ', 'TJ', 'AZ', 'MD'];
-                if (cisCountries.includes(country)) {
-                    return { currency: 'RUB', symbol: '₽', rate: 1 };
-                }
-                
-                // США — USD
-                if (country === 'US') {
-                    return { currency: 'USD', symbol: '$', rate: 0.01 };
-                }
-                
-                // Европа — EUR
+                if (cisCountries.includes(country)) return { currency: 'RUB', symbol: '₽', rate: 1 };
+                if (country === 'US') return { currency: 'USD', symbol: '$', rate: 0.01 };
                 const euCountries = ['DE', 'FR', 'IT', 'ES', 'NL', 'BE', 'AT', 'PT', 'GR', 'FI', 'IE', 'SK', 'SI', 'LT', 'LV', 'EE', 'LU', 'CY', 'MT', 'GB', 'PL', 'CZ', 'HU', 'RO', 'BG', 'SE', 'DK', 'HR', 'NO', 'CH'];
-                if (euCountries.includes(country)) {
-                    return { currency: 'EUR', symbol: '€', rate: 0.0095 };
-                }
-                
-                // Остальной мир — USD
+                if (euCountries.includes(country)) return { currency: 'EUR', symbol: '€', rate: 0.0095 };
                 return { currency: 'USD', symbol: '$', rate: 0.01 };
             } catch (error) {
-                console.error('Ошибка определения страны:', error);
                 return { currency: 'RUB', symbol: '₽', rate: 1 };
             }
         }
 
-        // ========== ФОРМАТИРОВАНИЕ ЦЕН ==========
         function formatPrice(amount, currency) {
-            if (currency === 'RUB') {
-                return Math.round(amount) + ' ₽';
-            } else if (currency === 'BYN') {
-                return Math.round(amount) + ' Br';
-            } else if (currency === 'USD') {
-                return '$' + amount.toFixed(2);
-            } else if (currency === 'EUR') {
-                return '€' + amount.toFixed(2);
-            }
+            if (currency === 'RUB') return Math.round(amount) + ' ₽';
+            else if (currency === 'BYN') return Math.round(amount) + ' Br';
+            else if (currency === 'USD') return '$' + amount.toFixed(2);
+            else if (currency === 'EUR') return '€' + amount.toFixed(2);
             return amount + ' ' + currency;
         }
 
-        // ========== ОБНОВЛЕНИЕ ЦЕН НА СТРАНИЦЕ ==========
         async function updatePrices() {
             const { currency, symbol, rate } = await detectCurrency();
-            
             document.getElementById('teacherPrice').textContent = formatPrice(PRICES_RUB.teacher * rate, currency);
             document.getElementById('schoolPrice').textContent = formatPrice(PRICES_RUB.school * rate, currency);
             document.getElementById('universityPrice').textContent = formatPrice(PRICES_RUB.university * rate, currency);
             document.getElementById('currencyHint').textContent = 'Цены в ' + currency + ' ← →';
         }
 
-        // ========== НАВИГАЦИЯ ==========
-        function goToPage(path) {
-            window.location.href = path;
-        }
+        function goToPage(path) { window.location.href = path; }
+        function goToApp(path) { window.location.href = APP_URL + path; }
         
-        function goToApp(path) {
-            window.location.href = APP_URL + path;
-        }
-        
-        // ========== КНОПКИ СЛАЙДЕРА ==========
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const carousel = document.getElementById('pricingCarousel');
-        
         if (prevBtn && nextBtn && carousel) {
             prevBtn.addEventListener('click', () => carousel.scrollBy({ left: -320, behavior: 'smooth' }));
             nextBtn.addEventListener('click', () => carousel.scrollBy({ left: 320, behavior: 'smooth' }));
         }
-        
-        // ========== КЛИК ПО КАРТОЧКЕ ==========
         document.querySelectorAll('.price-card').forEach(card => {
             card.addEventListener('click', (e) => {
                 if (e.target.tagName === 'SPAN' || e.target.tagName === 'BUTTON') return;
@@ -300,8 +261,6 @@
                 if (href) goToApp(href);
             });
         });
-
-        // ========== ЗАПУСК ПРИ ЗАГРУЗКЕ ==========
         updatePrices();
     </script>
 </body>
