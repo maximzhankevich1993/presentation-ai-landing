@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас — Команда Презентатор ИИ</title>
+    <meta name="description" content="Команда разработчиков Презентатор ИИ. Наш первый проект и планы на будущее.">
+    <meta name="robots" content="noindex, follow">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #121212; --card: #1A1A1A; --hover: #282828; --text: #FFFFFF; --subtext: #B3B3B3; --green: #1DB954; --green-hover: #1ED760; --border: #2A2A2A; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+        .container { max-width: 700px; margin: 0 auto; padding: 80px 20px 40px; }
+        
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(18,18,18,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 56px; max-width: 700px; margin: 0 auto; padding: 0 20px; }
+        .nav-logo { font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; cursor: pointer; }
+        .btn { padding: 8px 18px; border-radius: 100px; font-weight: 600; font-size: 13px; cursor: pointer; border: none; font-family: inherit; display: inline-block; text-decoration: none; transition: all 0.2s; }
+        .btn-green { background: var(--green); color: #000; }
+        .btn-green:hover { background: var(--green-hover); transform: scale(1.02); }
+
+        h1 { font-size: 36px; font-weight: 900; margin-bottom: 8px; background: linear-gradient(135deg, #fff 0%, #1DB954 100%); background-clip: text; -webkit-background-clip: text; color: transparent; }
+        h2 { font-size: 22px; font-weight: 700; margin: 28px 0 10px; color: var(--green); }
+        p { font-size: 15px; color: var(--subtext); margin-bottom: 14px; line-height: 1.6; }
+        
+        .team-card { background: var(--card); border-radius: 20px; padding: 32px; margin: 24px 0; border: 1px solid var(--border); text-align: center; }
+        .team-icon { font-size: 56px; margin-bottom: 16px; }
+        .team-card h2 { margin-top: 0; }
+        
+        .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 24px 0; }
+        .project-card { background: var(--card); border-radius: 16px; padding: 24px; border: 1px solid var(--border); transition: all 0.2s; cursor: pointer; }
+        .project-card:hover { background: var(--hover); transform: translateY(-3px); }
+        .project-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--green); }
+        .project-card p { font-size: 13px; margin-bottom: 12px; }
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 100px; font-size: 11px; font-weight: 700; }
+        .badge-active { background: var(--green); color: #000; }
+        .badge-soon { background: var(--border); color: var(--subtext); }
+        
+        .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 40px 0 30px; text-align: center; margin-top: 40px; }
+        .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 20px; }
+        .footer-links span { color: var(--subtext); font-size: 13px; cursor: pointer; transition: color 0.2s; }
+        .footer-links span:hover { color: var(--text); }
+        .footer p { color: #555; font-size: 12px; }
+
+        @media (max-width: 768px) { 
+            .projects { grid-template-columns: 1fr; }
+            h1 { font-size: 28px; }
+        }
+    </style>
+    
+    <script>
+        async function detectLanguage() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                const country = data.country_code;
+                const cisCountries = ['RU', 'BY', 'KZ', 'AM', 'KG', 'UZ', 'TJ', 'AZ', 'MD'];
+                if (!cisCountries.includes(country)) {
+                    const path = window.location.pathname;
+                    window.location.href = '/en' + path;
+                }
+            } catch(e) {}
+        }
+        detectLanguage();
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-inner">
+            <span class="nav-logo" onclick="goToPage('/')">🎨 Презентатор ИИ</span>
+            <span class="btn btn-green" onclick="goToPage('/')">← На главную</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>О нас</h1>
+        <p>Мы — команда <strong>NeuraCraft</strong>. Это наш первый продукт, и мы гордимся тем, что создали сервис, который помогает людям экономить время и создавать профессиональные презентации с помощью искусственного интеллекта.</p>
+
+        <div class="team-card">
+            <div class="team-icon">🚀</div>
+            <h2>NeuraCraft</h2>
+            <p>Небольшая команда разработчиков и энтузиастов, которые верят, что ИИ может сделать жизнь проще. Мы работаем удалённо из разных уголков мира и объединены одной целью — создавать полезные и доступные инструменты для образования и бизнеса.</p>
+            <p style="color:var(--green); font-weight:600;">Презентатор ИИ — наш первый, но не последний проект.</p>
+        </div>
+
+        <h2>Наши проекты</h2>
+        <div class="projects">
+            <div class="project-card" onclick="goToPage('/')">
+                <h3>🎨 Презентатор ИИ</h3>
+                <p>Создание презентаций, тестов, планов уроков и отчётов с помощью ИИ.</p>
+                <span class="badge badge-active">Запущен</span>
+            </div>
+            <div class="project-card">
+                <h3>📚 EduFlow</h3>
+                <p>Платформа для полного цикла образовательного процесса: планирование, проведение уроков, оценка знаний, аналитика успеваемости.</p>
+                <span class="badge badge-soon">Скоро</span>
+            </div>
+        </div>
+
+        <h2>Свяжитесь с нами</h2>
+        <p>Есть вопросы, предложения или просто хотите сказать «привет»? Напишите нам на <a href="mailto:hello@neuracraft.tech" style="color:var(--green);">hello@neuracraft.tech</a></p>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <span onclick="goToPage('/')">Главная</span>
+                <span onclick="goToPage('/teacher.html')">Учителям</span>
+                <span onclick="goToPage('/business.html')">Бизнесу</span>
+                <span onclick="goToPage('/student.html')">Студентам</span>
+                <span onclick="goToPage('/compare.html')">Сравнение</span>
+                <span onclick="goToPage('/pitch-deck.html')">Питч-дек</span>
+                <span onclick="goToPage('/privacy.html')">Конфиденциальность</span>
+                <span onclick="goToPage('/terms.html')">Условия</span>
+            </div>
+            <p>© 2026 NeuraCraft. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        const APP_URL = 'https://app.prezentator-ai.com';
+        function goToPage(path) { window.location.href = path; }
+        function goToApp(path) { window.location.href = APP_URL + path; }
+    </script>
+</body>
+</html>
