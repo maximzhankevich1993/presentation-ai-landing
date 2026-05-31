@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Teachers — Lesson Plans by Standards | Prezentator AI</title>
+    <meta name="description" content="Lesson plans by your country's standards (Common Core, Cambridge, IB). Save up to 10 hours per week. 5 free plans.">
+    <meta property="og:title" content="For Teachers — Prezentator AI">
+    <meta property="og:description" content="Lesson plans by Common Core, Cambridge, IB. Save up to 10 hours per week.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #121212; --card: #1A1A1A; --hover: #282828; --text: #FFFFFF; --subtext: #B3B3B3; --green: #1DB954; --green-hover: #1ED760; --border: #2A2A2A; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(18,18,18,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 56px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .nav-logo { font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; cursor: pointer; }
+        .btn { padding: 8px 18px; border-radius: 100px; font-weight: 600; font-size: 13px; cursor: pointer; border: none; font-family: inherit; display: inline-block; text-decoration: none; transition: all 0.2s; }
+        .btn-green { background: var(--green); color: #000; }
+        .btn-green:hover { background: var(--green-hover); transform: scale(1.02); }
+        .btn-outline { background: transparent; border: 1px solid var(--subtext); color: var(--text); }
+        .btn-outline:hover { border-color: var(--text); background: rgba(255,255,255,0.05); }
+        .hero { padding: 100px 0 40px; text-align: center; }
+        .hero h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 900; letter-spacing: -1px; margin-bottom: 8px; background: linear-gradient(135deg, #fff 0%, #1DB954 100%); background-clip: text; -webkit-background-clip: text; color: transparent; }
+        .hero p { color: var(--subtext); font-size: 16px; margin-bottom: 30px; }
+        .benefits { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 50px; }
+        .benefit-card { background: var(--card); border-radius: 20px; padding: 28px 20px; text-align: center; transition: all 0.25s; cursor: pointer; }
+        .benefit-card:hover { background: var(--hover); transform: translateY(-4px); }
+        .benefit-icon { font-size: 40px; margin-bottom: 12px; }
+        .benefit-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+        .benefit-card p { font-size: 12px; color: var(--subtext); line-height: 1.4; }
+        .standards { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 50px; }
+        .standard-badge { background: var(--card); padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 500; color: var(--subtext); border: 1px solid var(--border); transition: all 0.2s; }
+        .standard-badge:hover { border-color: var(--green); color: var(--green); }
+        .pricing-section { padding: 40px 0 60px; background: linear-gradient(180deg, transparent 0%, rgba(29,185,84,0.03) 100%); }
+        .section-title { text-align: center; font-size: 36px; font-weight: 900; margin-bottom: 12px; letter-spacing: -1px; background: linear-gradient(135deg, #fff 0%, #1DB954 100%); background-clip: text; -webkit-background-clip: text; color: transparent; }
+        .section-sub { text-align: center; color: var(--subtext); margin-bottom: 40px; font-size: 15px; }
+        .carousel-wrapper { position: relative; display: flex; align-items: center; gap: 15px; }
+        .carousel { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 20px 0 30px; flex: 1; scrollbar-width: none; }
+        .carousel::-webkit-scrollbar { display: none; }
+        .price-card {
+            flex: 0 0 300px; scroll-snap-align: start; cursor: pointer;
+            background: linear-gradient(145deg, var(--card) 0%, #141414 100%);
+            border-radius: 28px; padding: 32px 24px; text-align: center;
+            transition: all 0.3s; position: relative;
+            border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 20px 35px -10px rgba(0,0,0,0.3);
+        }
+        .price-card:hover { transform: translateY(-8px); border-color: rgba(29,185,84,0.2); }
+        .price-card.featured { background: linear-gradient(145deg, #1DB954 0%, #169C46 100%); border: none; }
+        .price-card.featured .price, .price-card.featured .name { color: #000; }
+        .price-card.featured .period { color: #000; }
+        .price-card.featured .btn-outline { background: #000; color: var(--green); border: none; }
+        .name { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+        .price { font-size: 44px; font-weight: 900; margin-bottom: 4px; }
+        .period { font-size: 12px; color: var(--subtext); margin-bottom: 20px; }
+        ul { list-style: none; text-align: left; margin-bottom: 24px; }
+        ul li { padding: 6px 0; font-size: 13px; color: var(--subtext); display: flex; align-items: center; gap: 8px; }
+        ul li::before { content: '✓'; color: var(--green); font-weight: 700; font-size: 14px; }
+        .price-card.featured ul li { color: #000; }
+        .price-card.featured ul li::before { color: #000; }
+        .carousel-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); font-size: 24px; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; transition: all 0.2s; flex-shrink: 0; }
+        .carousel-btn:hover { background: var(--green); color: #000; transform: scale(1.05); }
+        @media (max-width: 768px) { .carousel-btn { display: none; } }
+        .cta { text-align: center; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 20px; }
+        .cta h2 { font-size: 28px; font-weight: 800; margin-bottom: 16px; }
+        .cta-button { display: inline-block; padding: 14px 32px; background: var(--green); color: #000; text-decoration: none; font-weight: 700; border-radius: 100px; font-size: 16px; transition: all 0.2s; cursor: pointer; }
+        .cta-button:hover { background: var(--green-hover); transform: scale(1.03); }
+        .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 40px 0 30px; text-align: center; margin-top: 40px; }
+        .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 20px; }
+        .footer-links span { color: var(--subtext); font-size: 13px; cursor: pointer; transition: color 0.2s; }
+        .footer-links span:hover { color: var(--text); }
+        .footer p { color: #555; font-size: 12px; }
+        @media (max-width: 768px) { .benefits { grid-template-columns: 1fr; } .price-card { flex: 0 0 85%; } }
+    </style>
+    
+    <script>
+        async function detectLanguage() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                const country = data.country_code;
+                const cisCountries = ['RU', 'BY', 'KZ', 'AM', 'KG', 'UZ', 'TJ', 'AZ', 'MD'];
+                if (cisCountries.includes(country)) {
+                    const path = window.location.pathname.replace('/en', '');
+                    window.location.href = path || '/';
+                }
+            } catch(e) {}
+        }
+        detectLanguage();
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-inner">
+            <span class="nav-logo" onclick="goToPage('/en/')">🎨 Prezentator AI</span>
+            <span class="btn btn-green" onclick="goToPage('/en/')">← Home</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero">
+            <h1>🏫 For Teachers</h1>
+            <p>Lesson plans by your country's standards. Save up to 10 hours per week.</p>
+        </div>
+
+        <div class="benefits">
+            <div class="benefit-card" onclick="goToApp('/')"><div class="benefit-icon">📋</div><h3>Auto Lesson Plan</h3><p>Enter a topic — get a ready-made plan with structure and goals.</p></div>
+            <div class="benefit-card" onclick="goToApp('/')"><div class="benefit-icon">📝</div><h3>Quiz Generator</h3><p>Create a quiz with answer options from a presentation.</p></div>
+            <div class="benefit-card" onclick="goToApp('/')"><div class="benefit-icon">🌍</div><h3>10+ Standards</h3><p>Common Core, Cambridge, IB, and more.</p></div>
+            <div class="benefit-card" onclick="goToApp('/')"><div class="benefit-icon">🔗</div><h3>Integrations</h3><p>Google Classroom, Moodle, and more.</p></div>
+        </div>
+
+        <div class="standards">
+            <span class="standard-badge">🇺🇸 Common Core</span>
+            <span class="standard-badge">🇬🇧 Cambridge</span>
+            <span class="standard-badge">🌍 IB</span>
+            <span class="standard-badge">🇬🇧 National Curriculum</span>
+            <span class="standard-badge">🇦🇺 Australian</span>
+            <span class="standard-badge">🇮🇳 CBSE</span>
+            <span class="standard-badge">🇪🇺 European Framework</span>
+        </div>
+
+        <div class="pricing-section">
+            <div class="container">
+                <h2 class="section-title">Plans for Teachers</h2>
+                <p class="section-sub" id="currencyHint">Loading prices...</p>
+                <div class="carousel-wrapper">
+                    <button class="carousel-btn prev" id="prevBtn">←</button>
+                    <div class="carousel" id="pricingCarousel">
+                        <div class="price-card" data-href="/pricing">
+                            <div class="name">Teacher</div>
+                            <div class="price" id="teacherPrice">...</div>
+                            <div class="period">/month</div>
+                            <ul><li>Unlimited lesson plans</li><li>All standards</li><li>Quiz generator</li></ul>
+                            <span class="btn btn-outline" style="width:100%;">Select</span>
+                        </div>
+                        <div class="price-card featured" data-href="/pricing">
+                            <div class="name">School</div>
+                            <div class="price" id="schoolPrice">...</div>
+                            <div class="period">/month</div>
+                            <ul><li>All Teacher features</li><li>10 teachers</li><li>Admin panel</li></ul>
+                            <span class="btn btn-outline" style="width:100%; background:#000; color:var(--green); border:none;">Select</span>
+                        </div>
+                        <div class="price-card" data-href="/pricing">
+                            <div class="name">University</div>
+                            <div class="price" id="universityPrice">...</div>
+                            <div class="period">/month</div>
+                            <ul><li>All School features</li><li>50+ teachers</li><li>Priority support</li></ul>
+                            <span class="btn btn-outline" style="width:100%;">Select</span>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next" id="nextBtn">→</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta">
+            <h2>Start saving time today</h2>
+            <span class="cta-button" onclick="goToApp('/')">🚀 Create a Lesson Plan</span>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <span onclick="goToPage('/en/')">Home</span>
+                <span onclick="goToPage('/en/business.html')">Business</span>
+                <span onclick="goToPage('/en/student.html')">Students</span>
+                <span onclick="goToPage('/en/compare.html')">Compare</span>
+                <span onclick="goToPage('/en/pitch-deck.html')">Pitch Deck</span>
+                <span onclick="goToPage('/en/privacy.html')">Privacy</span>
+                <span onclick="goToPage('/en/terms.html')">Terms</span>
+                <span onclick="goToPage('/en/cookies.html')">Cookies</span>
+            </div>
+            <p>© 2026 Prezentator AI</p>
+        </div>
+    </footer>
+
+    <script>
+        const APP_URL = 'https://app.prezentator-ai.com';
+        function goToPage(path) { window.location.href = path; }
+        function goToApp(path) { window.location.href = APP_URL + path; }
+        
+        // Price logic same as Russian version
+        const PRICES_RUB = { teacher: 199, school: 499, university: 999 };
+        async function detectCurrency() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                const country = data.country_code;
+                if (country === 'BY') return { currency: 'BYN', symbol: 'Br', rate: 0.033 };
+                if (country === 'RU') return { currency: 'RUB', symbol: '₽', rate: 1 };
+                if (country === 'US') return { currency: 'USD', symbol: '$', rate: 0.01 };
+                const euCountries = ['DE', 'FR', 'IT', 'ES', 'NL', 'BE', 'AT', 'PT', 'GR', 'FI', 'IE', 'SK', 'SI', 'LT', 'LV', 'EE', 'LU', 'CY', 'MT', 'GB', 'PL', 'CZ', 'HU', 'RO', 'BG', 'SE', 'DK', 'HR', 'NO', 'CH'];
+                if (euCountries.includes(country)) return { currency: 'EUR', symbol: '€', rate: 0.0095 };
+                return { currency: 'USD', symbol: '$', rate: 0.01 };
+            } catch(e) { return { currency: 'USD', symbol: '$', rate: 0.01 }; }
+        }
+        function formatPrice(amount, currency) {
+            if (currency === 'RUB') return Math.round(amount) + ' ₽';
+            if (currency === 'BYN') return Math.round(amount) + ' Br';
+            if (currency === 'USD') return '$' + amount.toFixed(2);
+            if (currency === 'EUR') return '€' + amount.toFixed(2);
+            return amount + ' ' + currency;
+        }
+        async function updatePrices() {
+            const { currency, symbol, rate } = await detectCurrency();
+            document.getElementById('teacherPrice').textContent = formatPrice(PRICES_RUB.teacher * rate, currency);
+            document.getElementById('schoolPrice').textContent = formatPrice(PRICES_RUB.school * rate, currency);
+            document.getElementById('universityPrice').textContent = formatPrice(PRICES_RUB.university * rate, currency);
+            document.getElementById('currencyHint').textContent = 'Prices in ' + currency + ' ← →';
+        }
+        updatePrices();
+        
+        // Slider
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const carousel = document.getElementById('pricingCarousel');
+        if (prevBtn && nextBtn && carousel) {
+            prevBtn.addEventListener('click', () => carousel.scrollBy({ left: -320, behavior: 'smooth' }));
+            nextBtn.addEventListener('click', () => carousel.scrollBy({ left: 320, behavior: 'smooth' }));
+        }
+        document.querySelectorAll('.price-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                const target = e.target.closest('a');
+                if (target && target.getAttribute('href')) return;
+                const href = card.getAttribute('data-href');
+                if (href) goToApp(href);
+            });
+        });
+    </script>
+</body>
+</html>
