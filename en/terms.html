@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service — Prezentator AI</title>
+    <meta name="description" content="Terms of use for Prezentator AI. Free plan, Premium subscription, rules and restrictions.">
+    <meta name="robots" content="noindex, follow">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #121212; --card: #1A1A1A; --hover: #282828; --text: #FFFFFF; --subtext: #B3B3B3; --green: #1DB954; --green-hover: #1ED760; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+        .container { max-width: 700px; margin: 0 auto; padding: 80px 20px 40px; }
+        h1 { font-size: 28px; font-weight: 900; margin-bottom: 8px; }
+        h2 { font-size: 18px; font-weight: 700; margin: 28px 0 10px; color: var(--green); }
+        p, li { font-size: 14px; color: var(--subtext); margin-bottom: 10px; }
+        ul { padding-left: 20px; }
+        a { color: var(--green); text-decoration: none; }
+        a:hover { color: var(--green-hover); }
+        .btn { display: inline-block; padding: 8px 20px; background: var(--green); color: #000; border-radius: 100px; font-weight: 600; font-size: 13px; margin-top: 20px; cursor: pointer; border: none; }
+        .btn:hover { background: var(--green-hover); }
+        .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 16px 0; text-align: center; margin-top: 40px; }
+        .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 8px; }
+        .footer-links span { color: var(--subtext); font-size: 12px; cursor: pointer; }
+        .footer-links span:hover { color: var(--text); }
+        .footer p { color: #555; font-size: 11px; margin-top: 8px; }
+    </style>
+    
+    <script>
+        async function detectLanguage() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                const country = data.country_code;
+                const cisCountries = ['RU', 'BY', 'KZ', 'AM', 'KG', 'UZ', 'TJ', 'AZ', 'MD'];
+                if (cisCountries.includes(country)) {
+                    const path = window.location.pathname.replace('/en', '');
+                    window.location.href = path || '/';
+                }
+            } catch(e) {}
+        }
+        detectLanguage();
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>📜 Terms of Service</h1>
+        <p style="color:var(--subtext); font-size:12px;">Last updated: May 21, 2026</p>
+        
+        <h2>1. General Provisions</h2>
+        <p>1.1. This agreement governs the relationship between Prezentator AI (hereinafter "Service") and the user.</p>
+        <p>1.2. By using the service, you agree to the terms of this agreement.</p>
+        
+        <h2>2. Free Plan</h2>
+        <p>2.1. The free plan includes 5 generations per month (presentations, lesson plans, quizzes, reports).</p>
+        <p>2.2. Maximum slides in a free presentation — 10.</p>
+        <p>2.3. The free plan is perpetual.</p>
+        
+        <h2>3. Premium Subscription</h2>
+        <p>3.1. Premium subscription provides unlimited generations and extended features.</p>
+        <p>3.2. Subscription auto-renews every month. You can cancel auto-renewal at any time in account settings.</p>
+        <p>3.3. Refunds are possible within 14 days of payment.</p>
+        
+        <h2>4. VIP Status</h2>
+        <p>4.1. VIP status is granted to the first 50 users and is valid for life.</p>
+        <p>4.2. VIP includes all Premium features without a monthly fee.</p>
+        
+        <h2>5. Prohibited Actions</h2>
+        <ul>
+            <li>🚫 Posting illegal content</li>
+            <li>🚫 Hacking, decompiling or reverse engineering the service</li>
+            <li>🚫 Reselling access to the service</li>
+            <li>🚫 Creating multiple accounts to bypass limits</li>
+            <li>🚫 Using the service for spam or fraud</li>
+        </ul>
+        
+        <h2>6. Intellectual Property</h2>
+        <p>6.1. Generated presentations belong to the user.</p>
+        <p>6.2. The service itself, its code, design, and trademarks are our intellectual property.</p>
+        
+        <h2>7. Liability</h2>
+        <p>7.1. We are not responsible for the content of user-created presentations.</p>
+        <p>7.2. We do not guarantee uninterrupted service operation (technical breaks may occur).</p>
+        
+        <h2>8. Changes to Terms</h2>
+        <p>8.1. We reserve the right to change the terms of the agreement with 14 days' notice to users.</p>
+        <p>8.2. Continued use of the service means acceptance of the new terms.</p>
+        
+        <h2>9. Contacts</h2>
+        <p>For legal questions: <a href="mailto:legal@prezentator-ai.com">legal@prezentator-ai.com</a></p>
+        <p>For general questions: <a href="mailto:support@prezentator-ai.com">support@prezentator-ai.com</a></p>
+        
+        <div style="text-align: center;">
+            <span class="btn" onclick="goToPage('/en/')">← Back to Home</span>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-links">
+                <span onclick="goToPage('/en/')">Home</span>
+                <span onclick="goToPage('/en/teacher.html')">Teachers</span>
+                <span onclick="goToPage('/en/business.html')">Business</span>
+                <span onclick="goToPage('/en/student.html')">Students</span>
+                <span onclick="goToPage('/en/compare.html')">Compare</span>
+                <span onclick="goToPage('/en/pitch-deck.html')">Pitch Deck</span>
+                <span onclick="goToPage('/en/privacy.html')">Privacy</span>
+                <span onclick="goToPage('/en/cookies.html')">Cookies</span>
+            </div>
+            <p>© 2026 Prezentator AI</p>
+        </div>
+    </div>
+    
+    <script>
+        const APP_URL = 'https://app.prezentator-ai.com';
+        function goToPage(path) { window.location.href = path; }
+        function goToApp(path) { window.location.href = APP_URL + path; }
+    </script>
+</body>
+</html>
