@@ -314,9 +314,13 @@
             nextBtn.addEventListener('click', () => carousel.scrollBy({ left: 320, behavior: 'smooth' }));
         }
         
+        // ИСПРАВЛЕННЫЙ ОБРАБОТЧИК КЛИКА ПО КАРТОЧКЕ
         document.querySelectorAll('.pricing-card').forEach(card => {
             card.addEventListener('click', (e) => {
-                if (e.target.tagName === 'SPAN' || e.target.tagName === 'BUTTON') return;
+                // Не перехватываем клик, если нажали на кнопку-ссылку
+                const target = e.target.closest('a');
+                if (target && target.getAttribute('href')) return;
+                
                 const href = card.getAttribute('data-href');
                 if (href) goToApp(href);
             });
