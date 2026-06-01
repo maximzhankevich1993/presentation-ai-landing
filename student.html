@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Студентам — презентации с ИИ | Презентатор ИИ</title>
-    <meta name="description" content="Создайте презентацию к диплому или курсовой с помощью ИИ. Графики, диаграммы, экспорт PPTX и PDF. Бесплатно 5 презентаций.">
-    <meta name="keywords" content="презентация к диплому, презентация для студента, ИИ для студентов, графики, диаграммы">
+    <title>Студентам — презентации с ИИ | Презентатор ИИ | Оплата USDT</title>
+    <meta name="description" content="Создайте презентацию к диплому или курсовой с помощью ИИ. Графики, диаграммы, экспорт PPTX и PDF. Бесплатно 5 презентаций. Оплата в USDT.">
+    <meta name="keywords" content="презентация к диплому, презентация для студента, ИИ для студентов, графики, диаграммы, оплата USDT">
     <meta property="og:title" content="Студентам — Презентатор ИИ">
-    <meta property="og:description" content="Презентация к диплому с ИИ за 1 минуту. Бесплатно 5 презентаций.">
+    <meta property="og:description" content="Презентация к диплому с ИИ за 1 минуту. Бесплатно 5 презентаций. Оплата в USDT.">
     <meta property="og:type" content="website">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,6 +29,8 @@
         .btn-green:hover { background: var(--green-hover); transform: scale(1.02); }
         .btn-outline { background: transparent; border: 1px solid var(--subtext); color: var(--text); }
         .btn-outline:hover { border-color: var(--text); background: rgba(255,255,255,0.05); }
+        .btn-crypto { background: #627EEA; color: white; border: none; }
+        .btn-crypto:hover { background: #4A67C9; transform: scale(1.03); }
 
         .hero { padding: 100px 0 40px; text-align: center; }
         .hero h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 900; letter-spacing: -1px; margin-bottom: 8px; background: linear-gradient(135deg, #fff 0%, #1DB954 100%); background-clip: text; -webkit-background-clip: text; color: transparent; }
@@ -46,6 +48,10 @@
         .section-title { text-align: center; font-size: 36px; font-weight: 900; margin-bottom: 12px; letter-spacing: -1px; background: linear-gradient(135deg, #fff 0%, #1DB954 100%); background-clip: text; -webkit-background-clip: text; color: transparent; }
         .section-sub { text-align: center; color: var(--subtext); margin-bottom: 40px; font-size: 15px; }
         
+        .crypto-note { text-align: center; margin: 20px 0 10px; padding: 15px; background: rgba(98,126,234,0.1); border-radius: 16px; border: 1px solid rgba(98,126,234,0.3); }
+        .crypto-note p { font-size: 14px; color: var(--subtext); }
+        .crypto-note strong { color: #627EEA; }
+
         .carousel-wrapper { position: relative; display: flex; align-items: center; gap: 15px; }
         .carousel { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 20px 0 30px; flex: 1; scrollbar-width: none; }
         .carousel::-webkit-scrollbar { display: none; }
@@ -61,7 +67,7 @@
         .price-card.featured { background: linear-gradient(145deg, #1DB954 0%, #169C46 100%); border: none; }
         .price-card.featured .price, .price-card.featured .name { color: #000; }
         .price-card.featured .period { color: #000; }
-        .price-card.featured .btn-outline { background: #000; color: var(--green); border: none; }
+        .price-card.featured .btn { background: #000; color: var(--green); border: none; }
         
         .name { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
         .price { font-size: 44px; font-weight: 900; margin-bottom: 4px; }
@@ -97,6 +103,7 @@
         }
     </style>
     <script>
+    // Только автоопределение языка (без валюты)
     async function detectLanguage() {
         try {
             const response = await fetch('https://ipapi.co/json/');
@@ -111,7 +118,7 @@
         } catch(e) {}
     }
     detectLanguage();
-</script>
+    </script>
 </head>
 <body>
     <nav class="navbar">
@@ -138,33 +145,38 @@
         <div class="pricing-section">
             <div class="container">
                 <h2 class="section-title">Тарифы для студентов</h2>
-                <p class="section-sub" id="currencyHint">Загрузка цен...</p>
+                <p class="section-sub">Оплата USDT через CryptoCloud. Листайте ← →</p>
                 <div class="carousel-wrapper">
                     <button class="carousel-btn prev" id="prevBtn">←</button>
                     <div class="carousel" id="pricingCarousel">
                         <div class="price-card" data-href="/pricing">
                             <div class="name">Бесплатный</div>
-                            <div class="price">0</div>
+                            <div class="price">0 $</div>
                             <div class="period">навсегда</div>
                             <ul><li>5 генераций/мес</li><li>10 слайдов</li><li>8 фонов</li><li>Базовый экспорт</li></ul>
-                            <span class="btn btn-outline" style="width:100%;">Начать</span>
+                            <span class="btn btn-outline" style="width:100%;" onclick="goToApp('/')">Начать</span>
                         </div>
                         <div class="price-card featured" data-href="/pricing">
                             <div class="name">Месяц</div>
-                            <div class="price" id="monthPrice">...</div>
-                            <div class="period">/мес</div>
+                            <div class="price">$4.99</div>
+                            <div class="period">/мес (USDT)</div>
                             <ul><li>Безлимит генераций</li><li>50 слайдов</li><li>16 фонов</li><li>PDF без знака</li><li>AI-улучшение</li></ul>
-                            <span class="btn btn-outline" style="width:100%; background:#000; color:var(--green); border:none;">Выбрать</span>
+                            <span class="btn btn-crypto" style="width:100%;" onclick="openCryptoLink(4.99)">💳 Оплатить USDT</span>
                         </div>
                         <div class="price-card" data-href="/pricing">
                             <div class="name">Год</div>
-                            <div class="price" id="yearPrice">...</div>
-                            <div class="period" id="yearPerMonth">/мес</div>
+                            <div class="price">$49.99</div>
+                            <div class="period">$4.17/мес</div>
                             <ul><li>Всё из Месяца</li><li>Экономия 33%</li><li>Бренд-кит</li><li>Приоритетная поддержка</li></ul>
-                            <span class="btn btn-outline" style="width:100%;">Выбрать</span>
+                            <span class="btn btn-crypto" style="width:100%;" onclick="openCryptoLink(49.99)">💳 Оплатить USDT</span>
                         </div>
                     </div>
                     <button class="carousel-btn next" id="nextBtn">→</button>
+                </div>
+                
+                <div class="crypto-note">
+                    <p>💡 <strong>Оплата в USDT (криптовалюта)</strong> — без комиссии, без банков. Нажмите «Оплатить USDT» → перейдёте на защищённую страницу CryptoCloud.</p>
+                    <p style="margin-top:8px; font-size:12px;">🎁 Промокод <strong>CRYPTO10</strong> — второй месяц бесплатно для первых 10 платящих. Введите в приложении после оплаты.</p>
                 </div>
             </div>
         </div>
@@ -188,53 +200,24 @@
                 <span onclick="goToPage('/cookies.html')">Cookie</span>
                 <span onclick="goToPage('/about.html')">О нас</span>
             </div>
-            <p>© 2026 Презентатор ИИ</p>
+            <p>© 2026 Презентатор ИИ. Оплата USDT через CryptoCloud</p>
         </div>
     </footer>
 
     <script>
         const APP_URL = 'https://app.prezentator-ai.com';
+        const CRYPTO_PAYMENT_URL = 'https://pay.cryptocloud.plus/pos/L1dhlsPbHiuNO7Fv';
         
-        const PRICES_USD = { month: 4.99, year: 49.99, yearPerMonth: 4.17 };
-
-        async function detectCurrency() {
-            try {
-                const response = await fetch('https://ipapi.co/json/');
-                const data = await response.json();
-                const country = (data.country_code || 'US').toUpperCase();
-                const euroCountries = ['IT', 'FR', 'DE', 'ES', 'NL', 'BE', 'AT', 'PT', 'FI', 'IE', 'GR', 'SK', 'SI', 'EE', 'LV', 'LT', 'LU', 'MT', 'CY'];
-                if (country === 'BY') return { currency: 'BYN', symbol: 'Br', rate: 3.25 };
-                if (country === 'RU') return { currency: 'RUB', symbol: '₽', rate: 95.0 };
-                if (country === 'KZ') return { currency: 'KZT', symbol: '₸', rate: 460.0 };
-                if (country === 'UA') return { currency: 'UAH', symbol: '₴', rate: 41.0 };
-                if (country === 'GB') return { currency: 'GBP', symbol: '£', rate: 0.79, decimals: 2 };
-                if (euroCountries.includes(country)) return { currency: 'EUR', symbol: '€', rate: 0.92, decimals: 2 };
-                return { currency: 'USD', symbol: '$', rate: 1.0, decimals: 2 };
-            } catch (error) {
-                return { currency: 'USD', symbol: '$', rate: 1.0, decimals: 2 };
-            }
-        }
-
-        async function updatePrices() {
-            const { currency, symbol, rate, decimals } = await detectCurrency();
-            const monthVal = PRICES_USD.month * rate;
-            const yearVal = PRICES_USD.year * rate;
-            const yearPerMonthVal = PRICES_USD.yearPerMonth * rate;
-            
-            if (currency === 'RUB' || currency === 'BYN' || currency === 'KZT' || currency === 'UAH') {
-                document.getElementById('monthPrice').textContent = Math.ceil(monthVal) + ' ' + symbol;
-                document.getElementById('yearPrice').textContent = Math.ceil(yearVal) + ' ' + symbol;
-                document.getElementById('yearPerMonth').textContent = Math.ceil(yearPerMonthVal) + ' ' + symbol + '/мес';
-            } else {
-                document.getElementById('monthPrice').textContent = symbol + monthVal.toFixed(decimals || 2);
-                document.getElementById('yearPrice').textContent = symbol + yearVal.toFixed(decimals || 2);
-                document.getElementById('yearPerMonth').textContent = symbol + yearPerMonthVal.toFixed(decimals || 2) + '/мес';
-            }
-            document.getElementById('currencyHint').textContent = 'Цены в ' + currency + ' ← →';
-        }
-
         function goToPage(path) { window.location.href = path; }
         function goToApp(path) { window.location.href = APP_URL + path; }
+        
+        function openCryptoLink(amount) {
+            const url = amount > 0 ? `${CRYPTO_PAYMENT_URL}?amount=${amount}` : CRYPTO_PAYMENT_URL;
+            window.open(url, '_blank');
+            setTimeout(() => {
+                alert('💸 После успешной оплаты USDT, вернитесь в приложение и подождите 1-2 минуты для автоматической активации.\n\nПромокод CRYPTO10 введите в приложении после оплаты.');
+            }, 500);
+        }
         
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
@@ -244,7 +227,6 @@
             nextBtn.addEventListener('click', () => carousel.scrollBy({ left: 320, behavior: 'smooth' }));
         }
         
-        // ИСПРАВЛЕННЫЙ ОБРАБОТЧИК
         document.querySelectorAll('.price-card').forEach(card => {
             card.addEventListener('click', (e) => {
                 const target = e.target.closest('a');
@@ -253,8 +235,6 @@
                 if (href) goToApp(href);
             });
         });
-        
-        updatePrices();
     </script>
 </body>
 </html>
