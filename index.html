@@ -127,6 +127,9 @@
         .footer-links span { color: var(--subtext); font-size: 13px; cursor: pointer; transition: color 0.2s; }
         .footer-links span:hover { color: var(--text); }
         .footer p { color: #555; font-size: 12px; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; backdrop-filter: blur(8px); }
+        .modal.show { display: flex; }
+        .modal-content { background: var(--card); border-radius: 20px; padding: 32px; text-align: center; max-width: 320px; width: 90%; }
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .features, .services { grid-template-columns: 1fr; }
@@ -139,6 +142,7 @@
     </style>
     
     <script>
+        // Только автоопределение языка (без валюты)
         async function detectLanguage() {
             try {
                 const response = await fetch('https://ipapi.co/json/');
@@ -204,21 +208,21 @@
     <section class="pricing" id="pricing">
         <div class="container">
             <h2 class="section-title">Выберите тариф</h2>
-            <p class="section-sub" id="currencyHint">Оплата USDT через CryptoCloud. Листайте ← →</p>
+            <p class="section-sub">Оплата USDT через CryptoCloud. Листайте ← →</p>
             <div class="carousel-wrapper">
                 <button class="carousel-btn prev" id="prevBtn">←</button>
                 <div class="carousel" id="pricingCarousel">
                     <div class="pricing-card vip" data-href="/vip">
                         <div class="pricing-badge" style="background:#FF3B30;">🔥 VIP</div>
                         <div class="pricing-name">Первые 50</div>
-                        <div class="pricing-price" id="vipPrice">0</div>
+                        <div class="pricing-price">0 $</div>
                         <div class="pricing-period">навсегда</div>
                         <ul class="pricing-features"><li>Пожизненный Premium</li><li>Все 30+ фишек</li><li>Безлимит</li></ul>
                         <span class="btn" style="width:100%; background:#000; color:#FFD60A;" onclick="openCryptoLink(0)">🔥 Занять место</span>
                     </div>
                     <div class="pricing-card" data-href="/">
                         <div class="pricing-name">Бесплатный</div>
-                        <div class="pricing-price" id="freePrice">0</div>
+                        <div class="pricing-price">0 $</div>
                         <div class="pricing-period">навсегда</div>
                         <ul class="pricing-features"><li>5 генераций/мес</li><li>До 10 слайдов</li><li>Авто-картинки</li></ul>
                         <span class="btn btn-outline" style="width:100%" onclick="goToApp('/')">Начать</span>
@@ -226,24 +230,24 @@
                     <div class="pricing-card featured" data-href="/">
                         <div class="pricing-badge" style="background:#000;">ПОПУЛЯРНЫЙ</div>
                         <div class="pricing-name">Pro</div>
-                        <div class="pricing-price" id="proPrice">4.99</div>
+                        <div class="pricing-price">$4.99</div>
                         <div class="pricing-period">/месяц (USDT)</div>
                         <ul class="pricing-features"><li>Безлимит</li><li>50 слайдов</li><li>Все фишки</li></ul>
                         <span class="btn btn-crypto" style="width:100%;" onclick="openCryptoLink(4.99)">💳 Оплатить USDT</span>
                     </div>
                     <div class="pricing-card" data-href="/">
                         <div class="pricing-name">6 месяцев</div>
-                        <div class="pricing-price" id="halfYearPrice">98</div>
+                        <div class="pricing-price">$29.99</div>
                         <div class="pricing-period">/6 месяцев</div>
                         <ul class="pricing-features"><li>Всё из Pro</li><li>Экономия 15%</li><li>Безлимит</li></ul>
-                        <span class="btn btn-crypto" style="width:100%;" onclick="openCryptoLink(98)">💳 Оплатить USDT</span>
+                        <span class="btn btn-crypto" style="width:100%;" onclick="openCryptoLink(29.99)">💳 Оплатить USDT</span>
                     </div>
                     <div class="pricing-card" data-href="/">
                         <div class="pricing-name">Год</div>
-                        <div class="pricing-price" id="yearPrice">163</div>
+                        <div class="pricing-price">$49.99</div>
                         <div class="pricing-period">/год</div>
                         <ul class="pricing-features"><li>Всё из Pro</li><li>Экономия 33%</li><li>Бренд-кит</li></ul>
-                        <span class="btn btn-crypto" style="width:100%;" onclick="openCryptoLink(163)">💳 Оплатить USDT</span>
+                        <span class="btn btn-crypto" style="width:100%;" onclick="openCryptoLink(49.99)">💳 Оплатить USDT</span>
                     </div>
                 </div>
                 <button class="carousel-btn next" id="nextBtn">→</button>
@@ -292,13 +296,10 @@
         function setTopic(topic) { document.getElementById('topicInput').value = topic; }
         
         function openCryptoLink(amount) {
-            // CryptoCloud поддерживает параметр ?amount=XX.XX
             const url = amount > 0 ? `${CRYPTO_PAYMENT_URL}?amount=${amount}` : CRYPTO_PAYMENT_URL;
             window.open(url, '_blank');
-            
-            // Показываем уведомление, что после оплаты нужно вернуться в приложение
             setTimeout(() => {
-                alert('💸 После успешной оплаты USDT, вернитесь в приложение и нажмите "Активировать подписку" или подождите 1-2 минуты для автоматической активации.\n\nПромокод CRYPTO10 введите в приложении после оплаты.');
+                alert('💸 После успешной оплаты USDT, вернитесь в приложение и подождите 1-2 минуты для автоматической активации.\n\nПромокод CRYPTO10 введите в приложении после оплаты.');
             }, 500);
         }
         
@@ -333,40 +334,6 @@
             prevBtn.addEventListener('click', () => carousel.scrollBy({ left: -320, behavior: 'smooth' }));
             nextBtn.addEventListener('click', () => carousel.scrollBy({ left: 320, behavior: 'smooth' }));
         }
-        
-        async function detectCurrencyAndUpdatePrices() {
-            try {
-                const response = await fetch('https://ipapi.co/json/');
-                const data = await response.json();
-                const country = data.country_code;
-                
-                let currencySymbol = '$';
-                if (country === 'RU') currencySymbol = '₽';
-                else if (country === 'BY') currencySymbol = 'Br';
-                else if (country === 'KZ') currencySymbol = '₸';
-                else if (country === 'UA') currencySymbol = '₴';
-                
-                const prices = {
-                    vip: '0',
-                    free: '0',
-                    pro: '4.99',
-                    halfYear: '98',
-                    year: '163'
-                };
-                
-                document.getElementById('vipPrice').innerHTML = prices.vip + ' ' + currencySymbol;
-                document.getElementById('freePrice').innerHTML = prices.free + ' ' + currencySymbol;
-                document.getElementById('proPrice').innerHTML = prices.pro + ' ' + currencySymbol;
-                document.getElementById('halfYearPrice').innerHTML = prices.halfYear + ' ' + currencySymbol;
-                document.getElementById('yearPrice').innerHTML = prices.year + ' ' + currencySymbol;
-                
-                document.getElementById('currencyHint').innerHTML = `Цены в ${currencySymbol} | Оплата USDT через CryptoCloud ← →`;
-            } catch(e) {
-                console.log('Ошибка определения валюты');
-            }
-        }
-        
-        detectCurrencyAndUpdatePrices();
     </script>
 </body>
 </html>
