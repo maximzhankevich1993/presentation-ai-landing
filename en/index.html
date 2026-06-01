@@ -158,6 +158,7 @@
     </style>
     
     <script>
+        // Только автоопределение языка (без валюты)
         async function detectLanguage() {
             try {
                 const response = await fetch('https://ipapi.co/json/');
@@ -225,21 +226,21 @@
     <section class="pricing" id="pricing">
         <div class="container">
             <h2 class="section-title">Choose a Plan</h2>
-            <p class="section-sub" id="currencyHint">Pay with USDT via CryptoCloud. Scroll ← →</p>
+            <p class="section-sub">Pay with USDT via CryptoCloud. Scroll ← →</p>
             <div class="carousel-wrapper">
                 <button class="carousel-btn prev" id="prevBtn">←</button>
                 <div class="carousel" id="pricingCarousel">
                     <div class="pricing-card vip" data-href="/vip">
                         <div class="pricing-badge" style="background:#FF3B30;">🔥 VIP</div>
                         <div class="pricing-name">First 50</div>
-                        <div class="pricing-price" id="vipPrice">0</div>
+                        <div class="pricing-price">0 $</div>
                         <div class="pricing-period">forever</div>
                         <ul class="pricing-features"><li>Lifetime Premium</li><li>All 30+ features</li><li>Unlimited</li></ul>
                         <span class="btn" style="width:100%; background:#000; color:#FFD60A;" onclick="openCryptoLink(0)">🔥 Claim Spot</span>
                     </div>
                     <div class="pricing-card" data-href="/">
                         <div class="pricing-name">Free</div>
-                        <div class="pricing-price" id="freePrice">0</div>
+                        <div class="pricing-price">0 $</div>
                         <div class="pricing-period">forever</div>
                         <ul class="pricing-features"><li>5 generations/month</li><li>Up to 10 slides</li><li>Auto images</li></ul>
                         <span class="btn btn-outline" style="width:100%" onclick="goToApp('/')">Start</span>
@@ -247,24 +248,24 @@
                     <div class="pricing-card featured" data-href="/">
                         <div class="pricing-badge" style="background:#000;">POPULAR</div>
                         <div class="pricing-name">Pro</div>
-                        <div class="pricing-price" id="proPrice">4.99</div>
+                        <div class="pricing-price">$4.99</div>
                         <div class="pricing-period">/month (USDT)</div>
                         <ul class="pricing-features"><li>Unlimited</li><li>50 slides</li><li>All features</li></ul>
                         <span class="btn btn-crypto" style="width:100%;" onclick="openCryptoLink(4.99)">💳 Pay with USDT</span>
                     </div>
                     <div class="pricing-card" data-href="/">
                         <div class="pricing-name">6 Months</div>
-                        <div class="pricing-price" id="halfYearPrice">98</div>
+                        <div class="pricing-price">$29.99</div>
                         <div class="pricing-period">/6 months</div>
                         <ul class="pricing-features"><li>All Pro features</li><li>Save 15%</li><li>Unlimited</li></ul>
-                        <span class="btn btn-crypto" style="width:100%;" onclick="openCryptoLink(98)">💳 Pay with USDT</span>
+                        <span class="btn btn-crypto" style="width:100%;" onclick="openCryptoLink(29.99)">💳 Pay with USDT</span>
                     </div>
                     <div class="pricing-card" data-href="/">
                         <div class="pricing-name">Year</div>
-                        <div class="pricing-price" id="yearPrice">163</div>
+                        <div class="pricing-price">$49.99</div>
                         <div class="pricing-period">/year</div>
                         <ul class="pricing-features"><li>All Pro features</li><li>Save 33%</li><li>Brand Kit</li></ul>
-                        <span class="btn btn-crypto" style="width:100%;" onclick="openCryptoLink(163)">💳 Pay with USDT</span>
+                        <span class="btn btn-crypto" style="width:100%;" onclick="openCryptoLink(49.99)">💳 Pay with USDT</span>
                     </div>
                 </div>
                 <button class="carousel-btn next" id="nextBtn">→</button>
@@ -351,42 +352,6 @@
             prevBtn.addEventListener('click', () => carousel.scrollBy({ left: -320, behavior: 'smooth' }));
             nextBtn.addEventListener('click', () => carousel.scrollBy({ left: 320, behavior: 'smooth' }));
         }
-        
-        async function detectCurrencyAndUpdatePrices() {
-            try {
-                const response = await fetch('https://ipapi.co/json/');
-                const data = await response.json();
-                const country = data.country_code;
-                
-                let currencySymbol = '$';
-                if (country === 'RU') currencySymbol = '₽';
-                else if (country === 'BY') currencySymbol = 'Br';
-                else if (country === 'KZ') currencySymbol = '₸';
-                else if (country === 'UA') currencySymbol = '₴';
-                else if (country === 'GB') currencySymbol = '£';
-                else if (country === 'EU') currencySymbol = '€';
-                
-                const prices = {
-                    vip: '0',
-                    free: '0',
-                    pro: '4.99',
-                    halfYear: '98',
-                    year: '163'
-                };
-                
-                document.getElementById('vipPrice').innerHTML = prices.vip + ' ' + currencySymbol;
-                document.getElementById('freePrice').innerHTML = prices.free + ' ' + currencySymbol;
-                document.getElementById('proPrice').innerHTML = prices.pro + ' ' + currencySymbol;
-                document.getElementById('halfYearPrice').innerHTML = prices.halfYear + ' ' + currencySymbol;
-                document.getElementById('yearPrice').innerHTML = prices.year + ' ' + currencySymbol;
-                
-                document.getElementById('currencyHint').innerHTML = `Prices in ${currencySymbol} | Pay with USDT via CryptoCloud ← →`;
-            } catch(e) {
-                console.log('Currency detection error');
-            }
-        }
-        
-        detectCurrencyAndUpdatePrices();
     </script>
 </body>
 </html>
